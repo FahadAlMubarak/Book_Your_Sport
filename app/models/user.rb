@@ -7,4 +7,6 @@ class User < ApplicationRecord
   has_many :venues, dependent: :destroy
   has_many :bookings
   has_many :friends
+
+  has_one_attached :photo
 end

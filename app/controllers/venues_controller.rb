@@ -1,12 +1,13 @@
 class VenuesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
-
+  before_action :set_venue, only: [:show]
 
   def index
     @venues = Venue.all
   end
 
   def show
+    @facility = Facility.new
   end
 
   def new
