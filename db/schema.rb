@@ -10,9 +10,72 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_06_03_164649) do
+ActiveRecord::Schema[7.1].define(version: 2024_06_04_115814) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bookings", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "slot_id", null: false
+    t.time "start_time"
+    t.time "end_time"
+    t.date "date"
+    t.string "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["slot_id"], name: "index_bookings_on_slot_id"
+    t.index ["user_id"], name: "index_bookings_on_user_id"
+  end
+
+  create_table "facilities", force: :cascade do |t|
+    t.bigint "venue_id", null: false
+    t.string "sport"
+    t.integer "capacity"
+    t.integer "price"
+    t.integer "duration"
+    t.integer "deposit_price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["venue_id"], name: "index_facilities_on_venue_id"
+  end
+
+  create_table "friends", force: :cascade do |t|
+    t.bigint "user_1_id", null: false
+    t.bigint "user_2_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_1_id"], name: "index_friends_on_user_1_id"
+    t.index ["user_2_id"], name: "index_friends_on_user_2_id"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.bigint "booking_id", null: false
+    t.integer "rating"
+    t.text "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["booking_id"], name: "index_reviews_on_booking_id"
+  end
+
+  create_table "shared_bookings", force: :cascade do |t|
+    t.bigint "booking_id", null: false
+    t.bigint "friend_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["booking_id"], name: "index_shared_bookings_on_booking_id"
+    t.index ["friend_id"], name: "index_shared_bookings_on_friend_id"
+  end
+
+  create_table "slots", force: :cascade do |t|
+    t.bigint "facility_id", null: false
+    t.time "start_time"
+    t.time "end_time"
+    t.date "date"
+    t.string "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["facility_id"], name: "index_slots_on_facility_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -22,8 +85,38 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_03_164649) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "first_name"
+    t.string "last_name"
+    t.string "phone"
+    t.string "address"
+    t.boolean "owner"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "venues", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "name"
+    t.string "address"
+    t.text "description"
+    t.string "phone"
+    t.string "email"
+    t.text "socials"
+    t.time "opening_time"
+    t.time "closing_time"
+    t.bigint "user_id", null: false
+    t.index ["user_id"], name: "index_venues_on_user_id"
+  end
+
+  add_foreign_key "bookings", "slots"
+  add_foreign_key "bookings", "users"
+  add_foreign_key "facilities", "venues"
+  add_foreign_key "friends", "users", column: "user_1_id"
+  add_foreign_key "friends", "users", column: "user_2_id"
+  add_foreign_key "reviews", "bookings"
+  add_foreign_key "shared_bookings", "bookings"
+  add_foreign_key "shared_bookings", "friends"
+  add_foreign_key "slots", "facilities"
+  add_foreign_key "venues", "users"
 end
