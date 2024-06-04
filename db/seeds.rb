@@ -8,7 +8,15 @@
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
 
+require "open-uri"
+
+
+Slot.destroy_all
+Facility.destroy_all
+Venue.destroy_all
 User.destroy_all
+
+
 
 user_1 = User.create(
   email: "fahad@email.com",
@@ -19,6 +27,10 @@ user_1 = User.create(
   password: "123456",
   owner: false
 )
+
+file = URI.open("https://media.licdn.com/dms/image/D4E03AQFohqu7scaWTw/profile-displayphoto-shrink_200_200/0/1699433378820?e=2147483647&v=beta&t=qK1YKOYKLkkFGnN0rz55_g72CN3XKb3JQQ0gH9q3a3o")
+user_1.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
+user_1.save
 
 user_2 = User.create(
   email: "david@email.com",
@@ -64,6 +76,10 @@ venue_1 = Venue.create(
   user: user_2
 )
 
+file = URI.open("https://plus.unsplash.com/premium_photo-1708692921020-e58a86c83b5a?q=80&w=3570&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")
+venue_1.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
+venue_1.save
+
 venue_2 = Venue.create(
   name: "Greenfield Sports Complex",
   address: "456 Sports Lane, Sportstown, SP 45678",
@@ -76,6 +92,11 @@ venue_2 = Venue.create(
   user: user_4
 )
 
+file = URI.open("https://images.unsplash.com/photo-1589487391730-58f20eb2c308?q=80&w=3574&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")
+venue_2.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
+venue_2.save
+
+
 venue_3 = Venue.create(
   name: "Tennis Elite Club",
   address: "789 Tennis Drive, Tennis Town, TT 98765",
@@ -87,6 +108,9 @@ venue_3 = Venue.create(
   closing_time: Time.new(2024, 6, 4, 10, 0, 0),
   user: user_4
 )
+file = URI.open("https://images.unsplash.com/photo-1622279457486-62dcc4a431d6?q=80&w=3570&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")
+venue_3.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
+venue_3.save
 
 facility_1 = Facility.create(
   venue: venue_1,
