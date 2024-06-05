@@ -1,7 +1,7 @@
 
 
 <div class="card-trip">
- <% if venue.image.attached? %>
+ <% if venue.images.attached? %>
     <%= cl_image_tag venue.image.key %>
              <% else %>
                <%= image_tag("backdrop.jpg") %>
