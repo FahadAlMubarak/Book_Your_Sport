@@ -3,5 +3,5 @@ class Venue < ApplicationRecord
   has_many :facilities
 
   has_one_attached :photo
-  has_one_attached :image
+  has_many_attached :images
 end
