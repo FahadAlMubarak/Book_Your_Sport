@@ -6,16 +6,21 @@
              <% else %>
                <%= image_tag("backdrop.jpg") %>
     <% end %>
-  <div class="card-trip-infos">
-    <div>
+    <div class="card-trip-infos">
+  <div style= "flex-grow: 1;">
       <h2><%= venue.name %></h2>
+      <h3><%= venue.borough %></h3>
       <p><%= venue.description %></p>
-    </div>
-     <% if venue.photo.attached? %>
-    <%= cl_image_tag venue.photo.key,class: "card-trip-user avatar-bordered" %>
-            <% else %>
-               <%= image_tag("venue_default_avatar.png",class: "card-trip-user avatar-bordered") %>
-     <% end%>
 
-  </div>
+    </div>
+    <div style="width: 105px;"></div>
+
+
+     <% if venue.photo.attached? %>
+    <%= cl_image_tag venue.photo.key,class: "logo"%>
+            <% else %>
+               <%= image_tag("venue_default_avatar.png",class: "logo") %>
+     <% end%>
+</div>
+  <%= link_to "see more", venue_path(venue), class: " btn btn-green btn-full-width" %>
 </div>
