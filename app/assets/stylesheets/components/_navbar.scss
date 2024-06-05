@@ -1,12 +1,117 @@
-.navbar-lewagon {
+.navbar li {
+color:white;
+}
+
+
+
+.nav-content {
   justify-content: space-between;
-  background: white;
+  display: flex;
+  width:100%;
+}
+
+.nav-item {
+  list-style: none;
+}
+
+.dropdown-toggle::after {
+  display:none;
+}
+
+.nav-link {
+  color:white;
+}
+
+.navbar {
+  --bs-navbar-padding-y:0;
+  --bs-navbar-padding-x:0;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Add shadow */
+
+}
+
+.nav {
+  display:flex;
 }
 
 .navbar-lewagon .navbar-collapse {
   flex-grow: 0;
 }
 
-.navbar-lewagon .navbar-brand img {
-  width: 40px;
+.logo {
+height:40px;
+}
+
+.dropdown-item {
+color:black;
+}
+
+
+.navbar-toggler-icon {
+color:white;
+}
+.navbar-toggler {
+display:flex;
+align-self: center;
+color:white;
+}
+
+.dropdown-menu[data-bs-popper] {
+  top: 100%;
+  right: 0;
+  left: auto;
+}
+
+
+.dropdown-menu .show {
+background-color:#00C620;
+color:black;
+}
+
+
+.dropdown-menu[data-bs-popper] {
+  right: 0;
+}
+
+
+.dropdown-menu {
+  top: 100%;
+  right: 0;
+
+}
+
+
+.nav-left {
+  background-color: white;
+  padding-left: 27.5px;
+  padding-top: 10px;
+  padding-bottom:10px;
+}
+
+
+.nav-right {
+  background-color: #163916;
+  display:flex;
+  align-items: center;
+  justify-content: end;
+  padding-right:27.5px;
+  box-shadow: -2px 2px 3px 3px rgba(0, 0, 0, 0.062);
+
+
+}
+
+
+.dropdown-menu {
+  z-index: 1000;
+
+}
+
+
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  height: 50px; /* Adjust height as needed */
+  margin-right: 10px;
 }
