@@ -1,0 +1,15 @@
+.gallery {
+  width: 100%;
+}
+
+.gallery-images {
+  display: grid;
+  gap: 10px;
+}
+
+.gallery-image img {
+  width: 200px;
+  height: auto;
+  border-radius: 10px;
+  object-fit: cover;
+}

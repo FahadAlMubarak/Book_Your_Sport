@@ -1,33 +1,63 @@
 
-<div>
-  <h1> <%= @venue.name %> </h1>
-  <p> <%= @venue.description %> </p>
-  <p> <%= @venue.address %> </p>
-</div>
-<div>
-  <h2> About </h2>
-  <p>
-    Phone:<%= @venue.phone %>
-  </p>
-  <p>
-    Email: <%= @venue.email %>
-  </p>
-  <p>
-    Follow us: <%= @venue.socials %>
-  </p>
-</div>
-
-<div>
-  <h3>Opening Times</h3>
-  <p>Opening: <%= @venue.opening_time.strftime(" %l:%M %p") %></p>
-  <p>Closing: <%= @venue.closing_time.strftime(" %l:%M %p") %></p>
-</div>
-
-
-<div>
-  <% @venue.facilities.each do |facility| %>
-    <h2> <%= facility.sport %> </h2>
-    <p> £ <%= facility.price %>/ <%= facility.duration %> min </p>
-    <p> <%= facility.capacity %> players </p>
+ <div class="gallery mt-4">
+    <% if @venue.images.attached? %>
+      <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-indicators">
+          <% @venue.images.each_with_index do |image, index| %>
+           <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="<%= index %>" class="<%= 'active' if index == 0 %>" aria-current="<%= 'true' if index == 0 %>" aria-label="Slide <%= index + 1 %>"></button>
+          <% end %>
+        </div>
+        <div class="carousel-inner">
+          <% @venue.images.each_with_index do |image, index| %>
+            <div class="carousel-item <%= 'active' if index == 0 %>">
+              <%= image_tag image, class: "d-block w-100" %>
+            </div>
+          <% end %>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+    </div>
   <% end %>
+</div>
+
+<div class="container">
+  <div>
+    <h1> <%= @venue.name %> </h1>
+    <p> <%= @venue.address %> </p>
+  </div>
+  <div class="about">
+    <h2> About </h2>
+    <p> <%= @venue.description %> </p>
+    <p>
+      Phone:<%= @venue.phone %>
+    </p>
+    <p>
+      Email: <%= @venue.email %>
+    </p>
+    <p>
+      Follow us: <%= @venue.socials %>
+    </p>
+  </div>
+
+  <div>
+    <h3>Opening Times</h3>
+    <p>Opening: <%= @venue.opening_time.strftime(" %l:%M %p") %></p>
+    <p>Closing: <%= @venue.closing_time.strftime(" %l:%M %p") %></p>
+  </div>
+
+
+  <div>
+    <% @venue.facilities.each do |facility| %>
+      <h2> <%= facility.sport %> </h2>
+      <p> £ <%= facility.price %>/ <%= facility.duration %> min </p>
+      <p> <%= facility.capacity %> players </p>
+    <% end %>
+  </div>
+
 </div>
