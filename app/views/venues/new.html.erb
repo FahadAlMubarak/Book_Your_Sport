@@ -1,2 +1,51 @@
-<h1>Venues#new</h1>
-<p>Find me in app/views/venues/new.html.erb</p>
+<%= simple_form_for(@venue) do |f| %>
+  <div class="form-inputs" data-controller="add-facility">
+    <%= f.input :name %>
+    <%= f.input :address %>
+    <%= f.input :borough %>
+    <%= f.input :description %>
+    <%= f.input :phone %>
+    <%= f.input :email %>
+    <%= f.input :socials %>
+    <%= f.input :opening_time %>
+    <%= f.input :closing_time %>
+    <%= f.input :photo, as: :file %>
+    <%= f.input :images, as: :file, input_html: { multiple: true }  %>
+    <p>tell us about your venues facilities or pitches</p>
+    <ul data-add-facility-target='facilitiesWrapper'>
+      <%= f.fields_for :facilities do |facilities_form| %>
+        <div>
+          <%= facilities_form.input :name %>
+          <%= facilities_form.input :sport %>
+          <%= facilities_form.input :capacity %>
+          <%= facilities_form.input :price %>
+          <%= facilities_form.input :duration %>
+          <%= facilities_form.input :deposit_price %>
+        </div>
+      <% end %>
+
+
+
+      <template data-add-facility-target="template">
+        <%= f.fields_for :facilities do |facilities_form| %>
+          <div data-add-facility-target="facilityForm">
+            <%= facilities_form.input :name %>
+            <%= facilities_form.input :sport %>
+            <%= facilities_form.input :capacity %>
+            <%= facilities_form.input :price %>
+            <%= facilities_form.input :duration %>
+            <%= facilities_form.input :deposit_price %>
+          </div>
+        <% end %>
+
+      </template>
+
+    </ul>
+    <button class= "btn btn-green btn-full-width" data-action="click->add-facility#add">add another facility?</button>
+  </div>
+  <div class="form-actions">
+    <div class="submit-btn-container">
+      <%= f.submit "Submit", class: "submit-btn" %>
+    </div>
+  </div>
+<% end %>

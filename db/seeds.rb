@@ -163,16 +163,40 @@ Slot.create(
 
 Slot.create(
   facility: facility_2,
-  start_time: Time.new(2024, 6, 4, 10, 0, 0),
-  end_time: Time.new(2024, 6, 4, 11, 30, 0),
+  start_time: Time.new(2024, 6, 10, 10, 0, 0),
+  end_time: Time.new(2024, 6, 10, 11, 30, 0),
   date: Date.today,
   status: "available"
 )
 
 Slot.create(
   facility: facility_3,
-  start_time: Time.new(2024, 6, 4, 15, 0, 0),
-  end_time: Time.new(2024, 6, 4, 16, 0, 0),
+  start_time: Time.new(2024, 6, 9, 15, 0, 0),
+  end_time: Time.new(2024, 6, 9, 16, 0, 0),
   date: Date.today,
+  status: "available"
+)
+
+Slot.create(
+  facility: facility_1,
+  start_time: Time.new(2024, 6, 7, 15, 0, 0),
+  end_time: Time.new(2024, 6, 7, 16, 0, 0),
+  date: Date.today,
+  status: "available"
+)
+
+Slot.create(
+  facility: facility_1,
+  start_time: Time.new(2024, 6, 7, 18, 0, 0),
+  end_time: Time.new(2024, 6, 7, 19, 0, 0),
+  date: Date.today,
+  status: "available"
+)
+
+Slot.create(
+  facility: facility_1,
+  start_time: Time.new(2024, 6, 8, 21, 0, 0),
+  end_time: Time.new(2024, 6, 8, 22, 0, 0),
+  date: Date.tomorrow,
   status: "available"
 )

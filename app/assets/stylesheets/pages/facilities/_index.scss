@@ -1,0 +1,37 @@
+input, button, select, optgroup, textarea {
+  display: none;
+}
+
+label.date-range-label {
+  .date-span-day{
+    width: 30px;
+    border-radius: 50%;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+  }
+  &.active {
+    span.date-span-day {
+      background: lightgrey;
+    }
+  }
+}
+
+.slot-time{
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.slot-time span {
+  background: white;
+  padding: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  flex: 1 1 calc(33.333% - 20px);
+  box-sizing: border-box;
+  text-align: center;
+  margin-bottom: 20px;
+  flex-grow: 0;
+}
