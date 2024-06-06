@@ -1,0 +1,54 @@
+ <div class="overlay" data-target="popup.overlay">
+      <div class="popup-content">
+        <i class="fa-solid fa-xmark close-btn" data-action="click->popup#toggle"></i>
+        <h1>Filters</h1>
+
+        <h5 class="lato-header">Sports</h5>
+          <form id="filter-form">
+
+
+            <div class="form-group">
+              <% @venues.each do |venue| %>
+                <input type="checkbox" id="sport_<%= venue.id %>" class="form-check-input" name="venues[]" value="<%= venue.sports %>">
+                <label for="sport_<%= venue.id %>" class="form-check-label"><%= venue.sports %></label><br>
+              <% end %>
+            </div>
+              <button type="submit" class="btn btn-primary">Filter</button>
+          </form>
+
+
+        <h5 class="lato-header">Price</h5>
+        <div class="d-flex button-group gap-1">
+          <input type="checkbox" id="facility_sport1" class="form-check-input" name="facilities[]" value="£">
+          <label for="facility_sport1" class="button-style">£</label><br>
+          <input type="checkbox" id="facility_sport2" class="form-check-input" name="facilities[]" value="£">
+          <label for="facility_sport2" class="button-style">££</label><br>
+          <input type="checkbox" id="facility_sport3" class="form-check-input" name="facilities[]" value="£">
+          <label for="facility_sport3" class="button-style">£££</label><br>
+        </div>
+
+        <h5 class="lato-header">Time</h5>
+        <p>All day</p>
+
+        <h5 class="lato-header">Rating</h5>
+        <div class="dropdown">
+          <a class="btn button-primary dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Rating
+          </a>
+
+          <%= simple_form_for :time_filter, url: venues_path, method: :get do |f| %>
+            <%= f.input :opening_time,
+                        as: :string,
+                        input_html: { data: { controller: "timepicker" } },
+                        label: "Opening Time" %>
+            <%= f.input :closing_time,
+                        as: :string,
+                        input_html: { data: { controller: "timepicker" } },
+                        label: "Closing Time" %>
+            <%= f.button :submit, "Filter Venues" %>
+          <% end %>
+
+          <%= render "shared/stars" %>
+        </div>
+      </div>
+    </div>

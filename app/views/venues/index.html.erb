@@ -1,103 +1,45 @@
-<div data-controller = "popup">
-<div class="container">
-
+<div data-controller="popup filters">
+  <div class="container">
     <div class="search-bar">
-    <i class="fa-solid fa-filter" data-action="click->popup#open"></i>
+      <i class="fa-solid fa-filter" data-action="click->popup#toggle"></i>
     </div>
 
-  <div class="overlay">
-  <div class="popup-content">
-  <i class="fa-solid fa-xmark"></i>
-    <h1>Filters</h1>
-    <h5 class="lato-header">Sports</h5>
-
-<form>
-  <div class="form-group">
-    <% @facilities.each do |facility| %>
-      <input type="checkbox" id="<%= facility.sport %>" class="form-check-input" name="facilities[]" value="<%= facility.sport %>">
-      <label for="<%= facility.sport %>" class="form-check-label"><%= facility.sport %></label><br>
-    <% end %>
-  </div>
-</form>
-    <h5 class="lato-header">Price</h5>
-
-<div class="d-flex button-group gap-1">
-    <input type="checkbox" id="facility_sport1" class="form-check-input" name="facilities[]" value="£">
-    <label for="facility_sport1" class="button-style">£</label><br>
-    <input type="checkbox" id="facility_sport2" class="form-check-input" name="facilities[]" value="£">
-    <label for="facility_sport2" class="button-style">££</label><br>
-    <input type="checkbox" id="facility_sport3" class="form-check-input" name="facilities[]" value="£">
-    <label for="facility_sport3" class="button-style">£££</label><br>
-</div>
-
-        <h5 class="lato-header">Time</h5>
-        <p>All day</p>
-            <h5 class="lato-header">Rating</h5>
-            <div class="dropdown">
-  <button class="btn button-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-    Rating
-  </button>
-  <ul class="dropdown-menu">
-  <div class="stars">
-    <li>
-      <a class="dropdown-item one-star d-flex" href="#">1.0
-        <i class="fa-solid fa-star"></i>
-        <i class="fa-regular fa-star"></i>
-        <i class="fa-regular fa-star"></i>
-        <i class="fa-regular fa-star"></i>
-        <i class="fa-regular fa-star"></i>
-      </a>
-    </li>
-    <li>
-      <a class="dropdown-item two-star d-flex" href="#">2.0
-        <i class="fa-solid fa-star"></i>
-        <i class="fa-solid fa-star"></i>
-        <i class="fa-regular fa-star"></i>
-        <i class="fa-regular fa-star"></i>
-        <i class="fa-regular fa-star"></i>
-      </a>
-    </li>
-    <li>
-      <a class="dropdown-item three-star d-flex" href="#">3.0
-        <i class="fa-solid fa-star"></i>
-        <i class="fa-solid fa-star"></i>
-        <i class="fa-solid fa-star"></i>
-        <i class="fa-regular fa-star"></i>
-        <i class="fa-regular fa-star"></i>
-      </a>
-    </li>
-    <li>
-      <a class="dropdown-item four-star d-flex" href="#">4.0
-        <i class="fa-solid fa-star"></i>
-        <i class="fa-solid fa-star"></i>
-        <i class="fa-solid fa-star"></i>
-        <i class="fa-solid fa-star"></i>
-        <i class="fa-regular fa-star"></i>
-      </a>
-    </li>
-    <li>
-      <a class="dropdown-item five-star d-flex" href="#">5.0
-        <i class="fa-solid fa-star"></i>
-        <i class="fa-solid fa-star"></i>
-        <i class="fa-solid fa-star"></i>
-        <i class="fa-solid fa-star"></i>
-        <i class="fa-solid fa-star"></i>
-      </a>
-    </li>
-  </div>
-</ul>
-
-</div>
+<div data-controller="search-venues">
+  <%= form_with url: venues_path, method: :get, html: {class:
+    "mb-4", data: {search_venues_target: "form"}} do |f| %>
+    <%= f.text_field :query,
+                     class: "form-control",
+                     placeholder: "Type a venue",
+                     value: params[:query],
+                     data: {
+                        search_venues_target: "input",
+                        action: "keyup->search-venues#update"
+                      } %>
+  <% end %>
 
 
-    <button class="close-btn">Close</button>
-  </div>
-</div>
+    <!-- Add data-controller attribute to the form -->
+    <form id="filter-form">
+
+      <!-- Add data-action attribute to the checkboxes to trigger the filter -->
+      <div class="form-group">
+        <% @venues.each do |venue| %>
+          <input type="checkbox" id="sport_<%= venue.id %>" class="form-check-input" name="venues[]" value="<%= venue.sports %>">
+          <label for="sport_<%= venue.id %>" class="form-check-label"><%= venue.sports %></label><br>
+        <% end %>
+      </div>
+
+      <button type="button" class="btn btn-primary" data-action="click->filters#filter">Filter</button>
+    </form>
+
+    <%= render "shared/popup" %>
+
+    <!-- venues content -->
     <div class="index-content">
       <h1 class="h2 my-3 d-flex justify-content-center">Venues 🏐</h1>
-        <%= render "list", venues: @venues %>
-        </div>
-
+      <div data-search-venues-target="list">
+      <%= render "list", venues: @venues %>
+    </div>
+    </div>
   </div>
-</div>
 </div>

@@ -1,9 +1,10 @@
 
 
-
-  <div class="venues">
-    <% venues.each do |venue| %>
+<div class="venues">
+  <% venues.each do |venue| %>
+    <div class="venue-card"  data-search-venues-target="list" data-filters-target="venues" data-sports="<%= venue.sports %>" data-opening-time="<%= venue.opening_time %>" data-closing-time="<%= venue.closing_time %>">
       <%= render "index_card", venue: venue %>
-    <% end %>
-  </div>
+    </div>
+  <% end %>
+</div>
 </div>
