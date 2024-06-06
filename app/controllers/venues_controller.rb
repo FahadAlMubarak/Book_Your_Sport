@@ -2,6 +2,7 @@ class VenuesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
   before_action :set_venue, only: [:show]
 
+
   def index
     @venues = Venue.all
     @facilities = Facility.all
@@ -13,6 +14,7 @@ class VenuesController < ApplicationController
 
   def new
     @venue = Venue.new
+     @venue.facilities.build
   end
 
   def create
@@ -45,13 +47,14 @@ class VenuesController < ApplicationController
   end
 
 private
-
   def set_venue
     @venue = Venue.find(params[:id])
   end
 
   def venue_params
-    params.require(:venue).permit(:name, :address, :borough, :description, :phone, :emails, :socials, :opening_time, :closing_time, tag_list: [], images: [])
+    params.require(:venue).permit(:name, :address, :borough, :description, :phone, :email, :socials, :opening_time,
+                                  :closing_time, tag_list: [], images: [],
+    facilities_attributes: [:id, :name, :sport, :capacity, :price , :duration, :deposit_price])
   end
 
 

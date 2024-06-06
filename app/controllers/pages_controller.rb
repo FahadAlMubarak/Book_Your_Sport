@@ -11,7 +11,7 @@ class PagesController < ApplicationController
   end
 
   def owner_dashboard
-
+      @venues = current_user.venues.all
   end
 
 end
