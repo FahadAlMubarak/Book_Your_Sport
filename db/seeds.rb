@@ -74,7 +74,8 @@ venue_1 = Venue.create(
   socials: "Twitter: @PadelPro, Facebook: /PadelProArena",
   opening_time: Time.new(2024, 6, 4, 9, 0, 0),
   closing_time: Time.new(2024, 6, 4, 22, 0, 0),
-  user: user_2
+  user: user_2,
+  sports:"padel"
 )
 
 file = URI.open("https://plus.unsplash.com/premium_photo-1708692921020-e58a86c83b5a?q=80&w=3570&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")
@@ -91,7 +92,8 @@ venue_2 = Venue.create(
   socials: "Twitter: @GreenfieldSports, Facebook: /GreenfieldSports",
   opening_time: Time.new(2024, 6, 4, 9, 0, 0),
   closing_time: Time.new(2024, 6, 4, 22, 0, 0),
-  user: user_4
+  user: user_4,
+  sports:"football"
 )
 
 file = URI.open("https://images.unsplash.com/photo-1589487391730-58f20eb2c308?q=80&w=3574&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")
@@ -109,7 +111,8 @@ venue_3 = Venue.create(
   socials: "Instagram: @TennisElite, Facebook: /TennisEliteClub",
   opening_time: Time.new(2024, 6, 4, 9, 0, 0),
   closing_time: Time.new(2024, 6, 4, 10, 0, 0),
-  user: user_4
+  user: user_4,
+  sports:"tennis"
 )
 file = URI.open("https://images.unsplash.com/photo-1622279457486-62dcc4a431d6?q=80&w=3570&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")
 venue_3.photo.attach(io: file, filename: "nes.png", content_type: "image/png")

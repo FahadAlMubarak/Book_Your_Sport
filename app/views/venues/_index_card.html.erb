@@ -1,0 +1,29 @@
+<div class="card-trip">
+  <% if venue.images.attached? %>
+    <%= cl_image_tag venue.images.first.key %>
+  <% else %>
+    <%= image_tag("backdrop.jpg") %>
+  <% end %>
+
+  <div class="card-trip-infos">
+    <div style="flex-grow: 1;">
+      <h3><%= venue.name %></h3>
+      <h5 class="special"><%= venue.borough %></h5>
+      <p class="pt-2"><%= venue.description %></p>
+      <p><%= venue.sports %></p>
+      <p><%= venue.opening_time %></p>
+      <p><%= venue.closing_time %></p>
+    </div>
+
+    <div style="width: 105px;">
+      <% if venue.photo.attached? %>
+        <%= cl_image_tag venue.photo.key, class: "logo" %>
+      <% else %>
+        <%= image_tag("venue_default_avatar.png", class: "logo") %>
+      <% end %>
+    </div>
+  </div>
+<div class="btn-area">
+  <a href="<%= venue_path(venue) %>" class="btn-green">See More</a>
+</div>
+</div>

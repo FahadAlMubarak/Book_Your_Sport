@@ -5,7 +5,12 @@ class VenuesController < ApplicationController
 
   def index
     @venues = Venue.all
-    @facilities = Facility.all
+    # Apply opening and closing time filters
+    open_time = Time.parse(params[:open_after]) if params[:open_after].present?
+    close_time = Time.parse(params[:close_before]) if params[:close_before].present?
+
+    @venues = @venues.where('opening_time >= ?', open_time) if open_time
+    @venues = @venues.where('closing_time <= ?', close_time) if close_time
   end
 
   def show

@@ -6,6 +6,23 @@ body {
   background-color: #f8f9fa;
 }
 
+input {
+  color: black !important; /* Set the text color to black */
+}
+
+.form-control {
+  color: black !important; /* Set the text color to black for elements with class "form-control" */
+}
+
+::placeholder {
+  color: black !important; /* Set the text color to black for elements with class "form-control" */
+}
+
+/* Optional: Change placeholder color on focus */
+input:focus::placeholder {
+  color: black !important; /* Set the text color to black for elements with class "form-control" */
+}
+
 .main-content {
   color: black;
   margin-top:20px;
@@ -15,6 +32,34 @@ body {
 
 
 h1, h2, h3, h4, h5, h6 {
+  font-family: 'Bebas Neue';
+  margin:0;
+}
+
+.special {
+  font-family: 'Lato', sans-serif;
+}
+
+h1 {
+  font-size:55px;
+}
+
+h2 {
+  font-size:46px;
+}
+
+h3 {
+  font-size:36px;
+}
+
+h4 {
+  font-size:28px;
+}
+
+h5 {
+  font-size:20px;
+}
+ h2, h3, h4, h5, h6 {
   font-family: 'Bebas Neue';
 }
 

@@ -1,7 +1,7 @@
 .overlay {
   position: fixed;
+  bottom: -100%; /* Initially off-screen */
   left: 0;
-  bottom:0;
   width: 100%;
   height: 94%;
   border-top-left-radius: 12px;
@@ -13,6 +13,11 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   padding-left:27.5px;
   padding-right:27.5px;
+}
+
+
+.overlay.show {
+  bottom:0;
 }
 
 
@@ -32,13 +37,42 @@ border-radius:6px;
   color:#00C620;
   border-radius:6px;
 
+
   }
+
+ .btn {
+  border-color: #00C620;
+  color:#00C620;
+
+ }
+ .btn:focus {
+  border-color: #00C620;
+  color:#00C620;
+
+ }
+
+ .btn:active {
+  border-color: #00C620;
+  color:#00C620;
+
+ }
+
+
+
+
+  input[type="text"]:focus,
+input[type="time"]:focus {
+  color: #000; /* Change to the color you want */
+}
+
 
   .main-content p {
     color:black;
   }
 
-
+  .form-control {
+    color:black;
+  }
 
 .button-primary:hover {
   background-color:white;

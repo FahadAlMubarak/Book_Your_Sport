@@ -4,6 +4,8 @@ class Venue < ApplicationRecord
 
   has_one_attached :photo
   has_many_attached :images
+
+
   has_many :slots, through: :facilities
 
   accepts_nested_attributes_for :facilities, reject_if: proc { |attributes| attributes["name"].blank? }
@@ -24,4 +26,5 @@ class Venue < ApplicationRecord
       end
     end
   end
+
 end
