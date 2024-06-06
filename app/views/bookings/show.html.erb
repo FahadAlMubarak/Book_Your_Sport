@@ -1,0 +1,7 @@
+<h1>Booking Details</h1>
+<p>Slot Start Time: <%= @booking.start_time %></p>
+<p>Slot End Time: <%= @booking.end_time %></p>
+<p>Booking Date: <%= @booking.date %></p>
+<p>Status: <%= @booking.status %></p>
+
+<%= link_to 'Back to Facility', facility_path(@booking.slot.facility_id) %>

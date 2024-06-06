@@ -9,7 +9,10 @@ Rails.application.routes.draw do
   get "dashboard", to: "pages#dashboard", as: :dashboard
 
   resources :venues do
-    resources :facilities, only: [:index]
+    resources :facilities, only: [:index, :show]
+  end
+  resources :slots, only: [] do
+    resources :bookings, only: :create
   end
 
   get "user_dashboard", to: "pages#user_dashboard", as: :user_dashboard

@@ -1,1 +1,33 @@
 <h1>welcome</h1>
+<h3><%= @facility.sport %></h3>
+
+
+<ul class="nav nav-tabs nav-justified" id="myTab" role="tablist", style="overflow-x: auto; white-space: nowrap;">
+  <% @date_range.each_with_index do |date, index| %>
+    <li class="nav-item" role="presentation">
+      <button class="nav-link <%= 'active' if index.zero? %>" id="<%= date.first.to_s %>-tab" data-bs-toggle="tab" data-bs-target="#<%= date.first.to_s %>" type="button" role="tab" aria-controls="<%= date.first.to_s %>" aria-selected="true"><%= date[1] %></button>
+    </li>
+  <% end %>
+</ul>
+<div class="tab-content" id="myTabContent">
+  <% @date_range.each_with_index do |date, index| %>
+    <div class="tab-pane fade show <%= 'active' if index.zero? %>" id="<%= date.first.to_s %>" role="tabpanel" aria-labelledby="<%= date.first.to_s %>-tab">
+      <div class="slot-time" data-controller="book-slots">
+        <% @facility.slots.each do |slot| %>
+
+          <span data-action="click->book-slots#submitBookForm">
+            <%= slot.start_time.strftime( "%l %M") %> - <%= slot.end_time.strftime( "%l %M") %>
+              <%= simple_form_for [slot, @booking] do |f| %>
+                <%= f.hidden_field :start_time, value: slot.start_time.strftime( "%l %M") %>
+                <%= f.hidden_field :end_time, value: slot.end_time.strftime( "%l %M") %>
+                <%= f.hidden_field :status, value: 'Booked' %>
+                <%#= f.button :submit, 'Book Slot', class: 'btn btn-primary' %>
+              <% end %>
+          </span>
+        <% end %>
+        <button>Book</button>
+      </div>
+    </div>
+  <% end %>
+
+</div>
