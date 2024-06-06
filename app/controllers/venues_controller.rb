@@ -4,6 +4,7 @@ class VenuesController < ApplicationController
 
   def index
     @venues = Venue.all
+    @facilities = Facility.all
   end
 
   def show
