@@ -4,8 +4,9 @@ class Venue < ApplicationRecord
 
   has_one_attached :photo
   has_many_attached :images
+  has_many :slots, through: :facilities
 
-  accepts_nested_attributes_for :facilities, reject_if: proc { |attributes| attributes["sport"].blank? }
+  accepts_nested_attributes_for :facilities, reject_if: proc { |attributes| attributes["name"].blank? }
   after_create :create_slots
   private
 
@@ -15,7 +16,10 @@ class Venue < ApplicationRecord
       start_time = opening_time
       end_time = closing_time
       while start_time < end_time
-        facility.slots.create(start_time: start_time, end_time: start_time + facility.duration.minutes)
+        (Date.today..Date.today + 2.weeks).each do |day|
+          temp_start_time = DateTime.new(Date.today.year, Date.today.month, Date.today.day, start_time.hour, start_time.to_datetime.minute, 0)
+          facility.slots.create(start_time: temp_start_time, end_time: temp_start_time + facility.duration.minutes)
+        end
         start_time += facility.duration.minutes
       end
     end
