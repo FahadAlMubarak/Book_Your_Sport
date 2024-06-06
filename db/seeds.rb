@@ -66,7 +66,8 @@ user_4 = User.create(
 
 venue_1 = Venue.create(
   name: "Padel Pro Arena",
-  address: "321 Padel Court, Padel City, PC 65432",
+  address: "221 High St, London E15 2AE",
+  borough: "Stratford",
   description: "A state-of-the-art Padel court offering professional-grade facilities and coaching.",
   phone: "2233445566",
   email: "contact@padelproarena.com",
@@ -82,7 +83,8 @@ venue_1.save
 
 venue_2 = Venue.create(
   name: "Greenfield Sports Complex",
-  address: "456 Sports Lane, Sportstown, SP 45678",
+  address: "London E2 8NS",
+  borough: "Hackney",
   description: "football",
   phone: "1234567890",
   email: "contact@greenfieldsports.com",
@@ -99,7 +101,8 @@ venue_2.save
 
 venue_3 = Venue.create(
   name: "Tennis Elite Club",
-  address: "789 Tennis Drive, Tennis Town, TT 98765",
+  address: "Ranelagh Gardens,, Royal Hospital Road,, Chelsea, London SW3 4SR",
+  borough: "Chelsea",
   description: "Premier tennis club with multiple courts and professional coaching available.",
   phone: "3344556677",
   email: "info@tenniselite.com",

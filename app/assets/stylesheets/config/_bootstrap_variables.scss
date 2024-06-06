@@ -11,16 +11,16 @@ $body-bg:                $light-gray;
 $font-size-base:         1rem;
 
 // Colors
-$body-color: $gray;
-$primary:    $blue;
-$success:    $green;
-$info:       $yellow;
-$danger:     $red;
-$warning:    $orange;
+$body-color: #ffffff;
+$primary:   #163916;
+$success:    #00C620;
+$info:       #F4A261;
+$danger:     #E76F51;
+$warning:    #000000;
 
 // Buttons & inputs' radius
 $border-radius-sm:            .0625rem;
-$border-radius:               .125rem;
+$border-radius:               .12px;
 $border-radius-lg:            .25rem;
 $border-radius-xl:            .5rem;
 $border-radius-xxl:           1rem;

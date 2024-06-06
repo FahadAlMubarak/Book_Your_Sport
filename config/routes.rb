@@ -11,6 +11,9 @@ Rails.application.routes.draw do
   resources :venues do
     resources :facilities, only: [:index]
   end
+
+  get "user_dashboard", to: "pages#user_dashboard", as: :user_dashboard
+  get "owner_dashboard", to: "pages#owner_dashboard", as: :owner_dashboard
   # Defines the root path route ("/")
   # root "posts#index"
 end

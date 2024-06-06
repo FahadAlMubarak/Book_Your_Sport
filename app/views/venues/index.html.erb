@@ -1,11 +1,103 @@
-
+<div data-controller = "popup">
 <div class="container">
-  <div class="row">
-    <div class="col">
-      <h1 class="h2 my-3 d-flex justify-content-center">Venues 🏐</h1>
-   <%= render "list", venues: @venues %>
-      </div>
+
+    <div class="search-bar">
+    <i class="fa-solid fa-filter" data-action="click->popup#open"></i>
     </div>
+
+  <div class="overlay">
+  <div class="popup-content">
+  <i class="fa-solid fa-xmark"></i>
+    <h1>Filters</h1>
+    <h5 class="lato-header">Sports</h5>
+
+<form>
+  <div class="form-group">
+    <% @facilities.each do |facility| %>
+      <input type="checkbox" id="<%= facility.sport %>" class="form-check-input" name="facilities[]" value="<%= facility.sport %>">
+      <label for="<%= facility.sport %>" class="form-check-label"><%= facility.sport %></label><br>
+    <% end %>
   </div>
+</form>
+    <h5 class="lato-header">Price</h5>
+
+<div class="d-flex button-group gap-1">
+    <input type="checkbox" id="facility_sport1" class="form-check-input" name="facilities[]" value="£">
+    <label for="facility_sport1" class="button-style">£</label><br>
+    <input type="checkbox" id="facility_sport2" class="form-check-input" name="facilities[]" value="£">
+    <label for="facility_sport2" class="button-style">££</label><br>
+    <input type="checkbox" id="facility_sport3" class="form-check-input" name="facilities[]" value="£">
+    <label for="facility_sport3" class="button-style">£££</label><br>
 </div>
 
+        <h5 class="lato-header">Time</h5>
+        <p>All day</p>
+            <h5 class="lato-header">Rating</h5>
+            <div class="dropdown">
+  <button class="btn button-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Rating
+  </button>
+  <ul class="dropdown-menu">
+  <div class="stars">
+    <li>
+      <a class="dropdown-item one-star d-flex" href="#">1.0
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-regular fa-star"></i>
+        <i class="fa-regular fa-star"></i>
+        <i class="fa-regular fa-star"></i>
+        <i class="fa-regular fa-star"></i>
+      </a>
+    </li>
+    <li>
+      <a class="dropdown-item two-star d-flex" href="#">2.0
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-regular fa-star"></i>
+        <i class="fa-regular fa-star"></i>
+        <i class="fa-regular fa-star"></i>
+      </a>
+    </li>
+    <li>
+      <a class="dropdown-item three-star d-flex" href="#">3.0
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-regular fa-star"></i>
+        <i class="fa-regular fa-star"></i>
+      </a>
+    </li>
+    <li>
+      <a class="dropdown-item four-star d-flex" href="#">4.0
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-regular fa-star"></i>
+      </a>
+    </li>
+    <li>
+      <a class="dropdown-item five-star d-flex" href="#">5.0
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+        <i class="fa-solid fa-star"></i>
+      </a>
+    </li>
+  </div>
+</ul>
+
+</div>
+
+
+    <button class="close-btn">Close</button>
+  </div>
+</div>
+    <div class="index-content">
+      <h1 class="h2 my-3 d-flex justify-content-center">Venues 🏐</h1>
+        <%= render "list", venues: @venues %>
+        </div>
+
+  </div>
+</div>
+</div>
