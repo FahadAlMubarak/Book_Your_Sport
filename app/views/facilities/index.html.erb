@@ -1,0 +1,25 @@
+<h1>Welcome</h1>
+
+<%= form_with url: venue_facilities_path, data: { controller: "auto-submit" },method: :get do |f| %>
+  <h2>Facilities and Slots</h2>
+
+  <% @facilities.each do |facility| %>
+    <h3><%= facility.sport %></h3>
+
+    <h4>What time do you want to play?</h4>
+    <div class="d-flex" style="overflow-x: auto; white-space: nowrap; width: 100%;">
+      <% @date_range.each do |date| %>
+        <div class="date-item p-2" style="display: inline-block;">
+          <%= f.radio_button :date, date[0].to_s, data: { auto_submit_target: "radio" }, checked: (date[0] == @selected_date) %>
+          <%= f.label :date, date[1], value: date[0].to_s %>
+        </div>
+      <% end %>
+    <% end %>
+    </div>
+
+    <div>
+      <% @slots.each do |slot| %>
+        <p>Start Time: <%= slot.start_time.strftime( "%l %M") %>, End Time: <%= slot.end_time.strftime( "%l %M") %></p>
+      <% end %>
+    </div>
+  <% end %>
