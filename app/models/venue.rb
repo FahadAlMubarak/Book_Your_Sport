@@ -10,6 +10,15 @@ class Venue < ApplicationRecord
 
   accepts_nested_attributes_for :facilities, reject_if: proc { |attributes| attributes["name"].blank? }
   after_create :create_slots
+
+  def self.search(search)
+    if search.present?
+      where('name ILIKE ?', "%#{search}%")
+    else
+     Venue.all
+    end
+  end
+
   private
 
   def create_slots

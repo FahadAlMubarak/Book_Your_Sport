@@ -11,8 +11,7 @@
       <h5 class="special"><%= venue.borough %></h5>
       <p class="pt-2"><%= venue.description %></p>
       <p><%= venue.sports %></p>
-      <p><%= venue.opening_time %></p>
-      <p><%= venue.closing_time %></p>
+      <p><%= venue.opening_time.strftime("%I:%M %p") %> - <%= venue.closing_time.strftime("%I:%M %p") %></p>
     </div>
 
     <div style="width: 105px;">
