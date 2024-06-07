@@ -2,6 +2,30 @@
   width: 100%;
 }
 
+.btn-caret {
+border-color: transparent;
+color: #00C620;
+
+}
+
+
+.btn-caret:hover {
+  border-color: transparent;
+  color: #00C620;
+  }
+
+  .btn-caret:focus {
+    border-color: transparent;
+    color: #00C620;
+    }
+
+    .btn-caret:active {
+      border-color: transparent;
+      color: #00C620;
+      }
+
+
+
 .gallery-images {
   display: grid;
   gap: 10px;

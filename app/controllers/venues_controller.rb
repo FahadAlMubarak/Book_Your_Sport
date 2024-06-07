@@ -3,6 +3,7 @@ class VenuesController < ApplicationController
   before_action :set_venue, only: [:show]
 
   def index
+    @venues = Venue.all
     @venues = Venue.search(params[:search])
 
     # Apply opening and closing time filters
@@ -17,12 +18,21 @@ class VenuesController < ApplicationController
     if params[:sports].present?
       @venues = @venues.where(sports: params[:sports])
     end
+
   end
 
 
 
   def show
+
     @facility = Facility.new
+
+    @markers =
+      [{
+        lat: @venue.latitude,
+        lng: @venue.longitude
+      }]
+
   end
 
   def new
