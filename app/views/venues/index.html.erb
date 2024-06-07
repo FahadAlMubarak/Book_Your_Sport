@@ -5,22 +5,16 @@
       <i class="fa-solid fa-filter" data-action="click->popup#toggle"></i>
     </div>
 
-    <div data-controller="search-venues">
-      <%= form_with url: venues_path, method: :get, html: {class: "mb-4", data: {search_venues_target: "form"}} do |f| %>
-        <%= f.text_field :search,
-                         class: "form-control",
-                         placeholder: "Type a venue",
-                         value: params[:search],
-                         data: {
-                           search_venues_target: "input",
-                           action: "keyup->search-venues#update"
-                         } %>
-      <% end %>
-      <%= form_tag(venues_path, method: :get) do %>
-        <%= text_field_tag(:search, params[:search]) %>
-        <%= submit_tag("Search") %>
-      <% end %>
-    </div>
+<%= form_with url: venues_path, method: :get, html: {class: "mb-4", data: {search_venues_target: "form"}} do |f| %>
+  <%= f.text_field :search,
+                   class: "form-control",
+                   placeholder: "Type a venue",
+                   value: params[:search],
+                   data: {
+                     search_venues_target: "input",
+                     action: "keyup->search-venues#update"
+                   } %>
+<% end %>
 
     <form id="filter-form">
       <div class="filter-form-group">
@@ -35,7 +29,7 @@
     <%= render "shared/popup" %>
 
     <div class="index-content">
-      <h1 class="h2 my-3 d-flex justify-content-center">Venues 🏐</h1>
+      <h1 class="h2 my-3 d-flex justify-content-center">Venues</h1>
       <div data-search-venues-target="list">
         <%= render "list", venues: @venues %>
       </div>
