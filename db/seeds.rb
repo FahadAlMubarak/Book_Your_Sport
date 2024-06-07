@@ -201,8 +201,6 @@ Slot.create(
   status: "available"
 )
 
-
-
 (0..13).each do |day_offset|
   date = Date.today + day_offset
 
