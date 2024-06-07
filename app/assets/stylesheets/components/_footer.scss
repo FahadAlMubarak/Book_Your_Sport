@@ -1,3 +1,18 @@
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main-content {
+  flex: 1;
+}
+
 .footer {
   background: #163916;
   display: flex;
@@ -6,13 +21,13 @@
   height: 100px;
   padding: 0px 50px;
   color: white;
-  bottom:0;
-  position:absolute;
 }
+
 .footer-links {
   display: flex;
   align-items: center;
 }
+
 .footer-links a {
   color: rgb(255, 255, 255);
   opacity: 1;
@@ -20,9 +35,11 @@
   font-size: 24px;
   padding: 0px 10px;
 }
+
 .footer-links a:hover {
   opacity: 0.2;
 }
+
 .footer .fa-heart {
-  color:#00C620;
+  color: #00C620;
 }
