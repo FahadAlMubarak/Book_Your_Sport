@@ -200,3 +200,38 @@ Slot.create(
   date: Date.tomorrow,
   status: "available"
 )
+
+
+
+(0..13).each do |day_offset|
+  date = Date.today + day_offset
+
+  Slot.create(
+    facility: facility_1,
+    start_time: Time.new(date.year, date.month, date.day, 9, 0, 0),
+    end_time: Time.new(date.year, date.month, date.day, 10, 0, 0),
+    date: date,
+    status: "available",
+    booked: false
+  )
+
+  Slot.create(
+    facility: facility_1,
+    start_time: Time.new(date.year, date.month, date.day, 12, 0, 0),
+    end_time: Time.new(date.year, date.month, date.day, 13, 0, 0),
+    date: date,
+    status: "available",
+    booked: false
+  )
+
+  Slot.create(
+    facility: facility_1,
+    start_time: Time.new(date.year, date.month, date.day, 15, 0, 0),
+    end_time: Time.new(date.year, date.month, date.day, 16, 0, 0),
+    date: date,
+    status: "available",
+    booked: false
+  )
+end
+
+puts "Slots created for facility_1 from today to today+13 with multiple slots each day."
