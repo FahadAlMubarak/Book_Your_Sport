@@ -7,14 +7,14 @@
   font-family: "Open Sans", sans-serif;
 }
 
-.mapbox-container {
-height:300px;
-background-color: white;
-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Add shadow */
-border-radius:12px;
-margin-bottom:30px;
+// .mapbox-container {
+// height:auto;
+// background-color: white;
+// box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Add shadow */
+// border-radius:12px;
+// margin-bottom:30px;
 
-}
+// }
 
 .mapboxgl-canvas {
   border-radius:12px 12px 0px 0px;
@@ -22,7 +22,6 @@ margin-bottom:30px;
 
 .mapbox-copy p {
   font-size:20px;
-  margin-top:20px;
-  margin-left:20px;
+  margin-top:5px;
   color:grey;
 }
