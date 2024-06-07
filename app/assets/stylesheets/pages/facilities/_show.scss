@@ -1,11 +1,47 @@
-.slot-box {
-  margin-top: 20px;
-  border: 1px solid #ddd;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
-  transition: transform 0.2s;
+
+.horizontal-scroll {
+  border: 1px solid black;
+  width: 100%;
+  overflow-x: hidden;
+  flex: auto;
 }
 
-.slot-box:hover {
-  transform: translateY(-5px);
+.date-btn {
+  flex: 0 0 auto;
+  margin: 0 10px;
+  padding: 10px 20px;
+  border: none;
+  background: none;
+  cursor: pointer;
 }
+
+.nav-tabs .nav-link.active{
+  background-color: #00c621b6;
+  border-radius: 50px;
+}
+
+.nav-justified .nav-item .nav-link {
+  color: black;
+}
+.nav-tabs .nav-link{
+  border-radius: 30px;
+
+}
+
+.tabs-container {
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.nav-tabs {
+  display: inline-flex;
+  flex-wrap: nowrap;
+}
+
+.nav-item {
+  display: inline-block;
+}
+
+// .hide-button{
+//   display: none;
+// } this is for the calender dont touch
