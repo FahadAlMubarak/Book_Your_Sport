@@ -118,19 +118,24 @@ file = URI.open("https://images.unsplash.com/photo-1622279457486-62dcc4a431d6?q=
 venue_3.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
 venue_3.save
 
+
+
+
 facility_1 = Facility.create(
   venue: venue_1,
+  name: "court 1",
   sport: "Padel",
+  duration: 60,
+  deposit_price: 10,
   capacity: 4,
   price: 50,
-  duration: 60,
-  deposit_price: 10
 )
 
 facility_2 = Facility.create(
   venue: venue_2,
+  name: "grass pitch",
   sport: "Football",
-  capacity: 2,
+  capacity: 10,
   price: 70,
   duration: 90,
   deposit_price: 20
@@ -138,6 +143,7 @@ facility_2 = Facility.create(
 
 facility_3 = Facility.create(
   venue: venue_3,
+  name: "centre court",
   sport: "Tennis",
   capacity: 4,
   price: 100,
