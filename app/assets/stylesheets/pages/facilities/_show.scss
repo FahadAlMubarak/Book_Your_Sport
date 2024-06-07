@@ -1,0 +1,11 @@
+.slot-box {
+  margin-top: 20px;
+  border: 1px solid #ddd;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  transition: transform 0.2s;
+}
+
+.slot-box:hover {
+  transform: translateY(-5px);
+}
