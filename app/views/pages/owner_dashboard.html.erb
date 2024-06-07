@@ -1,7 +1,18 @@
-<h1>owner dashboard!</h1>
+<h1>Welcome <%= current_user.first_name %></h1>
 
-
-<h1 class="h2 my-3 d-flex justify-content-center">Your Venues 🏐</h1>
+<div class="accordion-item">
+    <h2 class="accordion-header">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+      <h3>Your Venues 🏐</h3>
+      </button>
+    </h2>
+    <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
    <%= render "venue_list", venues: @venues %>
+    </div>
+    </div>
+  </div>
+</div>
+
 <div style="height: 30px;"></div>
 <%= link_to 'Register a new venue', new_venue_path, class: " btn btn-green btn-full-width"  %>
