@@ -1,0 +1,11 @@
+<div class="card-user">
+<% if user.photo.attached? %>
+              <%= cl_image_tag user.photo.key %>
+            <% else %>
+              <%= image_tag "avatar_placeholder.webp" %>
+            <% end %>
+  <div class="card-user-infos">
+    <h2> <%= user.first_name %>  <%= user.last_name %></h2>
+    <%= button_to '❌', friend_path(friend), method: :delete, data: { confirm: 'Are you sure?' } %>
+  </div>
+</div>

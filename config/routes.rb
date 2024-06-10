@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'friends/create'
+  get 'friends/destroy'
   devise_for :users
   root to: "pages#home"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
@@ -14,9 +16,11 @@ Rails.application.routes.draw do
   resources :slots, only: [] do
     resources :bookings, only: :create
   end
+  resources :friends, only: [:create, :destroy]
 
   get "user_dashboard", to: "pages#user_dashboard", as: :user_dashboard
   get "owner_dashboard", to: "pages#owner_dashboard", as: :owner_dashboard
+  get "users_index", to: "pages#users_index", as: :users_index
 
   resources :venues
 

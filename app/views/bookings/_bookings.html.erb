@@ -1,0 +1,37 @@
+<% if bookings.any? %>
+  <% bookings.order(created_at: :desc).each do |booking| %>
+    <div class="booking-container d-flex flex-row justify-content-start">
+      <div class="row w-100">
+        <div class="col-2">
+          <div class="date-group">
+            <p><strong><%= booking.start_time.strftime("%a").upcase %></strong></p>
+            <h2 class="date-weight"><%= booking.start_time.strftime("%d") %></h2>
+          </div>
+        </div>
+        <div class="col-7">
+          <div class="time-location-group">
+            <p><i class="fa-solid fa-clock"></i><%= booking.start_time.strftime("%d/%m/%Y at %I:%M%p") %> <%= booking.end_time.strftime(" to %d/%m/%Y at %I:%M%p") %></p>
+            <p><i class="fa-solid fa-location-dot"></i><%=booking.venue.address %></p>
+          </div>
+        </div>
+        <%# <div class="col-4">
+        </div> %>
+        <div class="col-3">
+          <div class="renter-details-group d-flex">
+            <% venue = booking.venue %>
+            <% if venue.photo.attached? %>
+              <%= image_tag venue.photo, class: "logo" %>
+            <% else %>
+              <%= image_tag "venue_default_avatar.png", class: "logo" %>
+            <% end %>
+            <p><%= booking.venue.name %> <%= booking.status %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+<% else %>
+<div class="booking-container-past mt-3">
+<p>No bookings! You can book <%= link_to "here", venues_path %></p>
+  </div>
+<% end %>
