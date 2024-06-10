@@ -1,0 +1,11 @@
+<div class="friends">
+
+
+    <div class="user-card">
+<% @friends.each do |friend| %>
+    <%= render "friend_card", friend: friend, user: friend.user_1 unless friend.user_1 == current_user%>
+    <%= render "friend_card", friend: friend, user:friend.user_2 unless friend.user_2 == current_user%>
+    </div>
+  <% end %>
+</div>
+</div>
