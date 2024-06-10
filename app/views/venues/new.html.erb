@@ -3,7 +3,7 @@
     <%= f.input :name %>
     <%= f.input :address %>
     <%= f.input :borough %>
-     <%= f.input :sports %>
+    <%= f.input :sports, as: :select, collection: ['Football', 'Basketball', 'Tennis', 'Padel', 'Netball', 'Badminton','Table tennis', 'Quidditch'], include_blank: 'Select a Sport' %>
     <%= f.input :description %>
     <%= f.input :phone %>
     <%= f.input :email %>

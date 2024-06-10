@@ -1,6 +1,6 @@
 .overlay {
   position: fixed;
-  bottom: -100%; /* Initially off-screen */
+  // bottom: -100%; /* Initially off-screen */
   left: 0;
   width: 100%;
   height: 94%;
@@ -13,11 +13,6 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   padding-left:27.5px;
   padding-right:27.5px;
-}
-
-
-.overlay.show {
-  bottom:0;
 }
 
 
@@ -74,6 +69,11 @@ input[type="time"]:focus {
     color:black;
   }
 
+
+  .overlay-open {
+    overflow: hidden;
+  }
+
 .button-primary:hover {
   background-color:white;
   border-color: #00C620;
@@ -92,6 +92,8 @@ input[type="time"]:focus {
   border-radius:6px;
 
   }
+
+
 
 
 .stars i {
