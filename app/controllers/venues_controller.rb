@@ -75,7 +75,7 @@ private
   end
 
   def venue_params
-    params.require(:venue).permit(:name, :address, :borough, :description, :phone, :email, :socials, :opening_time,
+    params.require(:venue).permit(:name, :sports, :address, :borough, :description, :phone, :email, :socials, :opening_time,
                                   :closing_time, tag_list: [], images: [],
     facilities_attributes: [:id, :name, :sport, :capacity, :price , :duration, :deposit_price])
   end
