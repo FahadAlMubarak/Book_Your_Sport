@@ -11,10 +11,15 @@ Rails.application.routes.draw do
   resources :venues do
     resources :facilities, only: [:show]
   end
+
   resources :slots, only: [] do
     resources :bookings, only: :create
+    post '/multi_bookings', to: 'bookings#multi_create'
   end
 
+  get 'bookings/:id/checkout_summary', to: 'bookings#checkout_summary', as: :checkout_summary
+
+  # post 'slots/:id/multi_bookings', to: 'bookings#multi_create'
   get "user_dashboard", to: "pages#user_dashboard", as: :user_dashboard
   get "owner_dashboard", to: "pages#owner_dashboard", as: :owner_dashboard
 

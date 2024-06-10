@@ -1,0 +1,15 @@
+<h1>Checkout Summary</h1>
+
+<p>Booking Details:</p>
+<ul>
+  <li>Start Time: <%= @booking.start_time.strftime("%H:%M") %></li>
+  <li>End Time: <%= @booking.end_time.strftime("%H:%M") %></li>
+</ul>
+
+<h3>Summary</h3>
+
+<p>Price: £<%= @total_price %></p>
+<p>Booking fee: £<%= @facility.deposit_price %></p>
+<p>Total: £<%= @total_price_with_deposit %></p>
+
+<button>Checkout</button>
