@@ -10,7 +10,8 @@
 
 require "open-uri"
 
-
+Booking.destroy_all
+Friend.destroy_all
 Slot.destroy_all
 Facility.destroy_all
 Venue.destroy_all
