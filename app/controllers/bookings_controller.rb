@@ -10,6 +10,8 @@ class BookingsController < ApplicationController
     if @booking.save!
       slots.each do |slot|
         @slot = Slot.find(slot[:id])
+        faciliy_price_cents = @slot.facility.deposit_price_cents
+        @booking.update(deposit_price_cents: faciliy_price_cents)
         @slot.update(booked: true, booking: @booking)
       end
       session = Stripe::Checkout::Session.create(
