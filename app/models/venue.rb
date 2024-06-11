@@ -5,6 +5,12 @@ class Venue < ApplicationRecord
   has_one_attached :photo
   has_many_attached :images
 
+  validates :name, presence: true
+  validates :address, presence: true
+  validates :opening_time, presence: true
+  validates :closing_time, presence: true
+  validates :sports, presence: true
+
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
 
