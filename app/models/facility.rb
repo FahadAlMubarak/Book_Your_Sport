@@ -11,6 +11,9 @@ class Facility < ApplicationRecord
   validates :deposit_price, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 
   after_create :create_time_slots
+  
+  monetize :deposit_price_cents
+
 
 def create_time_slots
   # Clear existing time slots

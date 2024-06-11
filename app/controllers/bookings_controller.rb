@@ -83,7 +83,25 @@ class BookingsController < ApplicationController
     @slots = @booking.slots
     @facility = @booking.slots.first.facility
     @total_price = @slots.count * @facility.price
-    @total_price_with_deposit = @total_price + @facility.deposit_price
+    @remainder = @total_price - @facility.deposit_price.to_i
+  end
+
+  def checkout
+    @booking = Booking.find(params[:id])
+    session = Stripe::Checkout::Session.create(
+      payment_method_types: ['card'],
+      line_items: [{
+        name: booking.slot.facility.venue.name,
+        amount: booking.deposit_price_cents,
+        currency: 'gbp',
+        quantity: 1
+      }],
+      success_url: booking_url(@booking),
+      cancel_url:  booking_url(@booking)
+    )
+
+    @booking.update(checkout_session_id: session.id)
+    redirect_to new_booking_payment_path(@booking)
   end
 
   private
