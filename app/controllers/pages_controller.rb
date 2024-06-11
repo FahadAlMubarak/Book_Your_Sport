@@ -1,10 +1,10 @@
 class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :home ]
   skip_before_action :authenticate_user!, only: :home
+
   def home
+    @venues = Venue.all
   end
-
-
 
   def user_dashboard
     # @bookings = current_user.bookings.where('start_time >=NOW()::time')

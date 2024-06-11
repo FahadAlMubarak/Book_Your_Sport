@@ -1,7 +1,7 @@
 <% if bookings.any? %>
   <%# <% bookings.order(created_at: :desc).each do |booking| %>
   <% bookings.each do |booking| %>
-  <% booking= [booking] unless booking.class == Array %>
+  <% booking = [booking] unless booking.class == Array %>
   <%# <% booking = booking[0] if booking.length >1 %>
 
     <div class="booking-container d-flex flex-row justify-content-start">
@@ -15,20 +15,20 @@
           <div class="time-location-group">
             <p><i class="fa-solid fa-clock"></i><%= booking.first.start_time %> <%= booking.first.end_time %></p>
 <%# strftime("%d/%m/%Y at %I:%M%p") %>
-            <p><i class="fa-solid fa-location-dot"></i><%=booking.first.slot.facility.venue.address %></p>
+            <p><i class="fa-solid fa-location-dot"></i><%= booking.first.venue_address %></p>
           </div>
         </div>
         <%# <div class="col-4">
         </div> %>
         <div class="col-3">
           <div class="renter-details-group d-flex">
-            <% venue = booking.first.slot.facility.venue %>
-            <% if booking.first.slot.facility.venue.photo.attached? %>
-              <%= image_tag booking.first.slot.facility.venue.photo, class: "logo-inline" %>
+            <% venue = booking.first.venue %>
+            <% if booking.first.venue.photo.attached? %>
+              <%= image_tag booking.first.venue.photo, class: "logo-inline" %>
             <% else %>
               <%= image_tag "venue_default_avatar.png", class: "logo-inline" %>
             <% end %>
-            <p><%= booking.first.slot.facility.venue.name %> <%= booking.first.status %></p>
+            <p><%= booking.first.venue.name %> <%= booking.first.status %></p>
           </div>
         </div>
       </div>
