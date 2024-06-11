@@ -20,10 +20,10 @@
     <div class="tab-pane fade show <%= 'active' if index.zero? %>" id="<%= date.first.to_s %>" role="tabpanel" aria-labelledby="<%= date.first.to_s %>-tab">
       <div class="slot-time" >
         <% @facility.slots.on_day(date.first).where(booked: false).each do |slot| %>
-          <div class="col-md-4 mb-4">
-            <div class="slot-box shadow-sm p-3 mb-3 bg-white rounded">
-              <input type="checkbox" class="slot-checkbox" data-book-slots-target="checkbox" data-slot-id="<%= slot.id %>" data-slot-start="<%= slot.start_time %>" data-slot-end="<%= slot.end_time %>">
-              <%= slot.start_time.strftime("%H:%M") %> - <%= slot.end_time.strftime("%H:%M") %>
+          <div class="col-md-4">
+            <div class="slot-box">
+              <input type="checkbox" class="slot-checkbox" id="slot-<%= slot.id %>" data-book-slots-target="checkbox" data-slot-id="<%= slot.id %>" data-slot-start="<%= slot.start_time %>" data-slot-end="<%= slot.end_time %>">
+              <label for="slot-<%= slot.id %>"> <%= slot.start_time.strftime("%H:%M") %> - <%= slot.end_time.strftime("%H:%M") %> </label>
             </div>
           </div>
         <% end %>
@@ -31,5 +31,4 @@
     </div>
   <% end %>
   <button id="book-selected-slots" data-action="click->book-slots#bookSlots" class="btn btn-primary">Book Selected Slots</button>
-
 </div>

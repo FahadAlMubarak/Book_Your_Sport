@@ -1,8 +1,19 @@
 class Facility < ApplicationRecord
   belongs_to :venue
-  has_many :slots
+  has_many :slots, dependent: :destroy
+  has_many :bookings, through: :slots
+
+  validates :name, presence: true
+  validates :sport, presence: true
+  validates :capacity, presence: true, numericality: { only_integer: true, greater_than: 0 }
+  validates :price, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
+  validates :duration, presence: true, numericality: { only_integer: true, greater_than: 0 }
+  validates :deposit_price, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
+
+  after_create :create_time_slots
+  
   monetize :deposit_price_cents
-after_create :create_time_slots
+
 
 def create_time_slots
   # Clear existing time slots

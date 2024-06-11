@@ -14,14 +14,20 @@ Rails.application.routes.draw do
     resources :facilities, only: [:show]
   end
 
-  resources :slots, only: [] do
-    resources :bookings, only: :create
-    post '/multi_bookings', to: 'bookings#multi_create'
+  resources :bookings, only: :create do
     resources :payments, only: :new
+    resources :reviews, only: [:new, :create]
   end
-  resources :friends, only: [:create, :destroy]
   post '/checkout', to: 'bookings#checkout', as: :checkout
   get 'bookings/:id/checkout_summary', to: 'bookings#checkout_summary', as: :checkout_summary
+
+#   resources :bookings, only: [] do
+#     resources :reviews, only: [:new, :create]
+#   end
+  
+  
+  resources :friends, only: [:create, :destroy]
+
 
   # post 'slots/:id/multi_bookings', to: 'bookings#multi_create'
   get "user_dashboard", to: "pages#user_dashboard", as: :user_dashboard
