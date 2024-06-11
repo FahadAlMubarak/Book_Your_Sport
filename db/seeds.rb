@@ -115,12 +115,32 @@ venue_3 = Venue.create(
   user: user_4,
   sports:"tennis"
 )
+
 file = URI.open("https://images.unsplash.com/photo-1622279457486-62dcc4a431d6?q=80&w=3570&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")
 venue_3.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
 venue_3.save
 
+venue_4 = Venue.create(
+  name: "Goals",
+  address: "7 Beverley Way, London, SW20 0UJ",
+  borough: "Wimbledon",
+  description: "Goals Wimbledon offers the best small-sided football facilities in the city. Simple.",
+  phone: "020 8949 1122",
+  email: "emailwimbledon@goalsfootball.co.uk",
+  socials: "Instagram: @goals_wimbledon",
+  opening_time: "10:00 AM",
+  closing_time: "11:00 PM",
+  user: user_4,
+  sports:"football"
+)
 
+file = URI.open("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrx5eC0xoRLW-o2JSZ_bom96W9Lzp2ln-RmQ&s")
+venue_4.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
+venue_4.save
 
+file = URI.open("https://cinsulddca.cloudimg.io/https://cdn.goalsfootball.co.uk/media/r1xnzgtz/5aside-3.jpg")
+venue_4.images.attach(io: file, filename: "nes.png", content_type: "image/png")
+venue_4.save
 
 facility_1 = Facility.create(
   venue: venue_1,
