@@ -163,4 +163,15 @@
 </div>
 
 </div>
+
+
+<% @venue.facilities.each do |facility| %>
+<% facility.slots.each do |slot| %>
+
+  <% slot.bookings.each do |booking| %>
+  <%= booking.review.rating %>
+  <%= booking.review.content %>
+<% end %>
+<% end %>
+<% end %>
 </div>

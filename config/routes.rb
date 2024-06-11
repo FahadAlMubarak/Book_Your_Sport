@@ -18,6 +18,10 @@ Rails.application.routes.draw do
     resources :bookings, only: :create
     post '/multi_bookings', to: 'bookings#multi_create'
   end
+
+  resources :bookings, only: [] do
+    resources :reviews, only: [:new, :create]
+  end
   resources :friends, only: [:create, :destroy]
 
   get 'bookings/:id/checkout_summary', to: 'bookings#checkout_summary', as: :checkout_summary

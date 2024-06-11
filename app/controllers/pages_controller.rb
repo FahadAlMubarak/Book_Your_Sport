@@ -12,12 +12,6 @@ class PagesController < ApplicationController
 
     @past_bookings = current_user.bookings.where('start_time <= NOW()::time')
 
-
-
-
-
-
-
     @friends = Friend.where(user_1_id: current_user.id).or(Friend.where(user_2_id: current_user.id))
   end
 
