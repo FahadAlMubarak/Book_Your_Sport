@@ -3,7 +3,6 @@ class VenuesController < ApplicationController
   before_action :set_venue, only: [:show]
 
   def index
-
     @venues = Venue.all
 
     @venues = Venue.filter_by_price(params[:price])
