@@ -1,39 +1,80 @@
-<div class="venue-page-container">
-<div data-controller="popup filters">
-  <div class="container">
-    <div class="search-bar">
-      <i class="fa-solid fa-filter" data-action="click->popup#toggle"></i>
-    </div>
-
-<%= form_with url: venues_path, method: :get, html: {class: "mb-4", data: {search_venues_target: "form"}} do |f| %>
-  <%= f.text_field :search,
-                   class: "form-control",
-                   placeholder: "Type a venue",
-                   value: params[:search],
-                   data: {
-                     search_venues_target: "input",
-                     action: "keyup->search-venues#update"
-                   } %>
-<% end %>
-
-    <form id="filter-form">
-      <div class="filter-form-group">
-        <% @sports_categories.each do |sport| %>
-          <input type="checkbox" id="sport_<%= sport %>" class="form-check-input venue-checkbox" name="sports[]" value="<%= sport %>">
-          <label for="sport_<%= sport %>" class="form-check-label"><%= sport %></label><br>
-        <% end %>
+<div class="venue-page-container" data-controller="filters">
+  <div data-controller="popup">
+    <div class="container">
+      <div class="search-bar">
+        <i class="fa-solid fa-filter" data-action="click->filters#openOverlay"></i>
       </div>
-      <button type="button" class="btn btn-primary mt-3" data-action="click->filters#filter">Filter</button>
-    </form>
 
-    <%= render "shared/popup" %>
+      <%= form_with url: venues_path, method: :get, html: { class: "mb-4", data: { search_venues_target: "form" } } do |f| %>
+        <%= f.text_field :search, class: "form-control", placeholder: "Type a venue", value: params[:search], data: { search_venues_target: "input", action: "keyup->search-venues#update" } %>
+      <% end %>
 
-    <div class="index-content">
-      <h1 class="h2 my-3 d-flex justify-content-center">Venues</h1>
-      <div data-search-venues-target="list">
-        <%= render "list", venues: @venues %>
+      <div class="overlay d-none" data-filters-target="overlay">
+        <div class="popup-content">
+          <i class="fa-solid fa-xmark close-btn" data-action="click->filters#closeOverlay"></i>
+          <h1>Filters</h1>
+          <form class="mt-5">
+            <h4>SPORTS</h4>
+            <div class="form-check">
+              <input id="check-all" type="checkbox" class="form-check-input" data-action="click->filters#check">
+              <label for="check-all">Check all</label>
+            </div>
+            <div class="filter-form-group">
+              <input id="padel" type="checkbox" class="form-check-input" data-filters-target="tick padelFilterElement">
+              <label for="checkbox-padel">Padel 👟</label>
+            </div>
+            <div class="form-check">
+              <input id="basketball" type="checkbox" class="form-check-input" data-filters-target="tick basketballFilterElement">
+              <label for="checkbox-basketball">Basketball 🏀</label>
+            </div>
+            <div class="form-check">
+              <input id="tennis" type="checkbox" class="form-check-input" data-filters-target="tick tennisFilterElement">
+              <label for="checkbox-tennis">Tennis 🎾</label>
+            </div>
+            <div class="form-check">
+              <input id="football" type="checkbox" class="form-check-input" data-filters-target="tick footballFilterElement">
+              <label for="checkbox-football">Football ⚽️</label>
+            </div>
+            <div class="form-check">
+              <input id="netball" type="checkbox" class="form-check-input" data-filters-target="tick netballFilterElement">
+              <label for="checkbox-netball">Netball 🥅</label>
+            </div>
+            <div class="form-check">
+              <input id="badminton" type="checkbox" class="form-check-input" data-filters-target="tick badmintonFilterElement">
+              <label for="checkbox-badminton">Badminton 🏸</label>
+            </div>
+            <div class="form-check">
+              <input id="table_tennis" type="checkbox" class="form-check-input" data-filters-target="tick tableTennisFilterElement">
+              <label for="checkbox-table-tennis">Table Tennis 🏓</label>
+            </div>
+            <div class="form-check">
+              <input id="quidditch" type="checkbox" class="form-check-input" data-filters-target="tick quidditchFilterElement">
+              <label for="checkbox-quidditch">Quidditch 🧹</label>
+            </div>
+          </form>
+
+        <h4>Price</h4>
+
+        <div data-controller="filters" class="d-flex button-group gap-1">
+          <input type="checkbox" id="facility_sport1" class="form-check-input" name="facilities[]" data-filters-target="checkbox" value="£">
+          <label for="facility_sport1" class="button-style" data-target="price.label">£</label><br>
+          <input type="checkbox" id="facility_sport2" class="form-check-input" name="facilities[]" data-filters-target="checkbox" value="£">
+          <label for="facility_sport2" class="button-style" data-target="price.label">££</label><br>
+          <input type="checkbox" id="facility_sport3" class="form-check-input" name="facilities[]" data-filters-target="checkbox" value="£">
+          <label for="facility_sport3" class="button-style" data-target="price.label">£££</label><br>
+        </div>
+
+
+          <button type="button" data-action="click->filters#filterResults" class="btn btn-primary mt-3">Filter</button>
+        </div>
       </div>
     </div>
   </div>
-</div>
+
+  <div class="index-content">
+    <h1 class="h2 my-3 d-flex justify-content-center">Venues</h1>
+    <div data-filters-target="list" data-search-venues-target="list">
+      <%= render "list", venues: @venues %>
+    </div>
+  </div>
 </div>

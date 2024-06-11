@@ -3,24 +3,45 @@ class VenuesController < ApplicationController
   before_action :set_venue, only: [:show]
 
   def index
-    @venues = Venue.all
-    @venues = Venue.search(params[:search])
 
-    # Apply opening and closing time filters
+    @venues = Venue.all
+
+    @venues = Venue.filter_by_price(params[:price])
+
+    # Search logic
+    @venues = Venue.search(params[:search]) if params[:search].present?
+
+    # Opening and closing time filters
     open_time = Time.parse(params[:open_after]) if params[:open_after].present?
     close_time = Time.parse(params[:close_before]) if params[:close_before].present?
-
     @venues = @venues.where('opening_time >= ?', open_time) if open_time
     @venues = @venues.where('closing_time <= ?', close_time) if close_time
 
-    @sports_categories = Venue.distinct.pluck(:sports).compact
+    # Filter logic
 
-    if params[:sports].present?
-      @venues = @venues.where(sports: params[:sports])
+    @facilities = Facility.all
+
+    if params[:query] == 'detailed_filters'
+      selected_sports = []
+      selected_sports << params[:padel] if params[:padel].present?
+      selected_sports << params[:basketball] if params[:basketball].present?
+      selected_sports << params[:football] if params[:football].present?
+      selected_sports << params[:tennis] if params[:tennis].present?
+      selected_sports << params[:netball] if params[:netball].present?
+      selected_sports << params[:badminton] if params[:badminton].present?
+      selected_sports << params[:table_tennis] if params[:table_tennis].present?
+      selected_sports << params[:quidditch] if params[:quidditch].present?
+
+      if selected_sports.present?
+        @venues = @venues.select { |venue| selected_sports.include?(venue.sports) }
+      end
     end
 
+    respond_to do |format|
+      format.html
+      format.text { render partial: "venues/list", locals: { venues: @venues }, formats: [:html] }
+    end
   end
-
 
 
   def show
@@ -70,6 +91,7 @@ class VenuesController < ApplicationController
   end
 
 private
+
   def set_venue
     @venue = Venue.find(params[:id])
   end
@@ -79,6 +101,4 @@ private
                                   :closing_time, tag_list: [], images: [],
     facilities_attributes: [:id, :name, :sport, :capacity, :price , :duration, :deposit_price])
   end
-
-
 end
