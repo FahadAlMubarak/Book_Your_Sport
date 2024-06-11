@@ -1,14 +1,61 @@
-<video class="darken-video" playsinline autoplay muted loop poster="<%= asset_path('tennis-background.jpg') %>" id="bgvid">
-  <source src="<%= asset_path('tennis.mp4') %>" type="video/mp4">
-</video>
+<div class="home-container">
+  <div class="video-container">
+    <video class="darken-video" playsinline autoplay muted loop poster="<%= asset_path('tennis-background.jpg') %>" id="bgvid">
+      <source src="<%= asset_path('tennis.mp4') %>" type="video/mp4">
+    </video>
 
-
-
-  <div class="hero-content p-5">
-    <h1 class ="text-white">Welcome to Our Website</h1>
-    <h5 class="special text-white">Learn more about our services...</p>
+    <div class="hero-content">
+      <h1 class="text-white">Welcome to Our Website</h1>
+      <h6 class="special text-white pb-3">Learn more about our services...</h5>
       <%= form_with url: venues_path, method: :get, html: { class: "mb-4", data: { search_venues_target: "form" } } do |f| %>
-      <%= f.text_field :search, class: "form-control", placeholder: "Type a venue", value: params[:search], data: { search_venues_target: "input", action: "keyup->search-venues#update" } %>
+        <%= f.text_field :search, class: "form-control", placeholder: "Search a venue", value: params[:search], data: { search_venues_target: "input", action: "keyup->search-venues#update" } %>
       <% end %>
+    </div>
   </div>
+
+  <div class="top-list-venues">
+    <div id="carouselExample" class="carousel slide">
+      <div class="carousel-inner">
+        <!-- Replace static carousel items with dynamic content -->
+        <% @venues.each_with_index do |venue, index| %>
+          <div class="carousel-item <%= 'active' if index == 0 %>">
+            <div class="card-trip">
+              <% if venue.images.attached? %>
+                <%= cl_image_tag venue.images.first.key %>
+              <% else %>
+                <%= image_tag("backdrop.jpg") %>
+              <% end %>
+              <div class="card-trip-infos">
+                <div style="flex-grow: 1;">
+                  <h3><%= venue.name %></h3>
+                  <h5 class="special"><%= venue.borough %></h5>
+                  <p class="pt-2"><%= venue.description %></p>
+                  <p><%= venue.sports %></p>
+                  <p><%= venue.opening_time.strftime("%I:%M %p") %> - <%= venue.closing_time.strftime("%I:%M %p") %></p>
+                </div>
+                <div style="width: 105px;">
+                  <% if venue.photo.attached? %>
+                    <%= cl_image_tag venue.photo.key, class: "logo" %>
+                  <% else %>
+                    <%= image_tag("venue_default_avatar.png", class: "logo") %>
+                  <% end %>
+                </div>
+              </div>
+              <div class="btn-area w-100">
+                <a href="<%= venue_path(venue) %>" class="w-100 btn-green">See More</a>
+              </div>
+            </div>
+          </div>
+        <% end %>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
   </div>
+</div>
