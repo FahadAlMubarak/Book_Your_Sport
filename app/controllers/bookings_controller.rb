@@ -12,6 +12,24 @@ class BookingsController < ApplicationController
         @slot = Slot.find(slot[:id])
         @slot.update(booked: true, booking: @booking)
       end
+      session = Stripe::Checkout::Session.create(
+        payment_method_types: ['card'],
+        line_items: [{
+          price_data: {
+            currency: 'gbp',
+            unit_amount: @booking.deposit_price_cents,
+            product_data: {
+              name: @booking.slots.first.facility.venue.name
+            }
+          },
+          quantity: 1
+        }],
+        mode: 'payment',
+        success_url: booking_success_url(@booking),
+        cancel_url:  checkout_summary_url(@booking)
+      )
+
+      @booking.update(checkout_session_id: session.id)
       redirect_to checkout_summary_path(@booking), notice: 'Booking is successful.'
     else
       redirect_to venues_path, alert: 'Booking failed. Please try again.'
@@ -88,20 +106,12 @@ class BookingsController < ApplicationController
 
   def checkout
     @booking = Booking.find(params[:id])
-    session = Stripe::Checkout::Session.create(
-      payment_method_types: ['card'],
-      line_items: [{
-        name: booking.slot.facility.venue.name,
-        amount: booking.deposit_price_cents,
-        currency: 'gbp',
-        quantity: 1
-      }],
-      success_url: booking_url(@booking),
-      cancel_url:  booking_url(@booking)
-    )
 
-    @booking.update(checkout_session_id: session.id)
     redirect_to new_booking_payment_path(@booking)
+  end
+
+  def success
+
   end
 
   private
