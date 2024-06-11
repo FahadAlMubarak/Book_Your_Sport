@@ -14,10 +14,12 @@ Rails.application.routes.draw do
     resources :facilities, only: [:show]
   end
 
-  resources :slots, only: [] do
-    resources :bookings, only: :create
-    post '/multi_bookings', to: 'bookings#multi_create'
-  end
+  resources :bookings, only: :create
+  # post '/multi_bookings', to: 'bookings#multi_create'
+  # resources :slots, only: [] do
+
+
+  # end
 
   resources :bookings, only: [] do
     resources :reviews, only: [:new, :create]

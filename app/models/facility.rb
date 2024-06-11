@@ -1,6 +1,7 @@
 class Facility < ApplicationRecord
   belongs_to :venue
   has_many :slots, dependent: :destroy
+  has_many :bookings, through: :slots
 
   after_create :create_time_slots
 
