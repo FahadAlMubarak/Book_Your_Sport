@@ -1,5 +1,8 @@
 
-
+<%= link_to venues_path(@venues) do %>
+  <i class="fa-solid fa-arrow-left"></i>
+  Back
+  <% end %>
 <div class="container custom-container">
  <div class="gallery mt-3 mb-4">
     <% if @venue.images.attached? %>
@@ -146,14 +149,13 @@
     <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
       <div class="accordion-body">
         <% @venue.facilities.each do |facility| %>
-          <% facility.slots.each do |slot| %>
-            <% slot.bookings.each do |booking| %>
-            <h5 class="mb-2 special text-black"><strong>Rating</strong></h5>
-              <p><%= booking.review.rating %></p>
-              <p><%= booking.review.content %></p>
-             <% end %>
+          <% facility.bookings.each do |booking| %>
+          <% if booking.review.present? %>
+            <%= booking.review.rating %>
+            <%= booking.review.content %>
             <% end %>
           <% end %>
+        <% end %>
         </div>
       </div>
     </div>
@@ -183,17 +185,4 @@
     </div>
     <% end %>
   <% end %>
-</div>
-
-</div>
-
-
-<% @venue.facilities.each do |facility| %>
-  <% facility.bookings.each do |booking| %>
-  <% if booking.review.present? %>
-    <%= booking.review.rating %>
-    <%= booking.review.content %>
-    <% end %>
-  <% end %>
-<% end %>
 </div>
