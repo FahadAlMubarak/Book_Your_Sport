@@ -102,6 +102,7 @@ class BookingsController < ApplicationController
     @booking = Booking.find(params[:id])
     @slots = @booking.slots
     @facility = @booking.slots.first.facility
+    @venue = @facility.venue
     @total_price = @slots.count * @facility.price
     @remainder = @total_price - @facility.deposit_price.to_i
   end

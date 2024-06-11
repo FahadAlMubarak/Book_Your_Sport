@@ -8,7 +8,7 @@ class Facility < ApplicationRecord
   validates :capacity, presence: true, numericality: { only_integer: true, greater_than: 0 }
   validates :price, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
   validates :duration, presence: true, numericality: { only_integer: true, greater_than: 0 }
-  validates :deposit_price, presence: true
+  # validates :deposit_price, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
 
   after_create :create_time_slots
 

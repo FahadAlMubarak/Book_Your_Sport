@@ -14,6 +14,7 @@ Booking.destroy_all
 Friend.destroy_all
 Facility.destroy_all
 Venue.destroy_all
+Booking.destroy_all
 User.destroy_all
 
 
@@ -141,17 +142,17 @@ file = URI.open("https://cinsulddca.cloudimg.io/https://cdn.goalsfootball.co.uk/
 venue_4.images.attach(io: file, filename: "nes.png", content_type: "image/png")
 venue_4.save
 
-facility_1 = Facility.create(
+facility_1 = Facility.create!(
   venue: venue_1,
   name: "court 1",
   sport: "Padel",
   duration: 60,
   deposit_price: 10,
   capacity: 4,
-  price: 50,
+  price: 50
 )
 
-facility_2 = Facility.create(
+facility_2 = Facility.create!(
   venue: venue_2,
   name: "grass pitch",
   sport: "Football",
@@ -161,7 +162,7 @@ facility_2 = Facility.create(
   deposit_price: 20
 )
 
-facility_3 = Facility.create(
+facility_3 = Facility.create!(
   venue: venue_3,
   name: "centre court",
   sport: "Tennis",
@@ -171,91 +172,91 @@ facility_3 = Facility.create(
   deposit_price: 30
 )
 
-Slot.create(
-  facility: facility_1,
-  start_time: Time.new(2024, 6, 4, 8, 0, 0),
-  end_time: Time.new(2024, 6, 4, 9, 0, 0),
-  date: Date.today,
-  status: "available"
-)
+# Slot.create(
+#   facility: facility_1,
+#   start_time: Time.new(2024, 6, 4, 8, 0, 0),
+#   end_time: Time.new(2024, 6, 4, 9, 0, 0),
+#   date: Date.today,
+#   status: "available"
+# )
 
-Slot.create(
-  facility: facility_1,
-  start_time: Time.new(2024, 6, 4, 9, 0, 0),
-  end_time: Time.new(2024, 6, 4, 10, 0, 0),
-  date: Date.today,
-  status: "available"
-)
+# Slot.create(
+#   facility: facility_1,
+#   start_time: Time.new(2024, 6, 4, 9, 0, 0),
+#   end_time: Time.new(2024, 6, 4, 10, 0, 0),
+#   date: Date.today,
+#   status: "available"
+# )
 
-Slot.create(
-  facility: facility_2,
-  start_time: Time.new(2024, 6, 10, 10, 0, 0),
-  end_time: Time.new(2024, 6, 10, 11, 30, 0),
-  date: Date.today,
-  status: "available"
-)
+# Slot.create(
+#   facility: facility_2,
+#   start_time: Time.new(2024, 6, 10, 10, 0, 0),
+#   end_time: Time.new(2024, 6, 10, 11, 30, 0),
+#   date: Date.today,
+#   status: "available"
+# )
 
-Slot.create(
-  facility: facility_3,
-  start_time: Time.new(2024, 6, 9, 15, 0, 0),
-  end_time: Time.new(2024, 6, 9, 16, 0, 0),
-  date: Date.today,
-  status: "available"
-)
+# Slot.create(
+#   facility: facility_3,
+#   start_time: Time.new(2024, 6, 9, 15, 0, 0),
+#   end_time: Time.new(2024, 6, 9, 16, 0, 0),
+#   date: Date.today,
+#   status: "available"
+# )
 
-Slot.create(
-  facility: facility_1,
-  start_time: Time.new(2024, 6, 7, 15, 0, 0),
-  end_time: Time.new(2024, 6, 7, 16, 0, 0),
-  date: Date.today,
-  status: "available"
-)
+# Slot.create(
+#   facility: facility_1,
+#   start_time: Time.new(2024, 6, 7, 15, 0, 0),
+#   end_time: Time.new(2024, 6, 7, 16, 0, 0),
+#   date: Date.today,
+#   status: "available"
+# )
 
-Slot.create(
-  facility: facility_1,
-  start_time: Time.new(2024, 6, 7, 18, 0, 0),
-  end_time: Time.new(2024, 6, 7, 19, 0, 0),
-  date: Date.today,
-  status: "available"
-)
+# Slot.create(
+#   facility: facility_1,
+#   start_time: Time.new(2024, 6, 7, 18, 0, 0),
+#   end_time: Time.new(2024, 6, 7, 19, 0, 0),
+#   date: Date.today,
+#   status: "available"
+# )
 
-Slot.create(
-  facility: facility_1,
-  start_time: Time.new(2024, 6, 8, 21, 0, 0),
-  end_time: Time.new(2024, 6, 8, 22, 0, 0),
-  date: Date.tomorrow,
-  status: "available"
-)
+# Slot.create(
+#   facility: facility_1,
+#   start_time: Time.new(2024, 6, 8, 21, 0, 0),
+#   end_time: Time.new(2024, 6, 8, 22, 0, 0),
+#   date: Date.tomorrow,
+#   status: "available"
+# )
 
-(0..13).each do |day_offset|
-  date = Date.today + day_offset
+# (0..13).each do |day_offset|
+#   date = Date.today + day_offset
 
-  Slot.create(
-    facility: facility_1,
-    start_time: Time.new(date.year, date.month, date.day, 9, 0, 0),
-    end_time: Time.new(date.year, date.month, date.day, 10, 0, 0),
-    date: date,
-    status: "available",
-    booked: false
-  )
+#   Slot.create(
+#     facility: facility_1,
+#     start_time: Time.new(date.year, date.month, date.day, 9, 0, 0),
+#     end_time: Time.new(date.year, date.month, date.day, 10, 0, 0),
+#     date: date,
+#     status: "available",
+#     booked: false
+#   )
 
-  Slot.create(
-    facility: facility_1,
-    start_time: Time.new(date.year, date.month, date.day, 12, 0, 0),
-    end_time: Time.new(date.year, date.month, date.day, 13, 0, 0),
-    date: date,
-    status: "available",
-    booked: false
-  )
+#   Slot.create(
+#     facility: facility_1,
+#     start_time: Time.new(date.year, date.month, date.day, 12, 0, 0),
+#     end_time: Time.new(date.year, date.month, date.day, 13, 0, 0),
+#     date: date,
+#     status: "available",
+#     booked: false
+#   )
 
-  Slot.create(
-    facility: facility_1,
-    start_time: Time.new(date.year, date.month, date.day, 15, 0, 0),
-    end_time: Time.new(date.year, date.month, date.day, 16, 0, 0),
-    date: date,
-    status: "available",
-    booked: false
-  )
-end
+#   Slot.create(
+#     facility: facility_1,
+#     start_time: Time.new(date.year, date.month, date.day, 15, 0, 0),
+#     end_time: Time.new(date.year, date.month, date.day, 16, 0, 0),
+#     date: date,
+#     status: "available",
+#     booked: false
+#   )
+# end
 
 puts "Slots created for facility_1 from today to today+13 with multiple slots each day."
