@@ -17,3 +17,23 @@ margin-bottom:20px;
  a {
 text-decoration: none;
 }
+
+
+.btn-primary {
+  color: white;
+  padding: 8px 24px;
+  border-radius: 12px;
+  font-weight: bold;
+  background: #163916;
+  width:100%;
+}
+
+.btn-secondary {
+  color: #163916;
+  padding: 8px 24px;
+  border-radius: 12px;
+  border: 1px solid #163916;
+  font-weight: bold;
+  background: #ffffff;
+  width:100%;
+}

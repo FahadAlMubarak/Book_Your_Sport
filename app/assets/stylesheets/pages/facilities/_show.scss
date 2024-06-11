@@ -42,6 +42,25 @@
   display: inline-block;
 }
 
-// .hide-button{
-//   display: none;
-// } this is for the calender dont touch
+.slot-checkbox {
+  position: absolute;
+  opacity: 0;
+  z-index: -1;
+}
+
+.slot-checkbox + label {
+  cursor: pointer;
+  display: block;
+  padding: 10px 15px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  background-color: #fff;
+  transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+  color: #333;
+}
+
+.slot-checkbox:checked + label {
+  background-color: #4caf50; /* Background color when checkbox is checked */
+  border-color: #4caf50; /* Border color when checkbox is checked */
+  color: #fff; /* Text color when checkbox is checked */
+}

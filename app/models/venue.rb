@@ -5,6 +5,12 @@ class Venue < ApplicationRecord
   has_one_attached :photo
   has_many_attached :images
 
+  validates :name, presence: true
+  validates :address, presence: true
+  validates :opening_time, presence: true
+  validates :closing_time, presence: true
+  validates :sports, presence: true
+
   geocoded_by :address
   after_validation :geocode, if: :will_save_change_to_address?
 
@@ -24,11 +30,11 @@ class Venue < ApplicationRecord
   def self.filter_by_price(price)
     case price
     when '£'
-      joins(:facility).where('facilities.price < ?', 15)
+      joins(:facilities).where('facilities.price < ?', 15)
     when '££'
-      joins(:facility).where('facilities.price >= ? AND facilities.price <= ?', 15, 30)
+      joins(:facilities).where('facilities.price >= ? AND facilities.price <= ?', 15, 30)
     when '£££'
-      joins(:facility).where('facilities.price > ?', 50)
+      joins(:facilities).where('facilities.price > ?', 50)
     else
       Venue.all
     end

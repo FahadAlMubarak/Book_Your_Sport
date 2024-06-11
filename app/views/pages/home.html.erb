@@ -1,10 +1,14 @@
+<video class="darken-video" playsinline autoplay muted loop poster="<%= asset_path('tennis-background.jpg') %>" id="bgvid">
+  <source src="<%= asset_path('tennis.mp4') %>" type="video/mp4">
+</video>
 
-  <div class="hero-content">
-    <!-- Your content overlaying the video -->
-    <h1>Welcome to Our Website</h1>
-    <p class="text-white">Learn more about our services...</p>
-            <%= form_with url: venues_path, method: :get, html: { class: "mb-4", data: { search_venues_target: "form" } } do |f| %>
-        <%= f.text_field :search, class: "form-control", placeholder: "Type a venue", value: params[:search], data: { search_venues_target: "input", action: "keyup->search-venues#update" } %>
+
+
+  <div class="hero-content p-5">
+    <h1 class ="text-white">Welcome to Our Website</h1>
+    <h5 class="special text-white">Learn more about our services...</p>
+      <%= form_with url: venues_path, method: :get, html: { class: "mb-4", data: { search_venues_target: "form" } } do |f| %>
+      <%= f.text_field :search, class: "form-control", placeholder: "Type a venue", value: params[:search], data: { search_venues_target: "input", action: "keyup->search-venues#update" } %>
       <% end %>
   </div>
   </div>

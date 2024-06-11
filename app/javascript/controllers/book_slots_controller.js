@@ -64,6 +64,18 @@ export default class extends Controller {
     });
 
     if (selectedSlots.length > 0) {
+      // Sort slots by start_time to check for consecutive slots
+      selectedSlots.sort((a, b) => new Date(a.start_time) - new Date(b.start_time));
+
+      let consecutive = true;
+      for (let i = 0; i < selectedSlots.length - 1; i++) {
+        if (new Date(selectedSlots[i].end_time).getTime() !== new Date(selectedSlots[i + 1].start_time).getTime()) {
+          consecutive = false;
+          break;
+        }
+      }
+
+    if (consecutive) {
       Swal.fire({
         title: 'Book?',
         text: 'Do you want to continue?',
@@ -73,17 +85,22 @@ export default class extends Controller {
         cancelButtonText: 'Cancel'
       }).then((result) => {
         if (result.isConfirmed) {
-            fetch(`/slots/${selectedSlots[0].id}/multi_bookings`, {
+            fetch(`/bookings`, {
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json',
                 // 'Accept': 'application/json',
                 'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
               },
-              body: JSON.stringify({ bookings: {slots: selectedSlots } })
+              body: JSON.stringify({ booking: {slots: selectedSlots } })
             })
             .then(response =>
-              window.location.href = response.url)
+            //   response.text())
+            // .then((data) =>{
+            //   console.log(data);
+            // })
+
+            window.location.href = response.url)
             // .then((data)=>{
             //   console.log(data);
             // })
@@ -102,17 +119,10 @@ export default class extends Controller {
         }
       });
     } else {
+      Swal.fire('Error', 'Selected slots are not consecutive. Please select consecutive slots.', 'error');
+     }
+  } else {
       Swal.fire('Info', 'Please select at least one slot to book.', 'info');
-    }
   }
-
-
-
-
-  // selectedSlots.forEach((slot) => {
-  //   slotObject = {
-  //   slot_id: slot.slotId,
-  //   start_time: slot.startTime,
-  //   end_time: slot.endTime
-  //   }}
+}
 }

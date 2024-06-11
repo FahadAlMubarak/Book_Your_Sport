@@ -10,7 +10,8 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_06_11_100551) do
+ActiveRecord::Schema[7.1].define(version: 2024_06_11_105055) do
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -44,7 +45,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_11_100551) do
 
   create_table "bookings", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.bigint "slot_id", null: false
     t.time "start_time"
     t.time "end_time"
     t.date "date"
@@ -53,7 +53,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_11_100551) do
     t.datetime "updated_at", null: false
     t.string "checkout_session_id"
     t.integer "deposit_price_cents", default: 0, null: false
-    t.index ["slot_id"], name: "index_bookings_on_slot_id"
     t.index ["user_id"], name: "index_bookings_on_user_id"
   end
 
@@ -107,6 +106,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_11_100551) do
     t.datetime "start_time"
     t.datetime "end_time"
     t.boolean "booked", default: false, null: false
+    t.bigint "booking_id"
+    t.index ["booking_id"], name: "index_slots_on_booking_id"
     t.index ["facility_id"], name: "index_slots_on_facility_id"
   end
 
@@ -148,7 +149,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_11_100551) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "bookings", "slots"
   add_foreign_key "bookings", "users"
   add_foreign_key "facilities", "venues"
   add_foreign_key "friends", "users", column: "user_1_id"
@@ -156,6 +156,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_11_100551) do
   add_foreign_key "reviews", "bookings"
   add_foreign_key "shared_bookings", "bookings"
   add_foreign_key "shared_bookings", "friends"
+  add_foreign_key "slots", "bookings"
   add_foreign_key "slots", "facilities"
   add_foreign_key "venues", "users"
 end
