@@ -1,6 +1,6 @@
 #bgvid {
   width: 100vw;
-  height: 60vh;
+  height: 50vh;
   position: absolute;
   top: 0;
   left: 0;
@@ -11,9 +11,14 @@
 
 }
 
+.hero-content{
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
 .video-container {
-margin-top: 30px;
-margin-bottom:30px;
+  height: 40vh;
+  margin-bottom:50px;
 }
 
 #bgvid h1 {
@@ -42,7 +47,7 @@ background-color: black;
 }
 
 .top-list-venues {
-height:90vh;
-margin-top:100px;
+height:70vh;
+margin-top:50px;
 
 }

@@ -10,14 +10,12 @@
 
 require "open-uri"
 
-Booking.destroy_all
 Friend.destroy_all
 Slot.destroy_all
 Facility.destroy_all
 Venue.destroy_all
+Booking.destroy_all
 User.destroy_all
-
-
 
 user_1 = User.create(
   email: "fahad@email.com",
@@ -66,58 +64,72 @@ user_4 = User.create(
 
 
 venue_1 = Venue.create(
-  name: "Padel Pro Arena",
-  address: "221 High St, London E15 2AE",
-  borough: "Stratford",
-  description: "A state-of-the-art Padel court offering professional-grade facilities and coaching.",
-  phone: "2233445566",
-  email: "contact@padelproarena.com",
-  socials: "Twitter: @PadelPro, Facebook: /PadelProArena",
-  opening_time: Time.new(2024, 6, 4, 9, 0, 0),
-  closing_time: Time.new(2024, 6, 4, 22, 0, 0),
+  name: "Padium",
+  address: "10 Bank St, London E14 4DE",
+  borough: "Canary Wharf",
+  description: "Padium offers the ultimate blend of competitive gameplay and social camaraderie. ",
+  phone: "07950 852054",
+  email: "contact@padelpadium.com",
+  socials: "Instagram: @padel_padium",
+  opening_time: "06:00 AM",
+  closing_time: "11:00 PM",
   user: user_2,
   sports:"padel"
 )
 
-file = URI.open("https://plus.unsplash.com/premium_photo-1708692921020-e58a86c83b5a?q=80&w=3570&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")
+file = URI.open("https://static.wixstatic.com/media/a72dea_8b826855f6dd4e9fa05b19eba1fef4f5%7Emv2.png/v1/fill/w_192%2Ch_192%2Clg_1%2Cusm_0.66_1.00_0.01/a72dea_8b826855f6dd4e9fa05b19eba1fef4f5%7Emv2.png")
 venue_1.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
 venue_1.save
 
+file = URI.open("https://static.wixstatic.com/media/e27881_fcf705249cd44f5280d113e08597ad26~mv2.jpg/v1/fill/w_1376,h_1560,al_c,q_90,usm_0.66_1.00_0.01,enc_auto/e27881_fcf705249cd44f5280d113e08597ad26~mv2.jpg")
+venue_1.images.attach(io: file, filename: "nes.png", content_type: "image/png")
+venue_1.save
+
 venue_2 = Venue.create(
-  name: "Greenfield Sports Complex",
-  address: "London E2 8NS",
-  borough: "Hackney",
-  description: "football",
-  phone: "1234567890",
-  email: "contact@greenfieldsports.com",
-  socials: "Twitter: @GreenfieldSports, Facebook: /GreenfieldSports",
-  opening_time: Time.new(2024, 6, 4, 9, 0, 0),
-  closing_time: Time.new(2024, 6, 4, 22, 0, 0),
+  name: "Powerleague",
+  address: "Braithwaite Street, London E1 6GJ",
+  borough: "Islington",
+  description: "Football chain with outdoor 5- or 7-a-side pitches and organised league facilities.",
+  phone: "020 7749 9900",
+  email: "contact@powerleaguefootbal.com",
+  socials: "Instagram: @powerleague",
+  opening_time: "09:00 AM",
+  closing_time: "10:00 PM",
   user: user_4,
   sports:"football"
 )
 
-file = URI.open("https://images.unsplash.com/photo-1589487391730-58f20eb2c308?q=80&w=3574&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")
+file = URI.open("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSeOS5Sr2kVK3ahwMFE4MEtVYw7gvJSkFyNBg&s")
 venue_2.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
 venue_2.save
 
 
+file = URI.open("https://wp-pp.preprod.powerleague.com/wp-content/uploads/2022/12/2Y8A2387.webp")
+venue_2.images.attach(io: file, filename: "nes.png", content_type: "image/png")
+venue_2.save
+
+
 venue_3 = Venue.create(
-  name: "Tennis Elite Club",
-  address: "Ranelagh Gardens,, Royal Hospital Road,, Chelsea, London SW3 4SR",
-  borough: "Chelsea",
-  description: "Premier tennis club with multiple courts and professional coaching available.",
-  phone: "3344556677",
-  email: "info@tenniselite.com",
-  socials: "Instagram: @TennisElite, Facebook: /TennisEliteClub",
-  opening_time: Time.new(2024, 6, 4, 9, 0, 0),
-  closing_time: Time.new(2024, 6, 4, 10, 0, 0),
+  name: "Hurlingham Club",
+  address: "Ranelagh Gardens, London SW6 3PR",
+  borough: "Fulham",
+  description: "The Hurlingham Club is a green oasis of tradition and international renown bordering the River Thames.",
+  phone: "020 7610 7500",
+  email: "reception@hurlinghamclub.org.uk",
+  socials: "Instagram: @thehurlinghamclub",
+  opening_time: "06:15 AM",
+  closing_time: "11:30 PM",
   user: user_4,
   sports:"tennis"
 )
 
-file = URI.open("https://images.unsplash.com/photo-1622279457486-62dcc4a431d6?q=80&w=3570&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")
+file = URI.open("https://hurlinghamclub.org.uk/media/qkdfwpih/hurlingham_club_logo.svg?width=275&height=138")
 venue_3.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
+venue_3.save
+
+
+file = URI.open("https://hurlinghamclub.org.uk/media/00cn4d32/the-hurlingham-club-exterior.png?center=0.46212729548007481,0.5018112488083889&mode=crop&width=1440&height=449&rnd=133528954485870000")
+venue_3.images.attach(io: file, filename: "nes.png", content_type: "image/png")
 venue_3.save
 
 venue_4 = Venue.create(
@@ -142,6 +154,28 @@ file = URI.open("https://cinsulddca.cloudimg.io/https://cdn.goalsfootball.co.uk/
 venue_4.images.attach(io: file, filename: "nes.png", content_type: "image/png")
 venue_4.save
 
+venue_5 = Venue.create(
+  name: "Pimlico Academy",
+  address: "10 Bank St, London E14 4DE",
+  borough: "Canary Wharf",
+  description: "Padium offers the ultimate blend of competitive gameplay and social camaraderie. ",
+  phone: "07950 852054",
+  email: "contact@padelpadium.com",
+  socials: "Instagram: @padel_padium",
+  opening_time: "06:00 AM",
+  closing_time: "11:00 PM",
+  user: user_2,
+  sports:"padel"
+)
+
+file = URI.open("https://static.wixstatic.com/media/a72dea_8b826855f6dd4e9fa05b19eba1fef4f5%7Emv2.png/v1/fill/w_192%2Ch_192%2Clg_1%2Cusm_0.66_1.00_0.01/a72dea_8b826855f6dd4e9fa05b19eba1fef4f5%7Emv2.png")
+venue_5.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
+venue_5.save
+
+file = URI.open("https://static.wixstatic.com/media/e27881_fcf705249cd44f5280d113e08597ad26~mv2.jpg/v1/fill/w_1376,h_1560,al_c,q_90,usm_0.66_1.00_0.01,enc_auto/e27881_fcf705249cd44f5280d113e08597ad26~mv2.jpg")
+venue_5.images.attach(io: file, filename: "nes.png", content_type: "image/png")
+venue_5.save
+
 facility_1 = Facility.create(
   venue: venue_1,
   name: "court 1",
@@ -149,7 +183,7 @@ facility_1 = Facility.create(
   duration: 60,
   deposit_price: 10,
   capacity: 4,
-  price: 50,
+  price: 50
 )
 
 facility_2 = Facility.create(
@@ -172,91 +206,91 @@ facility_3 = Facility.create(
   deposit_price: 30
 )
 
-Slot.create(
-  facility: facility_1,
-  start_time: Time.new(2024, 6, 4, 8, 0, 0),
-  end_time: Time.new(2024, 6, 4, 9, 0, 0),
-  date: Date.today,
-  status: "available"
-)
+# Slot.create(
+#   facility: facility_1,
+#   start_time: Time.new(2024, 6, 4, 8, 0, 0),
+#   end_time: Time.new(2024, 6, 4, 9, 0, 0),
+#   date: Date.today,
+#   status: "available"
+# )
 
-Slot.create(
-  facility: facility_1,
-  start_time: Time.new(2024, 6, 4, 9, 0, 0),
-  end_time: Time.new(2024, 6, 4, 10, 0, 0),
-  date: Date.today,
-  status: "available"
-)
+# Slot.create(
+#   facility: facility_1,
+#   start_time: Time.new(2024, 6, 4, 9, 0, 0),
+#   end_time: Time.new(2024, 6, 4, 10, 0, 0),
+#   date: Date.today,
+#   status: "available"
+# )
 
-Slot.create(
-  facility: facility_2,
-  start_time: Time.new(2024, 6, 10, 10, 0, 0),
-  end_time: Time.new(2024, 6, 10, 11, 30, 0),
-  date: Date.today,
-  status: "available"
-)
+# Slot.create(
+#   facility: facility_2,
+#   start_time: Time.new(2024, 6, 10, 10, 0, 0),
+#   end_time: Time.new(2024, 6, 10, 11, 30, 0),
+#   date: Date.today,
+#   status: "available"
+# )
 
-Slot.create(
-  facility: facility_3,
-  start_time: Time.new(2024, 6, 9, 15, 0, 0),
-  end_time: Time.new(2024, 6, 9, 16, 0, 0),
-  date: Date.today,
-  status: "available"
-)
+# Slot.create(
+#   facility: facility_3,
+#   start_time: Time.new(2024, 6, 9, 15, 0, 0),
+#   end_time: Time.new(2024, 6, 9, 16, 0, 0),
+#   date: Date.today,
+#   status: "available"
+# )
 
-Slot.create(
-  facility: facility_1,
-  start_time: Time.new(2024, 6, 7, 15, 0, 0),
-  end_time: Time.new(2024, 6, 7, 16, 0, 0),
-  date: Date.today,
-  status: "available"
-)
+# Slot.create(
+#   facility: facility_1,
+#   start_time: Time.new(2024, 6, 7, 15, 0, 0),
+#   end_time: Time.new(2024, 6, 7, 16, 0, 0),
+#   date: Date.today,
+#   status: "available"
+# )
 
-Slot.create(
-  facility: facility_1,
-  start_time: Time.new(2024, 6, 7, 18, 0, 0),
-  end_time: Time.new(2024, 6, 7, 19, 0, 0),
-  date: Date.today,
-  status: "available"
-)
+# Slot.create(
+#   facility: facility_1,
+#   start_time: Time.new(2024, 6, 7, 18, 0, 0),
+#   end_time: Time.new(2024, 6, 7, 19, 0, 0),
+#   date: Date.today,
+#   status: "available"
+# )
 
-Slot.create(
-  facility: facility_1,
-  start_time: Time.new(2024, 6, 8, 21, 0, 0),
-  end_time: Time.new(2024, 6, 8, 22, 0, 0),
-  date: Date.tomorrow,
-  status: "available"
-)
+# Slot.create(
+#   facility: facility_1,
+#   start_time: Time.new(2024, 6, 8, 21, 0, 0),
+#   end_time: Time.new(2024, 6, 8, 22, 0, 0),
+#   date: Date.tomorrow,
+#   status: "available"
+# )
 
-(0..13).each do |day_offset|
-  date = Date.today + day_offset
+# (0..13).each do |day_offset|
+#   date = Date.today + day_offset
 
-  Slot.create(
-    facility: facility_1,
-    start_time: Time.new(date.year, date.month, date.day, 9, 0, 0),
-    end_time: Time.new(date.year, date.month, date.day, 10, 0, 0),
-    date: date,
-    status: "available",
-    booked: false
-  )
+#   Slot.create(
+#     facility: facility_1,
+#     start_time: Time.new(date.year, date.month, date.day, 9, 0, 0),
+#     end_time: Time.new(date.year, date.month, date.day, 10, 0, 0),
+#     date: date,
+#     status: "available",
+#     booked: false
+#   )
 
-  Slot.create(
-    facility: facility_1,
-    start_time: Time.new(date.year, date.month, date.day, 12, 0, 0),
-    end_time: Time.new(date.year, date.month, date.day, 13, 0, 0),
-    date: date,
-    status: "available",
-    booked: false
-  )
+#   Slot.create(
+#     facility: facility_1,
+#     start_time: Time.new(date.year, date.month, date.day, 12, 0, 0),
+#     end_time: Time.new(date.year, date.month, date.day, 13, 0, 0),
+#     date: date,
+#     status: "available",
+#     booked: false
+#   )
 
-  Slot.create(
-    facility: facility_1,
-    start_time: Time.new(date.year, date.month, date.day, 15, 0, 0),
-    end_time: Time.new(date.year, date.month, date.day, 16, 0, 0),
-    date: date,
-    status: "available",
-    booked: false
-  )
-end
+#   Slot.create(
+#     facility: facility_1,
+#     start_time: Time.new(date.year, date.month, date.day, 15, 0, 0),
+#     end_time: Time.new(date.year, date.month, date.day, 16, 0, 0),
+#     date: date,
+#     status: "available",
+#     booked: false
+#   )
+# end
 
 puts "Slots created for facility_1 from today to today+13 with multiple slots each day."
