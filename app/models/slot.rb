@@ -1,6 +1,6 @@
 class Slot < ApplicationRecord
   belongs_to :facility
-  has_many :bookings, dependent: :destroy
+  belongs_to :booking, optional: true
 
   scope :on_facility, -> (facility_id) {
     where(facility_id: facility_id)

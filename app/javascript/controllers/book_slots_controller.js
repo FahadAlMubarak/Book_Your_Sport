@@ -85,14 +85,14 @@ export default class extends Controller {
         cancelButtonText: 'Cancel'
       }).then((result) => {
         if (result.isConfirmed) {
-            fetch(`/slots/${selectedSlots[0].id}/multi_bookings`, {
+            fetch(`/bookings`, {
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json',
                 // 'Accept': 'application/json',
                 'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
               },
-              body: JSON.stringify({ bookings: {slots: selectedSlots } })
+              body: JSON.stringify({ booking: {slots: selectedSlots } })
             })
             .then(response =>
             //   response.text())
