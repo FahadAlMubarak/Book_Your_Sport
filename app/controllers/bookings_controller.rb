@@ -26,35 +26,45 @@ class BookingsController < ApplicationController
       end
       redirect_to checkout_summary_path(@booking)
     end
-    # slots = params[:slots]
-    # bookings = []
-
-    # Slot.transaction do
-    #   begin
-    #     slots.each do |slot_params|
-    #       slot = Slot.find(slot_params[:slot_id])
-    #       booking = slot.bookings.build(
-    #         start_time: slot_params[:start_time],
-    #         end_time: slot_params[:end_time],
-    #         status: 'Booked',
-    #         user: current_user
-    #       )
-
-    #       if booking.save
-    #         slot.update!(booked: true)
-    #         bookings << booking
-    #       else
-    #         raise ActiveRecord::Rollback, "Booking failed for slot #{slot.id}"
-    #       end
-    #     end
-
-    #     render json: { success: true, message: 'Bookings are successful.' }, status: :ok
-    #   rescue => e
-    #     render json: { success: false, message: e.message }, status: :unprocessable_entity
-    #     raise ActiveRecord::Rollback
-    #   end
-    # end
   end
+
+  # def multi_create
+  #   if params[:bookings][:slots].present?
+  #     slots = params[:bookings][:slots]
+  #     slot_ids = slots.map { |slot| slot[:id] }
+
+  #     # Ensure slots are consecutive
+  #     sorted_slots = Slot.where(id: slot_ids).order(:start_time)
+  #     consecutive = sorted_slots.each_cons(2).all? do |a, b|
+  #       a.end_time == b.start_time
+  #     end
+
+
+  #     if consecutive
+  #       Booking.transaction do
+  #         slots.each do |slot|
+  #           @slot = Slot.find(slot[:id])
+  #           @booking = Booking.new(slot_id: slot[:id], start_time: sorted_slots.first.start_time, end_time: sorted_slots.last.end_time)
+  #           @booking.user = current_user
+  #           @booking.save!
+  #           @slot.update!(booked: true)
+  #         end
+  #       end
+  #       redirect_to checkout_summary_path(@booking)
+  #   #   else
+  #   #     @slot = Slot.find(slots[0][:id])
+  #   #     @facility = @slot.facility
+  #   #     @venue = @facility.venue
+  #   #     @date_range = (Date.today..(Date.today + 13)).to_a.map { |date| [date, date.strftime(" %A %e %B")]}
+  #   #     flash[:alert] = "You can only book consecutive time slots."
+  #   #     # raise
+  #   #     render "facilities/show", status: :unprocessable_entity, locals: { facility: @facility, venue: @venue, date_range: @date_range}
+  #   #   end
+  #   # else
+  #   #   flash[:alert] = "No slots selected."
+  #     end
+  #   end
+  # end
 
   def checkout_summary
     @booking = Booking.find(params[:id])
@@ -72,7 +82,7 @@ class BookingsController < ApplicationController
     params.require(:booking).permit(:start_time, :end_time, :date, :status)
   end
 
-  def booking_params
+  def bookings_params
     params.require(:bookings).permit(slots: [])
   end
 end

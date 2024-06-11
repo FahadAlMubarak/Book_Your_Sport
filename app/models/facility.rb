@@ -1,8 +1,8 @@
 class Facility < ApplicationRecord
   belongs_to :venue
-  has_many :slots
+  has_many :slots, dependent: :destroy
 
-after_create :create_time_slots
+  after_create :create_time_slots
 
 def create_time_slots
   # Clear existing time slots
