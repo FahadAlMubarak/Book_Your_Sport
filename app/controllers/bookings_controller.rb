@@ -3,30 +3,42 @@ class BookingsController < ApplicationController
   respond_to :html, :json
   #  before_action :set_facility, only: [:create]
   def create
-    @slot = Slot.find(params[:slot_id])
-    @booking = @slot.bookings.build(booking_params)
+    # @slot = Slot.find(params[:slot_id])
+    slots = params[:booking][:slots]
+    @booking = Booking.new(start_time: slots[0][:start_time], end_time: slots[-1][:end_time], status: "pending")
     @booking.user = current_user
-    if @booking.save
-      @slot.update(booked: true)
-      redirect_to checkout_summary_path, notice: 'Booking is successful.'
+    if @booking.save!
+      slots.each do |slot|
+        @slot = Slot.find(slot[:id])
+        @slot.update(booked: true, booking: @booking)
+      end
+      redirect_to checkout_summary_path(@booking), notice: 'Booking is successful.'
     else
       redirect_to venues_path, alert: 'Booking failed. Please try again.'
     end
+
+    # @booking.user = current_user
+    # if @booking.save
+    #   @slot.update(booked: true)
+    #   redirect_to checkout_summary_path, notice: 'Booking is successful.'
+    # else
+    #   redirect_to venues_path, alert: 'Booking failed. Please try again.'
+    # end
   end
 
-  def multi_create
-    if params[:bookings][:slots].present?
-      slots = params[:bookings][:slots]
-      slots.each do |slot|
-        @slot = Slot.find(slot[:id])
-        @booking = Booking.new(slot_id: slot[:id], start_time: slots[0][:start_time], end_time: slots[-1][:end_time])
-        @booking.user = current_user
-        @booking.save!
-        @slot.update(booked: true)
-      end
-      redirect_to checkout_summary_path(@booking)
-    end
-  end
+  # def multi_create
+  #   if params[:bookings][:slots].present?
+  #     slots = params[:bookings][:slots]
+  #     slots.each do |slot|
+  #       @slot = Slot.find(slot[:id])
+  #       @booking = Booking.new(slot_id: slot[:id], start_time: slots[0][:start_time], end_time: slots[-1][:end_time])
+  #       @booking.user = current_user
+  #       @booking.save!
+  #       @slot.update(booked: true)
+  #     end
+  #     redirect_to checkout_summary_path(@booking)
+  #   end
+  # end
 
   # def multi_create
   #   if params[:bookings][:slots].present?
@@ -68,8 +80,8 @@ class BookingsController < ApplicationController
 
   def checkout_summary
     @booking = Booking.find(params[:id])
-    @slots = current_user.bookings.where(start_time: @booking.start_time, end_time: @booking.end_time).map {|booking| booking.slot}
-    @facility = @booking.slot.facility
+    @slots = @booking.slots
+    @facility = @booking.slots.first.facility
     @total_price = @slots.count * @facility.price
     @total_price_with_deposit = @total_price + @facility.deposit_price
   end
@@ -83,6 +95,6 @@ class BookingsController < ApplicationController
   end
 
   def bookings_params
-    params.require(:bookings).permit(slots: [])
+    params.require(:booking).permit(slots: [])
   end
 end

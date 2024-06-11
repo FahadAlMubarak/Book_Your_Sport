@@ -2,7 +2,7 @@ import { Controller } from "@hotwired/stimulus";
 
 export default class extends Controller {
   static targets = [
-"overlay",
+    "overlay",
     "tick",
     "padelFilterElement",
     "basketballFilterElement",
@@ -14,7 +14,8 @@ export default class extends Controller {
     "badmintonFilterElement",
     "list",
     "checkbox",
-    "label"
+    "label",
+    "price"
   ];
 
   check(event) {
@@ -22,6 +23,7 @@ export default class extends Controller {
     this.tickTargets.forEach((tick) => {
       tick.checked = checked;
     });
+
   }
 
   openOverlay() {
@@ -66,8 +68,15 @@ export default class extends Controller {
       filters.push("quidditch=quidditch");
     }
 
+    const checkedPriceInput = this.priceTargets.find(priceTarget => priceTarget.checked)
+    if (checkedPriceInput) {
+      filters.push(`price=${checkedPriceInput.value}`)
+    }
+
     const queryString = filters.join("&");
     const url = `/venues/?query=detailed_filters&${queryString}`;
+
+    console.log(url)
 
     fetch(url, { headers: { 'Accept': 'text/plain' } })
       .then(response => response.text())
@@ -77,5 +86,17 @@ export default class extends Controller {
 
       this.closeOverlay();
     // this.application.getControllerForElementAndIdentifier(this.element, 'popup').closeOverlay();
+  }
+
+  unfilterResults(event) {
+    this.tickTargets.forEach((checkbox) => {
+      checkbox.checked = false;
+    });
+  }
+
+  // Add a method to handle button click
+  uncheckAll(event) {
+
+    this.unfilterResults(event);
   }
 }

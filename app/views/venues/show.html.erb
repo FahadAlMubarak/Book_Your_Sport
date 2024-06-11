@@ -186,3 +186,14 @@
 </div>
 
 </div>
+
+
+<% @venue.facilities.each do |facility| %>
+  <% facility.bookings.each do |booking| %>
+  <% if booking.review.present? %>
+    <%= booking.review.rating %>
+    <%= booking.review.content %>
+    <% end %>
+  <% end %>
+<% end %>
+</div>

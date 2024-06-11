@@ -1,6 +1,7 @@
 class Facility < ApplicationRecord
   belongs_to :venue
   has_many :slots, dependent: :destroy
+  has_many :bookings, through: :slots
 
   validates :name, presence: true
   validates :sport, presence: true
