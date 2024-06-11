@@ -1,8 +1,8 @@
-
 <%= link_to venues_path(@venues) do %>
   <i class="fa-solid fa-arrow-left"></i>
   Back
   <% end %>
+
 <div class="container custom-container">
  <div class="gallery mt-3 mb-4">
     <% if @venue.images.attached? %>
@@ -149,11 +149,15 @@
     <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
       <div class="accordion-body">
         <% @venue.facilities.each do |facility| %>
+        <% if @review.present? %>
           <% facility.bookings.each do |booking| %>
           <% if booking.review.present? %>
             <%= booking.review.rating %>
             <%= booking.review.content %>
             <% end %>
+          <% end %>
+          <% else %>
+            <p>There are no reviews</p>
           <% end %>
         <% end %>
         </div>
