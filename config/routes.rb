@@ -14,18 +14,18 @@ Rails.application.routes.draw do
     resources :facilities, only: [:show]
   end
 
-  resources :bookings, only: :create do
+  resources :bookings, only: [:create, :show] do
     resources :payments, only: :new
     resources :reviews, only: [:new, :create]
   end
   post '/checkout', to: 'bookings#checkout', as: :checkout
+  get 'booking_success/:id', to: 'bookings#success', as: 'booking_success'
   get 'bookings/:id/checkout_summary', to: 'bookings#checkout_summary', as: :checkout_summary
 
-#   resources :bookings, only: [] do
 #     resources :reviews, only: [:new, :create]
 #   end
-  
-  
+
+
   resources :friends, only: [:create, :destroy]
 
 

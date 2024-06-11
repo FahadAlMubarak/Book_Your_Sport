@@ -148,6 +148,7 @@
     </h2>
     <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
       <div class="accordion-body">
+
         <% @venue.facilities.each do |facility| %>
         <% if @review.present? %>
           <% facility.bookings.each do |booking| %>
