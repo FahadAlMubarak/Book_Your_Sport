@@ -4,17 +4,16 @@ class ReviewsController < ApplicationController
     @review = Review.new
   end
   def create
-    @review = Review.new(review_params)
-    @review.booking = @booking
-    if @review.save
-      respond_to do |format|
-        format.html { redirect_to venue_path(@booking.slot.facility.venue), notice: 'Review submitted successfully.' }
-        format.json { render json: @review, status: :created }
-      end
+    if @booking.review.present?
+      # render 'pages/user_dashboard', status: :unprocessable_entity
+      redirect_to user_dashboard_path, notice: "Review already exists"
     else
-      respond_to do |format|
-        format.html { redirect_to user_dashboard_path, alert: 'Error submitting review.' }
-        format.json { render json: @review.errors, status: :unprocessable_entity }
+      @review = Review.new(review_params)
+      @review.booking = @booking
+      if @review.save
+        redirect_to venue_path(@booking.slot.facility.venue), notice: 'Review submitted successfully.'
+      else
+        render :new, status: :unprocessable_entity
       end
     end
   end
@@ -26,6 +25,6 @@ class ReviewsController < ApplicationController
   end
 
   def review_params
-    params.require(:review).permit(:rating, :content)
+    params.require(:review).permit(:rating, :content,:booking_id)
   end
 end
