@@ -30,6 +30,10 @@ gem "cloudinary"
 
 gem 'ransack'
 
+gem 'money-rails'
+
+gem 'stripe'
+
 # Geocoder
 
 gem "geocoder"
