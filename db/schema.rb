@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_06_07_105042) do
+ActiveRecord::Schema[7.1].define(version: 2024_06_11_100551) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -51,6 +51,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_07_105042) do
     t.string "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "checkout_session_id"
+    t.integer "deposit_price_cents", default: 0, null: false
     t.index ["slot_id"], name: "index_bookings_on_slot_id"
     t.index ["user_id"], name: "index_bookings_on_user_id"
   end
@@ -65,6 +67,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_06_07_105042) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "name"
+    t.integer "deposit_price_cents", default: 0, null: false
     t.index ["venue_id"], name: "index_facilities_on_venue_id"
   end
 

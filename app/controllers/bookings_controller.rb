@@ -6,6 +6,7 @@ class BookingsController < ApplicationController
     @slot = Slot.find(params[:slot_id])
     @booking = @slot.bookings.build(booking_params)
     @booking.user = current_user
+    @booking.state = "pending"
     if @booking.save
       @slot.update(booked: true)
       redirect_to checkout_summary_path, notice: 'Booking is successful.'
@@ -61,7 +62,25 @@ class BookingsController < ApplicationController
     @slots = current_user.bookings.where(start_time: @booking.start_time, end_time: @booking.end_time).map {|booking| booking.slot}
     @facility = @booking.slot.facility
     @total_price = @slots.count * @facility.price
-    @total_price_with_deposit = @total_price + @facility.deposit_price
+    @remainder = @total_price - @facility.deposit_price.to_i
+  end
+
+  def checkout
+    @booking = Booking.find(params[:id])
+    session = Stripe::Checkout::Session.create(
+      payment_method_types: ['card'],
+      line_items: [{
+        name: booking.slot.facility.venue.name,
+        amount: booking.deposit_price_cents,
+        currency: 'gbp',
+        quantity: 1
+      }],
+      success_url: booking_url(@booking),
+      cancel_url:  booking_url(@booking)
+    )
+
+    @booking.update(checkout_session_id: session.id)
+    redirect_to new_booking_payment_path(@booking)
   end
 
   private

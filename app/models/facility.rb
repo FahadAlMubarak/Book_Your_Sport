@@ -1,7 +1,7 @@
 class Facility < ApplicationRecord
   belongs_to :venue
   has_many :slots
-
+  monetize :deposit_price_cents
 after_create :create_time_slots
 
 def create_time_slots

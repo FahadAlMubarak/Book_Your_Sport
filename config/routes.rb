@@ -17,9 +17,10 @@ Rails.application.routes.draw do
   resources :slots, only: [] do
     resources :bookings, only: :create
     post '/multi_bookings', to: 'bookings#multi_create'
+    resources :payments, only: :new
   end
   resources :friends, only: [:create, :destroy]
-
+  post '/checkout', to: 'bookings#checkout', as: :checkout
   get 'bookings/:id/checkout_summary', to: 'bookings#checkout_summary', as: :checkout_summary
 
   # post 'slots/:id/multi_bookings', to: 'bookings#multi_create'
