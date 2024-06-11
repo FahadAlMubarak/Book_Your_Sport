@@ -11,7 +11,6 @@
 require "open-uri"
 
 Friend.destroy_all
-Slot.destroy_all
 Facility.destroy_all
 Venue.destroy_all
 Booking.destroy_all
@@ -154,6 +153,7 @@ file = URI.open("https://cinsulddca.cloudimg.io/https://cdn.goalsfootball.co.uk/
 venue_4.images.attach(io: file, filename: "nes.png", content_type: "image/png")
 venue_4.save
 
+
 venue_5 = Venue.create(
   name: "Pimlico Academy",
   address: "10 Bank St, London E14 4DE",
@@ -176,7 +176,10 @@ file = URI.open("https://static.wixstatic.com/media/e27881_fcf705249cd44f5280d11
 venue_5.images.attach(io: file, filename: "nes.png", content_type: "image/png")
 venue_5.save
 
-facility_1 = Facility.create(
+
+
+facility_1 = Facility.create!(
+
   venue: venue_1,
   name: "court 1",
   sport: "Padel",
@@ -186,7 +189,7 @@ facility_1 = Facility.create(
   price: 50
 )
 
-facility_2 = Facility.create(
+facility_2 = Facility.create!(
   venue: venue_2,
   name: "grass pitch",
   sport: "Football",
@@ -196,7 +199,7 @@ facility_2 = Facility.create(
   deposit_price: 20
 )
 
-facility_3 = Facility.create(
+facility_3 = Facility.create!(
   venue: venue_3,
   name: "centre court",
   sport: "Tennis",
