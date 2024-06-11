@@ -4,3 +4,44 @@
 .venue-checkbox {
   display: inline; /* Ensure this rule is applied to checkboxes with the class 'venue-checkbox' */
 }
+
+.filter-wrapper {
+display:flex;
+align-items: center;
+justify-content: space-between;
+}
+
+.form-check-all {
+  font-size:20px;
+  background-color: rgba(251, 251, 251, 0);
+  border: 0;
+  width:100%;
+  margin-top:5px;
+  margin-bottom:5px;
+  }
+
+
+
+.form-check {
+font-size:20px;
+background-color: rgb(251, 251, 251);
+border: 1px solid rgb(212, 212, 212);
+border-radius:20px;
+width:100%;
+margin-top:5px;
+margin-bottom:5px;
+}
+
+.form-check-input {
+  --bs-form-check-bg: white;
+  margin-right: 15px;
+}
+
+
+.label {
+  text-align: left;
+}
+
+.row > * {
+ padding-left: 0;
+}
