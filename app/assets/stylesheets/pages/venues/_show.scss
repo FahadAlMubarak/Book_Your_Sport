@@ -189,36 +189,14 @@ color: #00C620;
 
 
 .facility-card {
-  .card {
-    border: 1px solid #ddd; // Light grey border
-    border-radius: 0.5rem; // Rounded corners
+  border: 1px solid #ddd; // Light grey border
+  border-radius: 12px; // Rounded corners
+  margin-top:20px;
+  margin-bottom:20px;
+}
 
-    .card-header {
-      background-color: #f8f9fa; // Light grey background
-      border-bottom: 1px solid #ddd; // Border to separate header from body
+.card-header {
 
-      img {
-        width: 40px;
-        height: 40px;
-        margin-right: 1rem; // Space between avatar and heading
-      }
-
-      h2 {
-        font-size: 1.25rem; // Adjust heading size
-        margin: 0; // Remove default margin
-      }
-    }
-
-    .card-body {
-      padding: 1rem;
-
-      .d-flex {
-        padding-top: 0.5rem; // Space above the line
-      }
-
-      p {
-        margin: 0; // Remove default margin
-      }
-    }
-  }
+  border-bottom: 1px solid #ddd; /* Border at the bottom */
+  padding-bottom: 10px; /* Adjust the padding as needed */
 }

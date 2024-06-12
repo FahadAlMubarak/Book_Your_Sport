@@ -9,8 +9,7 @@
     <div style="flex-grow: 1;">
       <h3><%= venue.name %></h3>
       <h5 class="special"><%= venue.borough %></h5>
-      <p class="pt-2"><%= venue.description %></p>
-      <p><%= venue.sports %></p>
+      <p class="pt-2 mb-2"><%= venue.description %></p>
       <p><%= venue.opening_time.strftime("%I:%M %p") %> - <%= venue.closing_time.strftime("%I:%M %p") %></p>
     </div>
 
@@ -22,7 +21,30 @@
       <% end %>
     </div>
   </div>
+  <div class="d-flex justify-content-between mr-4 mb-2 align-items-center">
 <div class="btn-area">
-  <a href="<%= venue_path(venue) %>" class="w-100 btn-green">See More</a>
+<a href="<%= venue_path(venue) %>" class="w-100 btn-green">See More</a>
+</div>
+<h4 class="special">
+    <% if venue.sports == "padel" %>
+    <h4>padel<%= image_tag(asset_path("padel.svg"), class: "sport-icon") %></h4>
+
+    <% elsif venue.sports == "tennis" %>
+    <h4>tennis<%= image_tag(asset_path("tennis.svg"), class: "sport-icon") %></h4>
+
+    <% elsif venue.sports == "badminton" %>
+   <h4>badminton<%= image_tag(asset_path("badminton.svg"), class: "sport-icon") %></h4>
+
+    <% elsif venue.sports == "football" %>
+    <h4>football<%= image_tag(asset_path("handball.svg"), class: "sport-icon") %></h4>
+
+    <% elsif venue.sports == "quidditch" %>
+    <%= image_tag(asset_path("quidditch.svg"), class: "sport-icon") %>
+
+    <% elsif venue.sports == "basketball" %>
+    <%= image_tag(asset_path("basketball.svg"), class: "sport-icon") %>
+    <% else %>
+      <%= venue.sports %>
+    <% end %></h4>
 </div>
 </div>
