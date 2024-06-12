@@ -23,6 +23,7 @@ export default class extends Controller {
     this.tickTargets.forEach((tick) => {
       tick.checked = checked;
     });
+
   }
 
   openOverlay() {
@@ -35,9 +36,12 @@ export default class extends Controller {
     this.overlayTarget.classList.add("d-none");
   }
 
+
   filterResults(event) {
-    event.preventDefault();
+
+    event.preventDefault()
     let filters = [];
+
 
     if (this.padelFilterElementTarget.checked) {
       filters.push("padel=padel");
@@ -64,15 +68,15 @@ export default class extends Controller {
       filters.push("quidditch=quidditch");
     }
 
-    const checkedPriceInput = this.priceTargets.find(priceTarget => priceTarget.checked);
+    const checkedPriceInput = this.priceTargets.find(priceTarget => priceTarget.checked)
     if (checkedPriceInput) {
-      filters.push(`price=${checkedPriceInput.value}`);
+      filters.push(`price=${checkedPriceInput.value}`)
     }
 
     const queryString = filters.join("&");
     const url = `/venues/?query=detailed_filters&${queryString}`;
 
-    console.log(url);
+    console.log(url)
 
     fetch(url, { headers: { 'Accept': 'text/plain' } })
       .then(response => response.text())
@@ -80,27 +84,19 @@ export default class extends Controller {
         this.listTarget.innerHTML = data;
       });
 
-    this.closeOverlay();
+      this.closeOverlay();
+    // this.application.getControllerForElementAndIdentifier(this.element, 'popup').closeOverlay();
   }
 
   unfilterResults(event) {
     this.tickTargets.forEach((checkbox) => {
       checkbox.checked = false;
     });
-
-    // Reset filter results to show all venues
-    const url = `/venues/?query=detailed_filters`;
-
-    fetch(url, { headers: { 'Accept': 'text/plain' } })
-      .then(response => response.text())
-      .then((data) => {
-        this.listTarget.innerHTML = data;
-      });
   }
 
   // Add a method to handle button click
   uncheckAll(event) {
+
     this.unfilterResults(event);
-    this.closeOverlay();
   }
 }
