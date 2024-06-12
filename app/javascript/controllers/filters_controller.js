@@ -94,9 +94,7 @@ export default class extends Controller {
     });
   }
 
-  // Add a method to handle button click
   uncheckAll(event) {
-
     this.unfilterResults(event);
   }
 }

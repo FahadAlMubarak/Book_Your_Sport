@@ -243,7 +243,7 @@ venue_3 = Venue.create(
   opening_time: "06:15 AM",
   closing_time: "11:30 PM",
   user: user_4,
-  sports:"Tennis"
+  sports:"tennis"
 )
 
 file = URI.open("https://hurlinghamclub.org.uk/media/qkdfwpih/hurlingham_club_logo.svg?width=275&height=138")
