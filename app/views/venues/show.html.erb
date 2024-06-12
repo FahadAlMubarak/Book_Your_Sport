@@ -46,16 +46,25 @@
       <%= image_tag("venue_default_avatar.png", class: "venue-logo") %>
     <% end %>
   </div>
-  <div class="d-flex gap-2 align-items-center mb-2">
-    <h5>Reviews</h5>
-    <a class="dropdown-item four-star d-flex align-items-center" href="#">(4.0)
-      <i class="fa-solid fa-star"></i>
-      <i class="fa-solid fa-star"></i>
-      <i class="fa-solid fa-star"></i>
-      <i class="fa-solid fa-star"></i>
-      <i class="fa-regular fa-star"></i>
-    </a>
-  </div>
+    <p>
+      <% if @reviews.present? %>
+        <% total_rating = @reviews.sum { |review| review.rating } %>
+        <% average_rating = total_rating.to_f / @reviews.size %>
+      <% else %>
+        <% total_rating = 0 %>
+        <% average_rating = 0 %>
+      <% end %>
+      <% filled_stars = average_rating.round %>
+      <% empty_stars = 5 - filled_stars %>
+      <% filled_stars.times do %>
+        <i class="fa-solid fa-star" style="color: #FFD43B;"></i>
+      <% end %>
+      <% empty_stars.times do %>
+        <i class="far fa-star"></i>
+      <% end %>
+    </p>
+    <p> (<%= @reviews.size %>) reviews </p>
+
   <p><%= @venue.address %></p>
 
   <div class="accordion mt-4 mb-5" id="accordionExample">
@@ -107,20 +116,25 @@
       </h2>
       <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
         <div class="accordion-body">
-          <% @venue.facilities.each do |facility| %>
-            <% facility.bookings.each do |booking| %>
-              <% if booking.review.present? %>
-                <%= booking.review.rating %>
-                <%= booking.review.content %>
+          <% if @reviews.present? %>
+                <% @reviews.each do |review| %>
+                <p>Rating: <%= review.rating %></p>
+                <p>Review: <%= review.content %></p>
               <% end %>
+            <% else %>
+              <p>There are no reviews</p>
             <% end %>
-          <% end %>
         </div>
       </div>
     </div>
+
   </div>
 
-  <div class="mt-2">
+  </div>
+
+
+
+  <div class="facility-card mt-2">
     <% @venue.facilities.each do |facility| %>
       <%= link_to venue_facility_path(@venue, facility), class: "text-decoration-none text-dark" do %>
         <div class="facility-card p-4">

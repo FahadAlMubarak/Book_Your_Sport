@@ -11,7 +11,7 @@ class ReviewsController < ApplicationController
       @review = Review.new(review_params)
       @review.booking = @booking
       if @review.save
-        redirect_to venue_path(@booking.slot.facility.venue), notice: 'Review submitted successfully.'
+        redirect_to venue_path(@booking.slots.first.facility.venue), notice: 'Review submitted successfully.'
       else
         render :new, status: :unprocessable_entity
       end
@@ -25,6 +25,6 @@ class ReviewsController < ApplicationController
   end
 
   def review_params
-    params.require(:review).permit(:rating, :content,:booking_id)
+    params.require(:review).permit(:rating, :content, :booking_id)
   end
 end
