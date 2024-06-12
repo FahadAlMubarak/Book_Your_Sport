@@ -107,18 +107,20 @@
       </h2>
       <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
         <div class="accordion-body">
-          <% @venue.facilities.each do |facility| %>
-            <% facility.bookings.each do |booking| %>
-              <% if booking.review.present? %>
-                <%= booking.review.rating %>
-                <%= booking.review.content %>
+          <% if @reviews.present? %>
+                <% @reviews.each do |review| %>
+                <p>Rating: <%= review.rating %></p>
+                <p>Review: <%= review.content %></p>
               <% end %>
+            <% else %>
+              <p>There are no reviews</p>
             <% end %>
-          <% end %>
         </div>
       </div>
     </div>
   </div>
+
+
 
   <div class="facility-card mt-2">
     <% @venue.facilities.each do |facility| %>

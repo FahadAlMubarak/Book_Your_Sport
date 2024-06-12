@@ -19,12 +19,14 @@ def create_time_slots
   # Clear existing time slots
   self.slots.destroy_all
 
-  start_time = self.venue.opening_time
-  end_time = self.venue.closing_time
-  current_date = self.created_at.to_date
+  time_zone = 'London'
+
+  start_time = self.venue.opening_time.in_time_zone(time_zone)
+  end_time = self.venue.closing_time.in_time_zone(time_zone)
+  current_date = self.created_at.in_time_zone(time_zone).to_date
 
   (0..13).each do |day_offset|
-    current_day = current_date + day_offset.days
+    current_day = (current_date + day_offset.days).in_time_zone(time_zone)
 
     current_start_time = current_day.to_time + start_time.seconds_since_midnight.seconds
     current_end_time = current_day.to_time + end_time.seconds_since_midnight.seconds

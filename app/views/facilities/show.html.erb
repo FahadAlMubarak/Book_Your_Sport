@@ -18,9 +18,9 @@
 <div class="tab-content" id="myTabContent" data-controller="book-slots">
   <% @date_range.each_with_index do |date, index| %>
     <div class="tab-pane fade show <%= 'active' if index.zero? %>" id="<%= date.first.to_s %>" role="tabpanel" aria-labelledby="<%= date.first.to_s %>-tab">
-      <div class="slot-time" >
+      <div class="slot-time row align-items-start justify-content-between" >
         <% @facility.slots.on_day(date.first).where(booked: false).each do |slot| %>
-          <div class="col-md-4">
+          <div class="col-3 mb-3">
             <div class="slot-box">
               <input type="checkbox" class="slot-checkbox" id="slot-<%= slot.id %>" data-book-slots-target="checkbox" data-slot-id="<%= slot.id %>" data-slot-start="<%= slot.start_time %>" data-slot-end="<%= slot.end_time %>">
               <label for="slot-<%= slot.id %>"> <%= slot.start_time.strftime("%H:%M") %> - <%= slot.end_time.strftime("%H:%M") %> </label>
