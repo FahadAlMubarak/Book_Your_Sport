@@ -34,9 +34,9 @@ user_2 = User.create(
   email: "david@email.com",
   first_name: "david",
   last_name: "hopkins",
-  phone: "123456",
+  phone: "0208 121 82892",
   address: " Westminster Bridge Rd, London SE1 7PB",
-  password: "0208 121 82892",
+  password: "123456",
   owner: true
 )
 

@@ -129,12 +129,7 @@
     </div>
 
   </div>
-
-  </div>
-
-
-
-  <div class="facility-card mt-2">
+    <div class="mt-2">
     <% @venue.facilities.each do |facility| %>
       <%= link_to venue_facility_path(@venue, facility), class: "text-decoration-none text-dark" do %>
         <div class="facility-card p-4">
@@ -155,4 +150,7 @@
       <% end %>
     <% end %>
   </div>
+
+  </div>
+
 </div>
