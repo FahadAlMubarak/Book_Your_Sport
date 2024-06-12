@@ -4,8 +4,8 @@
   <h1>congratulations!</h1>
   <p>Your booking has been confirmed. Please check your email for confirmation. </p>
   <h1 class="mt-3">Booking Details</h1>
-    <% if @booking.slots.first.facility.venue.photo.present? %>
-      <%= cl_image_tag @booking.slots.first.facility.venue.photo.key, class: "checkout-logo" %>
+    <% if @booking.slots.first.facility.venue.logo.present? %>
+      <%= cl_image_tag @booking.slots.first.facility.venue.logo.key, class: "checkout-logo" %>
     <% else %>
       <%= image_tag("venue_default_avatar.png", class: "checkout-logo") %>
     <% end %>

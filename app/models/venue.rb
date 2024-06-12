@@ -1,8 +1,8 @@
 class Venue < ApplicationRecord
   belongs_to :user
-  has_many :facilities
+  has_many :facilities, dependent: :destroy
 
-  has_one_attached :photo
+  has_one_attached :logo
   has_many_attached :images
 
   validates :name, presence: true
