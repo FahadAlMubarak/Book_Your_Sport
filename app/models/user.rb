@@ -10,5 +10,5 @@ class User < ApplicationRecord
   has_many :friends, foreign_key: :user_1_id, class_name: 'Friend'
   has_many :friends, foreign_key: :user_2_id, class_name: 'Friend'
 
-  has_one_attached :photo
+  has_one_attached :logo
 end

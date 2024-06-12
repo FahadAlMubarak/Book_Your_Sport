@@ -27,7 +27,7 @@ user_1 = User.create(
 )
 
 file = URI.open("https://media.licdn.com/dms/image/D4E03AQFohqu7scaWTw/profile-displayphoto-shrink_200_200/0/1699433378820?e=2147483647&v=beta&t=qK1YKOYKLkkFGnN0rz55_g72CN3XKb3JQQ0gH9q3a3o")
-user_1.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
+user_1.logo.attach(io: file, filename: "nes.png", content_type: "image/png")
 user_1.save
 
 user_2 = User.create(
@@ -88,7 +88,7 @@ venue_1 = Venue.create(
 )
 
 file = URI.open("https://static.wixstatic.com/media/a72dea_8b826855f6dd4e9fa05b19eba1fef4f5%7Emv2.png/v1/fill/w_192%2Ch_192%2Clg_1%2Cusm_0.66_1.00_0.01/a72dea_8b826855f6dd4e9fa05b19eba1fef4f5%7Emv2.png")
-venue_1.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
+venue_1.logo.attach(io: file, filename: "nes.png", content_type: "image/png")
 venue_1.save
 
 
@@ -178,7 +178,7 @@ venue_2 = Venue.create(
 )
 
 file = URI.open("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSeOS5Sr2kVK3ahwMFE4MEtVYw7gvJSkFyNBg&s")
-venue_2.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
+venue_2.logo.attach(io: file, filename: "nes.png", content_type: "image/png")
 venue_2.save
 
 # URLs of additional images
@@ -243,11 +243,11 @@ venue_3 = Venue.create(
   opening_time: "06:15 AM",
   closing_time: "11:30 PM",
   user: user_4,
-  sports:"tennis"
+  sports:"Tennis"
 )
 
 file = URI.open("https://hurlinghamclub.org.uk/media/qkdfwpih/hurlingham_club_logo.svg?width=275&height=138")
-venue_3.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
+venue_3.logo.attach(io: file, filename: "nes.png", content_type: "image/png")
 venue_3.save
 
 # URLs of additional images
@@ -338,7 +338,7 @@ venue_4 = Venue.create(
 )
 
 file = URI.open("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrx5eC0xoRLW-o2JSZ_bom96W9Lzp2ln-RmQ&s")
-venue_4.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
+venue_4.logo.attach(io: file, filename: "nes.png", content_type: "image/png")
 venue_4.save
 
 # URLs of additional images
@@ -406,7 +406,7 @@ venue_5 = Venue.create(
 )
 
 file = URI.open("https://scontent-lhr6-1.xx.fbcdn.net/v/t39.30808-1/299186967_373098948327268_5000616583953068579_n.png?stp=dst-png_p480x480&_nc_cat=110&ccb=1-7&_nc_sid=5f2048&_nc_ohc=e9sf3fcyMBQQ7kNvgEx_ofx&_nc_ht=scontent-lhr6-1.xx&oh=00_AYCASOehn1OSbYjNUvzTKPluN-bskafxH7njc76EAGooDw&oe=666F2990")
-venue_5.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
+venue_5.logo.attach(io: file, filename: "nes.png", content_type: "image/png")
 venue_5.save
 
 # URLs of additional images
@@ -475,7 +475,7 @@ venue_6 = Venue.create(
 )
 
 file = URI.open("https://s3-eu-west-1.amazonaws.com/assets-s3.thisaway.co/_1200x630_crop_center-center_82_none/PSC_Card.png?mtime=1710260859")
-venue_6.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
+venue_6.logo.attach(io: file, filename: "nes.png", content_type: "image/png")
 venue_6.save
 
 # URLs of additional images

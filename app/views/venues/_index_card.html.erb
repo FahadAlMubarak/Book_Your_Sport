@@ -14,8 +14,8 @@
     </div>
 
     <div style="width: 105px;">
-      <% if venue.photo.attached? %>
-        <%= cl_image_tag venue.photo.key, class: "logo" %>
+      <% if venue.logo.attached? %>
+        <%= cl_image_tag venue.logo.key, class: "logo" %>
       <% else %>
         <%= image_tag("venue_default_avatar.png", class: "logo") %>
       <% end %>
@@ -25,26 +25,30 @@
 <div class="btn-area">
 <a href="<%= venue_path(venue) %>" class="w-100 btn-green">See More</a>
 </div>
-<h4 class="special">
-    <% if venue.sports == "padel" %>
-    <h4>padel<%= image_tag(asset_path("padel.svg"), class: "sport-icon") %></h4>
+  <h4 class="special">
+    <% sport = venue.sports.downcase %>
 
-    <% elsif venue.sports == "tennis" %>
-    <h4>tennis<%= image_tag(asset_path("tennis.svg"), class: "sport-icon") %></h4>
+    <% if sport == "padel" %>
+      <h4>padel<%= image_tag(asset_path("padel.svg"), class: "sport-icon") %></h4>
 
-    <% elsif venue.sports == "badminton" %>
-   <h4>badminton<%= image_tag(asset_path("badminton.svg"), class: "sport-icon") %></h4>
+    <% elsif sport == "tennis" %>
+      <h4>tennis<%= image_tag(asset_path("tennis.svg"), class: "sport-icon") %></h4>
 
-    <% elsif venue.sports == "football" %>
-    <h4>football<%= image_tag(asset_path("handball.svg"), class: "sport-icon") %></h4>
+    <% elsif sport == "badminton" %>
+      <h4>badminton<%= image_tag(asset_path("badminton.svg"), class: "sport-icon") %></h4>
 
-    <% elsif venue.sports == "quidditch" %>
-    <%= image_tag(asset_path("quidditch.svg"), class: "sport-icon") %>
+    <% elsif sport == "football" %>
+      <h4>football<%= image_tag(asset_path("handball.svg"), class: "sport-icon") %></h4>
 
-    <% elsif venue.sports == "basketball" %>
-    <%= image_tag(asset_path("basketball.svg"), class: "sport-icon") %>
+    <% elsif sport == "quidditch" %>
+      <%= image_tag(asset_path("quidditch.svg"), class: "sport-icon") %>
+
+    <% elsif sport == "basketball" %>
+      <%= image_tag(asset_path("basketball.svg"), class: "sport-icon") %>
+
     <% else %>
       <%= venue.sports %>
-    <% end %></h4>
+    <% end %>
+  </h4>
 </div>
 </div>

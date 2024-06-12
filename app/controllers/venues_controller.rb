@@ -1,6 +1,6 @@
 class VenuesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
-  before_action :set_venue, only: [:show]
+  before_action :set_venue, only: [:show,:edit, :update, :destroy]
 
   def index
     @venues = Venue.all
@@ -79,9 +79,6 @@ class VenuesController < ApplicationController
 
   def update
     if @venue.update(venue_params)
-      if params[:venue][:images]
-        @venue.images.attach(params[:venue][:images][0])
-      end
       redirect_to @venue, notice: 'Venue was successfully updated.'
     else
       render :edit, status: :unprocessable_entity
@@ -90,6 +87,7 @@ class VenuesController < ApplicationController
 
   def destroy
     @venue.destroy
+    @venue.facilities.destroy_all
     redirect_to venues_url, notice: 'Venue was successfully destroyed.'
   end
 

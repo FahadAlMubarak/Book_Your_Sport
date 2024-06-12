@@ -23,8 +23,8 @@
         <div class="col-3">
           <div class="renter-details-group d-flex">
             <% venue = booking.first.venue %>
-            <% if booking.first.venue.photo.attached? %>
-              <%= image_tag booking.first.venue.photo, class: "logo-inline" %>
+            <% if booking.first.venue.logo.attached? %>
+              <%= image_tag booking.first.venue.logo, class: "logo-inline" %>
             <% else %>
               <%= image_tag "venue_default_avatar.png", class: "logo-inline" %>
             <% end %>

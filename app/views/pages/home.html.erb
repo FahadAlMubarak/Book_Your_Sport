@@ -7,11 +7,27 @@
     <div class="hero-content">
       <h1 class="text-white">Game On...</h1>
       <h5 class="special text-white pb-3">Book Your Sport, Anytime, Anywhere!</h5>
-        <%= form_with(url: venues_path, method: :get, html: { class: "mb-4", data: { search_venues_target: "form" } }) do |f| %>
-          <%= f.text_field :search, class: "form-control rounded", placeholder: "Search a venue", value: params[:search], data: { search_venues_target: "input", action: "keyup->search-venues#update" } %>
-        <% end %>
-        <a class="mt-2 w-50 btn-third special" href="<%= venues_path %>">See all our venues</a>
+        <a class="mt-2 w-50 btn-secondary special" href="<%= venues_path %>">See all our venues</a>
     </div>
+  </div>
+
+  <div class="about-us-container">
+  <h2 class="pb-4">ABOUT US</h2>
+    <div class="about-us-card">
+      <h4 class="pb-3">Flexibility</h4>
+      <div class="border-bottom-light"></div>
+    <p class="pt-3"> Our app is designed to provide you with the flexibility to play anywhere, anytime. Whether it's soccer, cricket, tennis, or any other sport, you can easily find and book the perfect venue.</p>
+  </div>
+      <div class="about-us-card">
+      <h4 class="pb-3">Compare</h4>
+      <div class="border-bottom-light"></div>
+    <p class="pt-3">Our app lets you compare different options based on price, location, and availability, so you can find the perfect spot for your next game.</p>
+  </div>
+      <div class="about-us-card">
+      <h4 class="pb-3">Sports owners</h4>
+      <div class="border-bottom-light"></div>
+    <p class="pt-3"> If you want to list your own venue and make it easier for people to enjoy the sports you have on offer, then this app makes it very convenient and seamless for you! </p>
+  </div>
   </div>
 
   <div class="top-list-venues mt-5 pt-3">
@@ -36,8 +52,8 @@
                   <p><%= venue.opening_time.strftime("%I:%M %p") %> - <%= venue.closing_time.strftime("%I:%M %p") %></p>
                 </div>
                 <div style="width: 105px;">
-                  <% if venue.photo.attached? %>
-                    <%= cl_image_tag venue.photo.key, class: "logo" %>
+                  <% if venue.logo.attached? %>
+                    <%= cl_image_tag venue.logo.key, class: "logo" %>
                   <% else %>
                     <%= image_tag("venue_default_avatar.png", class: "logo") %>
                   <% end %>
