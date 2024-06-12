@@ -53,6 +53,9 @@ class VenuesController < ApplicationController
         lng: @venue.longitude
       }]
 
+
+    @facilities = @venue.facilities
+    @reviews = @facilities.map { |facility| facility.bookings.map { |booking| booking.review } }.flatten
   end
 
   def new

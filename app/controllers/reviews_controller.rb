@@ -25,6 +25,6 @@ class ReviewsController < ApplicationController
   end
 
   def review_params
-    params.require(:review).permit(:rating, :content,:booking_id)
+    params.require(:review).permit(:rating, :content, :booking_id)
   end
 end
