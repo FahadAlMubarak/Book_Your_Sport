@@ -114,7 +114,7 @@ class BookingsController < ApplicationController
   end
 
   def success
-
+    @booking = Booking.find(params[:id])
   end
 
   private
