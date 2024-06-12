@@ -1,6 +1,6 @@
 <div class="card-user">
-<% if user.photo.attached? %>
-              <%= cl_image_tag user.photo.key %>
+<% if user.logo.attached? %>
+              <%= cl_image_tag user.logo.key %>
             <% else %>
               <%= image_tag "avatar_placeholder.webp" %>
             <% end %>

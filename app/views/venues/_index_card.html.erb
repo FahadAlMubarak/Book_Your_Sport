@@ -14,8 +14,8 @@
     </div>
 
     <div style="width: 105px;">
-      <% if venue.photo.attached? %>
-        <%= cl_image_tag venue.photo.key, class: "logo" %>
+      <% if venue.logo.attached? %>
+        <%= cl_image_tag venue.logo.key, class: "logo" %>
       <% else %>
         <%= image_tag("venue_default_avatar.png", class: "logo") %>
       <% end %>

@@ -4,13 +4,9 @@
     <%= f.input :address %>
     <%= f.input :borough %>
     <%= f.input :sports, as: :select, collection: ['Football', 'Basketball', 'Tennis', 'Padel', 'Netball', 'Badminton','Table tennis', 'Quidditch'], include_blank: 'Select a Sport' %>
-    <%= f.input :description %>
-    <%= f.input :phone %>
-    <%= f.input :email %>
-    <%= f.input :socials %>
     <%= f.input :opening_time %>
     <%= f.input :closing_time %>
-    <%= f.input :photo, as: :file %>
+    <%= f.input :logo, as: :file %>
     <%= f.input :images, as: :file, input_html: { multiple: true }  %>
     <p>tell us about your venues facilities or pitches</p>
     <ul data-add-facility-target='facilitiesWrapper'>
