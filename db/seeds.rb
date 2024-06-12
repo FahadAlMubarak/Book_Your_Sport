@@ -128,38 +128,38 @@ facility_padium_2 = Facility.create!(
   price: 50
 )
 
-facility_padium_3 = Facility.create!(
+# facility_padium_3 = Facility.create!(
 
-  venue: venue_1,
-  name: "Court 3",
-  sport: "padel",
-  duration: 60,
-  deposit_price: 10,
-  capacity: 4,
-  price: 50
-)
+#   venue: venue_1,
+#   name: "Court 3",
+#   sport: "padel",
+#   duration: 60,
+#   deposit_price: 10,
+#   capacity: 4,
+#   price: 50
+# )
 
-facility_padium_4 = Facility.create!(
+# facility_padium_4 = Facility.create!(
 
-  venue: venue_1,
-  name: "Court 4",
-  sport: "padel",
-  duration: 60,
-  deposit_price: 10,
-  capacity: 4,
-  price: 50
-)
+#   venue: venue_1,
+#   name: "Court 4",
+#   sport: "padel",
+#   duration: 60,
+#   deposit_price: 10,
+#   capacity: 4,
+#   price: 50
+# )
 
-facility_padium_5 = Facility.create!(
+# facility_padium_5 = Facility.create!(
 
-  venue: venue_1,
-  name: "Outdoor court",
-  sport: "padel",
-  duration: 60,
-  deposit_price: 20,
-  capacity: 4,
-  price: 75
-)
+#   venue: venue_1,
+#   name: "Outdoor court",
+#   sport: "padel",
+#   duration: 60,
+#   deposit_price: 20,
+#   capacity: 4,
+#   price: 75
+# )
 
 # Powerleague
 
@@ -218,16 +218,16 @@ facility_powerleague_2 = Facility.create!(
   price: 150
 )
 
-facility_powerleague_3 = Facility.create!(
+# facility_powerleague_3 = Facility.create!(
 
-  venue: venue_2,
-  name: "5-a-side",
-  sport: "football",
-  duration: 60,
-  deposit_price: 5,
-  capacity: 10,
-  price: 50
-)
+#   venue: venue_2,
+#   name: "5-a-side",
+#   sport: "football",
+#   duration: 60,
+#   deposit_price: 5,
+#   capacity: 10,
+#   price: 50
+# )
 
 
 # Hurlingham
@@ -285,39 +285,39 @@ facility_hurlingham_2 = Facility.create!(
   price: 100
 )
 
-facility_hurlingham_3 = Facility.create!(
+# facility_hurlingham_3 = Facility.create!(
 
-  venue: venue_3,
-  name: "Grass court 1",
-  sport: "tennis",
-  duration: 120,
-  deposit_price: 50,
-  capacity: 4,
-  price: 100
-)
+#   venue: venue_3,
+#   name: "Grass court 1",
+#   sport: "tennis",
+#   duration: 120,
+#   deposit_price: 50,
+#   capacity: 4,
+#   price: 100
+# )
 
 
-facility_hurlingham_4 = Facility.create!(
+# facility_hurlingham_4 = Facility.create!(
 
-  venue: venue_3,
-  name: "Grass court 2",
-  sport: "tennis",
-  duration: 120,
-  deposit_price: 50,
-  capacity: 4,
-  price: 100
-)
+#   venue: venue_3,
+#   name: "Grass court 2",
+#   sport: "tennis",
+#   duration: 120,
+#   deposit_price: 50,
+#   capacity: 4,
+#   price: 100
+# )
 
-facility_hurlingham_5 = Facility.create!(
+# facility_hurlingham_5 = Facility.create!(
 
-  venue: venue_3,
-  name: "Indoor court",
-  sport: "tennis",
-  duration: 120,
-  deposit_price: 30,
-  capacity: 4,
-  price: 80
-)
+#   venue: venue_3,
+#   name: "Indoor court",
+#   sport: "tennis",
+#   duration: 120,
+#   deposit_price: 30,
+#   capacity: 4,
+#   price: 80
+# )
 
 
 # Goals
@@ -378,16 +378,16 @@ facility_goals_2 = Facility.create!(
   price: 120
 )
 
-facility_goals_3 = Facility.create!(
+# facility_goals_3 = Facility.create!(
 
-  venue: venue_4,
-  name: "5-a-side",
-  sport: "football",
-  duration: 60,
-  deposit_price: 5,
-  capacity: 10,
-  price: 30
-)
+#   venue: venue_4,
+#   name: "5-a-side",
+#   sport: "football",
+#   duration: 60,
+#   deposit_price: 5,
+#   capacity: 10,
+#   price: 30
+# )
 
 # Viccy park
 
@@ -446,16 +446,16 @@ facility_viccypark_2 = Facility.create!(
   price: 80
 )
 
-facility_viccypark_3 = Facility.create!(
+# facility_viccypark_3 = Facility.create!(
 
-  venue: venue_5,
-  name: "5-a-side",
-  sport: "football",
-  duration: 60,
-  deposit_price: 5,
-  capacity: 10,
-  price: 30
-)
+#   venue: venue_5,
+#   name: "5-a-side",
+#   sport: "football",
+#   duration: 60,
+#   deposit_price: 5,
+#   capacity: 10,
+#   price: 30
+# )
 
 
 # padel
@@ -513,37 +513,46 @@ facility_padelsocialclub_2 = Facility.create!(
   price: 60
 )
 
-facility_padelsocialclub_3 = Facility.create!(
+# facility_padelsocialclub_3 = Facility.create!(
 
-  venue: venue_6,
-  name: "Court 3",
-  sport: "padel",
-  duration: 60,
-  deposit_price: 10,
-  capacity: 4,
-  price: 60
-)
+#   venue: venue_6,
+#   name: "Court 3",
+#   sport: "padel",
+#   duration: 60,
+#   deposit_price: 10,
+#   capacity: 4,
+#   price: 60
+# )
 
-facility_padelsocialclub_4 = Facility.create!(
+# facility_padelsocialclub_4 = Facility.create!(
 
-  venue: venue_6,
-  name: "Court 4",
-  sport: "padel",
-  duration: 60,
-  deposit_price: 10,
-  capacity: 4,
-  price: 60
-)
+#   venue: venue_6,
+#   name: "Court 4",
+#   sport: "padel",
+#   duration: 60,
+#   deposit_price: 10,
+#   capacity: 4,
+#   price: 60
+# )
 
-facility_padelsocialclub_5 = Facility.create!(
+# facility_padelsocialclub_5 = Facility.create!(
 
-  venue: venue_6,
-  name: "Outdoor court",
-  sport: "padel",
-  duration: 60,
-  deposit_price: 20,
-  capacity: 4,
-  price: 100
+#   venue: venue_6,
+#   name: "Outdoor court",
+#   sport: "padel",
+#   duration: 60,
+#   deposit_price: 20,
+#   capacity: 4,
+#   price: 100
+# )
+
+
+
+Slot.create!(
+facility: facility_padelsocialclub_1,
+booked: false,
+start_time: DateTime.new(2024,06,11,9,0,0,"+1"),
+end_time: DateTime.new(2024,06,11,10,0,0,"+1")
 )
 
 

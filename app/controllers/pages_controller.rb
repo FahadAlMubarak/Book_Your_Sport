@@ -7,10 +7,10 @@ class PagesController < ApplicationController
   end
 
   def user_dashboard
-    # @bookings = current_user.bookings.where('start_time >=NOW()::time')
-    @bookings =current_user.bookings.to_a.sort_by! { |booking| booking.start_time }.chunk_while { |booking, next_booking| booking.start_time ==  next_booking.start_time && booking.end_time == next_booking.end_time }
+     @bookings = current_user.bookings.where('start_time > ?', DateTime.now)
+    # @bookings =current_user.bookings.to_a.sort_by! { |booking| booking.start_time }.chunk_while { |booking, next_booking| booking.start_time ==  next_booking.start_time && booking.end_time == next_booking.end_time }
 
-    @past_bookings = current_user.bookings.where('start_time <= NOW()::time')
+    @past_bookings = current_user.bookings.where('start_time < ?', DateTime.now)
 
     @friends = Friend.where(user_1_id: current_user.id).or(Friend.where(user_2_id: current_user.id))
   end
