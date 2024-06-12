@@ -77,18 +77,24 @@
       <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
         <div class="accordion-body">
           <p class="pb-2"><%= @venue.description %></p>
+          <% if @venue.phone.present? %>
           <div class="d-flex justify-content-between align-items-center">
             <p class=pb-2><%= @venue.phone %></p>
             <%=  %><i class="fa-solid fa-phone"></i>
           </div>
+          <% end %>
+          <% if @venue.email.present? %>
           <div class="d-flex justify-content-between align-items-center">
             <p class="pb-2"><%= @venue.email %></p>
             <i class="fa-solid fa-envelope"></i>
           </div>
+          <% end %>
+          <% if @venue.socials.present? %>
           <div class="d-flex justify-content-between align-items-center">
-              <p class="pb-2"><%= @venue.socials %></p>
+            <p class="pb-2"><%= @venue.socials %></p>
             <a href="#"><i class="fab fa-instagram"></i></a>
           </div>
+          <% end %>
           <h5 class="mb-2 special text-black"><strong>Opening Times</strong></h5>
           <p>Opening: <%= @venue.opening_time.strftime(" %l:%M %p") %> - Closing: <%= @venue.closing_time.strftime(" %l:%M %p") %></p>
         </div>
