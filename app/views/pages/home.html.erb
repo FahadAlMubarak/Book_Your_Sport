@@ -7,15 +7,16 @@
     <div class="hero-content">
       <h1 class="text-white">Game On...</h1>
       <h5 class="special text-white pb-3">Book Your Sport, Anytime, Anywhere!</h5>
-      <%= form_with url: venues_path, method: :get, html: { class: "mb-4", data: { search_venues_target: "form" } } do |f| %>
-        <%= f.text_field :search, class: "form-control", placeholder: "Search a venue", value: params[:search], data: { search_venues_target: "input", action: "keyup->search-venues#update" } %>
-      <% end %>
+        <%= form_with(url: venues_path, method: :get, html: { class: "mb-4", data: { search_venues_target: "form" } }) do |f| %>
+          <%= f.text_field :search, class: "form-control rounded", placeholder: "Search a venue", value: params[:search], data: { search_venues_target: "input", action: "keyup->search-venues#update" } %>
+        <% end %>
+        <a class="mt-2 w-50 btn-third special" href="<%= venues_path %>">See all our venues</a>
     </div>
   </div>
 
   <div class="top-list-venues">
   <h3 class="pb-3 text-black">Some of our venues</h1>
-    <div id="carouselExample" class="carousel slide">
+    <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
       <div class="carousel-inner">
         <!-- Replace static carousel items with dynamic content -->
         <% @venues.each_with_index do |venue, index| %>
