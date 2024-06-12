@@ -1,28 +1,42 @@
 <%= link_to venue_facility_path(@venue, @facility) do %>
   <i class="fa-solid fa-arrow-left"></i>
   Back
-  <% end %>
-<h1>Checkout Summary</h1>
+<% end %>
 
-<p>Booking Details:</p>
-<ul>
-  <li>Start Time: <%= @booking.start_time.strftime("%H:%M") %></li>
-  <li>End Time: <%= @booking.end_time.strftime("%H:%M") %></li>
-</ul>
 
-<h3>Summary</h3>
+<div class="container text-center">
+  <h1 class="mt-3">Booking Details</h1>
+    <% if @venue.photo.present? %>
+      <%= cl_image_tag @venue.photo.key, class: "checkout-logo" %>
+    <% else %>
+      <%= image_tag("venue_default_avatar.png", class: "checkout-logo") %>
+    <% end %>
+    <p> <%= @booking.slots.first.facility.name.capitalize %> at <%= @booking.slots.first.facility.venue.name %> </p>
+       <p> <i class="fa-solid fa-location-dot"></i><%= @booking.slots.first.facility.venue.address.capitalize %> </p>
+    <p> <i class="fa-solid fa-clock"></i> <%= @booking.start_time.strftime("%H:%M") %> until <%= @booking.end_time.strftime("%H:%M") %></p>
 
-<p>Price: £<%= @total_price %></p>
-<p>Booking fee: £<%= @facility.deposit_price.to_i %></p>
-<p>Total to pay at venue: £<%= @remainder %></p>
-
-<button>Checkout</button>
-<div class="container">
   <div class="row py-4">
     <div class="col">
       <h1>Checkout summary</h1>
-      <p>Purchase of <strong><%= @facility.venue.name %></strong> for <strong><%= humanized_money_with_symbol @booking.deposit_price %></strong></p>
-      <button id="pay" class="btn btn-primary">Pay</button>
+      <div class="checkout-summary">
+        <div class="row">
+          <div class="col-6 text-end">
+            <p>Price:</p>
+            <p>Deposit:</p>
+            <p>Total to pay at venue:</p>
+            <p>Pay now <strong><%= @facility.venue.name %></strong> deposit of:</p>
+          </div>
+          <div class="col-6 text-center">
+            <p>£<%= @total_price %></p>
+            <p><strong><%= humanized_money_with_symbol @booking.deposit_price %></strong></p>
+            <p>£<%= @remainder %></p>
+            <p><strong><%= humanized_money_with_symbol @booking.deposit_price %></strong></p>
+          </div>
+        </div>
+        <div class="text-center">
+          <button id="pay" class="btn btn-primary mt-3">Pay</button>
+        </div>
+      </div>
       <script src="https://js.stripe.com/v3/"></script>
       <script>
         const paymentButton = document.getElementById('pay');
