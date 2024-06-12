@@ -1,1 +1,17 @@
-<h1>success!</h1>
+
+<div class="container text-center">
+  <%= image_tag "green-tick.svg",  alt: "green tick success", class: "mt-5, mb-4" %>
+  <h1>congratulations!</h1>
+  <p>Your booking has been confirmed. Please check your email for confirmation. </p>
+  <h1 class="mt-3">Booking Details</h1>
+    <% if @booking.slots.first.facility.venue.photo.present? %>
+      <%= cl_image_tag @booking.slots.first.facility.venue.photo.key, class: "checkout-logo" %>
+    <% else %>
+      <%= image_tag("venue_default_avatar.png", class: "checkout-logo") %>
+    <% end %>
+    <p> <%= @booking.slots.first.facility.name.capitalize %> at <%= @booking.slots.first.facility.venue.name %> </p>
+       <p> <i class="fa-solid fa-location-dot"></i><%= @booking.slots.first.facility.venue.address.capitalize %> </p>
+    <p> <i class="fa-solid fa-clock"></i> <%= @booking.start_time.strftime("%H:%M") %> until <%= @booking.end_time.strftime("%H:%M") %></p>
+     <%= link_to 'view in your dashboard', owner_dashboard_path,  class: 'btn-primary' if current_user.owner == true%>
+    <%= link_to 'view in your dashboard', user_dashboard_path, class: 'btn-primary' if current_user.owner == false%>
+</div>
