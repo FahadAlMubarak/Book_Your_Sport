@@ -1,4 +1,4 @@
 <h1>Welcome <%= current_user.first_name %></h1>
 <h3>Your Venues 🏐</h3>
 <%= render "venue_list", venues: @venues %>
-<%= link_to 'Register a new venue', new_venue_path, class: " btn btn-green btn-full-width"  %>
+<%= link_to 'Register a new venue', new_venue_path, class: " btn-green-register"  %>
