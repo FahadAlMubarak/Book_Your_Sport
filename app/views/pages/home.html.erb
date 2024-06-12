@@ -5,8 +5,8 @@
     </video>
 
     <div class="hero-content">
-      <h1 class="text-white">Welcome to Our Website</h1>
-      <h6 class="special text-white pb-3">Learn more about our services...</h5>
+      <h1 class="text-white">Game On...</h1>
+      <h5 class="special text-white pb-3">Book Your Sport, Anytime, Anywhere!</h5>
       <%= form_with url: venues_path, method: :get, html: { class: "mb-4", data: { search_venues_target: "form" } } do |f| %>
         <%= f.text_field :search, class: "form-control", placeholder: "Search a venue", value: params[:search], data: { search_venues_target: "input", action: "keyup->search-venues#update" } %>
       <% end %>

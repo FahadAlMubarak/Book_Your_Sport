@@ -127,9 +127,19 @@ venue_3.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
 venue_3.save
 
 
-file = URI.open("https://hurlinghamclub.org.uk/media/00cn4d32/the-hurlingham-club-exterior.png?center=0.46212729548007481,0.5018112488083889&mode=crop&width=1440&height=449&rnd=133528954485870000")
-venue_3.images.attach(io: file, filename: "nes.png", content_type: "image/png")
-venue_3.save
+# URLs of additional images
+venue_3_image_urls = [
+  "https://hurlinghamclub.org.uk/media/00cn4d32/the-hurlingham-club-exterior.png?center=0.46212729548007481,0.5018112488083889&mode=crop&width=1440&height=449&rnd=133528954485870000",
+  "https://cinsulddca.cloudimg.io/https://cdn.goalsfootball.co.uk/media/3cefmfj3/ki.jpg",
+  "https://cinsulddca.cloudimg.io/https://cdn.goalsfootball.co.uk/media/03rjxzjm/book-a-game.jpg"
+]
+
+# Attach additional images
+venue_3_image_urls.each do |url|
+  file = URI.open(url)
+  venue_3.images.attach(io: file, filename: File.basename(url), content_type: "image/jpeg")
+end
+
 
 venue_4 = Venue.create(
   name: "Goals",
@@ -149,33 +159,50 @@ file = URI.open("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRrx5eC0xo
 venue_4.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
 venue_4.save
 
-file = URI.open("https://cinsulddca.cloudimg.io/https://cdn.goalsfootball.co.uk/media/r1xnzgtz/5aside-3.jpg")
-venue_4.images.attach(io: file, filename: "nes.png", content_type: "image/png")
-venue_4.save
+# URLs of additional images
+venue_4_image_urls = [
+  "https://cinsulddca.cloudimg.io/https://cdn.goalsfootball.co.uk/media/r1xnzgtz/5aside-3.jpg",
+  "https://cinsulddca.cloudimg.io/https://cdn.goalsfootball.co.uk/media/3cefmfj3/ki.jpg",
+  "https://cinsulddca.cloudimg.io/https://cdn.goalsfootball.co.uk/media/03rjxzjm/book-a-game.jpg"
+]
+
+# Attach additional images
+venue_4_image_urls.each do |url|
+  file = URI.open(url)
+  venue_4.images.attach(io: file, filename: File.basename(url), content_type: "image/jpeg")
+end
 
 
 venue_5 = Venue.create(
-  name: "Pimlico Academy",
-  address: "10 Bank St, London E14 4DE",
-  borough: "Canary Wharf",
-  description: "Padium offers the ultimate blend of competitive gameplay and social camaraderie. ",
-  phone: "07950 852054",
-  email: "contact@padelpadium.com",
-  socials: "Instagram: @padel_padium",
-  opening_time: "06:00 AM",
-  closing_time: "11:00 PM",
+  name: "Victoria Park ",
+  address: "Victoria Park East, St Marks Gate, London, E9 5HT",
+  borough: "Hackney",
+  description: "A variety of different football pitches in the heart of London!",
+  phone: "020 3589 4612",
+  email: "contact@victoriapark.com",
+  socials: "Instagram: @fc_victoriapark",
+  opening_time: "11:00 PM",
+  closing_time: "21:00 PM",
   user: user_2,
-  sports:"padel"
+  sports:"football"
 )
 
-file = URI.open("https://static.wixstatic.com/media/a72dea_8b826855f6dd4e9fa05b19eba1fef4f5%7Emv2.png/v1/fill/w_192%2Ch_192%2Clg_1%2Cusm_0.66_1.00_0.01/a72dea_8b826855f6dd4e9fa05b19eba1fef4f5%7Emv2.png")
+file = URI.open("https://scontent-lhr6-1.xx.fbcdn.net/v/t39.30808-1/299186967_373098948327268_5000616583953068579_n.png?stp=dst-png_p480x480&_nc_cat=110&ccb=1-7&_nc_sid=5f2048&_nc_ohc=e9sf3fcyMBQQ7kNvgEx_ofx&_nc_ht=scontent-lhr6-1.xx&oh=00_AYCASOehn1OSbYjNUvzTKPluN-bskafxH7njc76EAGooDw&oe=666F2990")
 venue_5.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
 venue_5.save
 
-file = URI.open("https://static.wixstatic.com/media/e27881_fcf705249cd44f5280d113e08597ad26~mv2.jpg/v1/fill/w_1376,h_1560,al_c,q_90,usm_0.66_1.00_0.01,enc_auto/e27881_fcf705249cd44f5280d113e08597ad26~mv2.jpg")
-venue_5.images.attach(io: file, filename: "nes.png", content_type: "image/png")
-venue_5.save
+# URLs of additional images
+venue_5_image_urls = [
+  "https://static.wixstatic.com/media/e27881_fcf705249cd44f5280d113e08597ad26~mv2.jpg/v1/fill/w_1376,h_1560,al_c,q_90,usm_0.66_1.00_0.01,enc_auto/e27881_fcf705249cd44f5280d113e08597ad26~mv2.jpg",
+  "https://hireapitch.com/PitchImages/90364a93-7452-489e-926c-6c937aec93f2.jpg",
+  "https://upload.wikimedia.org/wikipedia/commons/1/13/Sunday_morning_football_at_Victoria_Park_-_geograph.org.uk_-_1326364.jpg"
+]
 
+# Attach additional images
+venue_5_image_urls.each do |url|
+  file = URI.open(url)
+  venue_4.images.attach(io: file, filename: File.basename(url), content_type: "image/jpeg")
+end
 
 
 facility_1 = Facility.create!(
