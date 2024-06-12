@@ -36,7 +36,7 @@ user_2 = User.create(
   last_name: "hopkins",
   phone: "123456",
   address: " Westminster Bridge Rd, London SE1 7PB",
-  password: "123456",
+  password: "0208 121 82892",
   owner: true
 )
 
@@ -45,7 +45,7 @@ user_3 = User.create(
   email: "esme@email.com",
   first_name: "esme",
   last_name: "chong",
-  phone: "123456",
+  phone: "0208 121 8777",
   address: " Westminster Bridge Rd, London SE1 7PB",
   password: "123456",
   owner: false
@@ -55,12 +55,23 @@ user_4 = User.create(
   email: "bob@email.com",
   first_name: "bob",
   last_name: "the builder",
-  phone: "123456",
+  phone: "0208 121 8299",
   address: " Westminster Bridge Rd, London SE1 7PB",
   password: "123456",
   owner: true
 )
 
+user_5 = User.create(
+  email: "gareth@email.com",
+  first_name: "gareth",
+  last_name: "southgate",
+  phone: "0208 121 8290",
+  address: "England",
+  password: "123456",
+  owner: true
+)
+
+# Padium
 
 venue_1 = Venue.create(
   name: "Padium",
@@ -80,9 +91,77 @@ file = URI.open("https://static.wixstatic.com/media/a72dea_8b826855f6dd4e9fa05b1
 venue_1.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
 venue_1.save
 
-file = URI.open("https://static.wixstatic.com/media/e27881_fcf705249cd44f5280d113e08597ad26~mv2.jpg/v1/fill/w_1376,h_1560,al_c,q_90,usm_0.66_1.00_0.01,enc_auto/e27881_fcf705249cd44f5280d113e08597ad26~mv2.jpg")
-venue_1.images.attach(io: file, filename: "nes.png", content_type: "image/png")
-venue_1.save
+
+# URLs of additional images
+venue_1_image_urls = [
+  "https://static.wixstatic.com/media/e27881_fcf705249cd44f5280d113e08597ad26~mv2.jpg/v1/fill/w_1376,h_1560,al_c,q_90,usm_0.66_1.00_0.01,enc_auto/e27881_fcf705249cd44f5280d113e08597ad26~mv2.jpg",
+  "https://static.wixstatic.com/media/e27881_10fdd12a580245849f9c37ef6117cac4~mv2.jpg/v1/fill/w_1376,h_1296,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/e27881_10fdd12a580245849f9c37ef6117cac4~mv2.jpg",
+  "https://static.wixstatic.com/media/e27881_7fb990c1ea214988a004916a42f072c7~mv2.jpg/v1/fill/w_1376,h_1296,al_c,q_85,usm_0.66_1.00_0.01,enc_auto/e27881_7fb990c1ea214988a004916a42f072c7~mv2.jpg"
+]
+
+# Attach additional images
+venue_1_image_urls.each do |url|
+  file = URI.open(url)
+  venue_1.images.attach(io: file, filename: File.basename(url), content_type: "image/jpeg")
+end
+
+
+facility_padium_1 = Facility.create!(
+
+  venue: venue_1,
+  name: "Court 1",
+  sport: "padel",
+  duration: 60,
+  deposit_price: 10,
+  capacity: 4,
+  price: 50
+)
+
+facility_padium_2 = Facility.create!(
+
+  venue: venue_1,
+  name: "Court 2",
+  sport: "padel",
+  duration: 60,
+  deposit_price: 10,
+  capacity: 4,
+  price: 50
+)
+
+facility_padium_3 = Facility.create!(
+
+  venue: venue_1,
+  name: "Court 3",
+  sport: "padel",
+  duration: 60,
+  deposit_price: 10,
+  capacity: 4,
+  price: 50
+)
+
+facility_padium_4 = Facility.create!(
+
+  venue: venue_1,
+  name: "Court 4",
+  sport: "padel",
+  duration: 60,
+  deposit_price: 10,
+  capacity: 4,
+  price: 50
+)
+
+facility_padium_5 = Facility.create!(
+
+  venue: venue_1,
+  name: "Outdoor court",
+  sport: "padel",
+  duration: 60,
+  deposit_price: 20,
+  capacity: 4,
+  price: 75
+)
+
+# Powerleague
 
 venue_2 = Venue.create(
   name: "Powerleague",
@@ -102,11 +181,56 @@ file = URI.open("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSeOS5Sr2k
 venue_2.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
 venue_2.save
 
+# URLs of additional images
+venue_2_image_urls = [
+  "https://wp-pp.preprod.powerleague.com/wp-content/uploads/2022/12/2Y8A2387.webp",
+  "https://www.powerleague.com/wp-content/uploads/2023/02/Website4re.webp",
+  "https://www.powerleague.com/wp-content/uploads/2022/12/home.webp"
+]
 
-file = URI.open("https://wp-pp.preprod.powerleague.com/wp-content/uploads/2022/12/2Y8A2387.webp")
-venue_2.images.attach(io: file, filename: "nes.png", content_type: "image/png")
-venue_2.save
+# Attach additional images
+venue_2_image_urls.each do |url|
+  file = URI.open(url)
+  venue_2.images.attach(io: file, filename: File.basename(url), content_type: "image/jpeg")
+end
 
+
+facility_powerleague_1 = Facility.create!(
+
+  venue: venue_2,
+  name: "6-a-side",
+  sport: "football",
+  duration: 60,
+  deposit_price: 20,
+  capacity: 12,
+  price: 100
+)
+
+
+facility_powerleague_2 = Facility.create!(
+
+  venue: venue_2,
+  name: "11-a-side",
+  sport: "football",
+  duration: 60,
+  deposit_price: 20,
+  capacity: 22,
+  price: 150
+)
+
+facility_powerleague_3 = Facility.create!(
+
+  venue: venue_2,
+  name: "5-a-side",
+  sport: "football",
+  duration: 60,
+  deposit_price: 5,
+  capacity: 10,
+  price: 50
+)
+
+
+# Hurlingham
 
 venue_3 = Venue.create(
   name: "Hurlingham Club",
@@ -126,12 +250,11 @@ file = URI.open("https://hurlinghamclub.org.uk/media/qkdfwpih/hurlingham_club_lo
 venue_3.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
 venue_3.save
 
-
 # URLs of additional images
 venue_3_image_urls = [
-  "https://hurlinghamclub.org.uk/media/00cn4d32/the-hurlingham-club-exterior.png?center=0.46212729548007481,0.5018112488083889&mode=crop&width=1440&height=449&rnd=133528954485870000",
-  "https://cinsulddca.cloudimg.io/https://cdn.goalsfootball.co.uk/media/3cefmfj3/ki.jpg",
-  "https://cinsulddca.cloudimg.io/https://cdn.goalsfootball.co.uk/media/03rjxzjm/book-a-game.jpg"
+  "https://images.squarespace-cdn.com/content/v1/56b8afcb2fe13136784391c0/1649070594829-NJTR6P1ES55GMN36RKD8/DSC_7977a.jpg?format=1500w",
+  "https://images.squarespace-cdn.com/content/v1/56b8afcb2fe13136784391c0/3bc8f923-34e9-4caf-9202-607a5477621b/2023.06.27_Georgio-Armani-Tennis-Classic-D1_Reportage_01_1566.jpg?format=1500w",
+  "https://images.squarespace-cdn.com/content/v1/56b8afcb2fe13136784391c0/1533818289907-Y60QMXXIXUZNFI85P2RH/SO2_2285.jpg?format=1500w"
 ]
 
 # Attach additional images
@@ -139,6 +262,65 @@ venue_3_image_urls.each do |url|
   file = URI.open(url)
   venue_3.images.attach(io: file, filename: File.basename(url), content_type: "image/jpeg")
 end
+
+facility_hurlingham_1 = Facility.create!(
+
+  venue: venue_3,
+  name: "Clay court 1",
+  sport: "tennis",
+  duration: 120,
+  deposit_price: 50,
+  capacity: 4,
+  price: 100
+)
+
+facility_hurlingham_2 = Facility.create!(
+
+  venue: venue_3,
+  name: "Clay court 2",
+  sport: "tennis",
+  duration: 120,
+  deposit_price: 50,
+  capacity: 4,
+  price: 100
+)
+
+facility_hurlingham_3 = Facility.create!(
+
+  venue: venue_3,
+  name: "Grass court 1",
+  sport: "tennis",
+  duration: 120,
+  deposit_price: 50,
+  capacity: 4,
+  price: 100
+)
+
+
+facility_hurlingham_4 = Facility.create!(
+
+  venue: venue_3,
+  name: "Grass court 2",
+  sport: "tennis",
+  duration: 120,
+  deposit_price: 50,
+  capacity: 4,
+  price: 100
+)
+
+facility_hurlingham_5 = Facility.create!(
+
+  venue: venue_3,
+  name: "Indoor court",
+  sport: "tennis",
+  duration: 120,
+  deposit_price: 30,
+  capacity: 4,
+  price: 80
+)
+
+
+# Goals
 
 
 venue_4 = Venue.create(
@@ -173,6 +355,42 @@ venue_4_image_urls.each do |url|
 end
 
 
+facility_goals_1 = Facility.create!(
+
+  venue: venue_4,
+  name: "6-a-side",
+  sport: "football",
+  duration: 60,
+  deposit_price: 20,
+  capacity: 12,
+  price: 80
+)
+
+
+facility_goals_2 = Facility.create!(
+
+  venue: venue_4,
+  name: "11-a-side",
+  sport: "football",
+  duration: 60,
+  deposit_price: 20,
+  capacity: 22,
+  price: 120
+)
+
+facility_goals_3 = Facility.create!(
+
+  venue: venue_4,
+  name: "5-a-side",
+  sport: "football",
+  duration: 60,
+  deposit_price: 5,
+  capacity: 10,
+  price: 30
+)
+
+# Viccy park
+
 venue_5 = Venue.create(
   name: "Victoria Park ",
   address: "Victoria Park East, St Marks Gate, London, E9 5HT",
@@ -193,7 +411,7 @@ venue_5.save
 
 # URLs of additional images
 venue_5_image_urls = [
-  "https://static.wixstatic.com/media/e27881_fcf705249cd44f5280d113e08597ad26~mv2.jpg/v1/fill/w_1376,h_1560,al_c,q_90,usm_0.66_1.00_0.01,enc_auto/e27881_fcf705249cd44f5280d113e08597ad26~mv2.jpg",
+  "https://germinalamenity.com/media/ggb/wp/wp-content/uploads/2022/12/Football-pitch-maintenance-Stirling-Albion.webp",
   "https://hireapitch.com/PitchImages/90364a93-7452-489e-926c-6c937aec93f2.jpg",
   "https://upload.wikimedia.org/wikipedia/commons/1/13/Sunday_morning_football_at_Victoria_Park_-_geograph.org.uk_-_1326364.jpg"
 ]
@@ -201,40 +419,134 @@ venue_5_image_urls = [
 # Attach additional images
 venue_5_image_urls.each do |url|
   file = URI.open(url)
-  venue_4.images.attach(io: file, filename: File.basename(url), content_type: "image/jpeg")
+  venue_5.images.attach(io: file, filename: File.basename(url), content_type: "image/jpeg")
 end
 
 
-facility_1 = Facility.create!(
+facility_viccypark_1 = Facility.create!(
 
-  venue: venue_1,
-  name: "court 1",
-  sport: "Padel",
+  venue: venue_5,
+  name: "6-a-side",
+  sport: "football",
+  duration: 60,
+  deposit_price: 20,
+  capacity: 12,
+  price: 60
+)
+
+
+facility_viccypark_2 = Facility.create!(
+
+  venue: venue_5,
+  name: "11-a-side",
+  sport: "football",
+  duration: 60,
+  deposit_price: 20,
+  capacity: 22,
+  price: 80
+)
+
+facility_viccypark_3 = Facility.create!(
+
+  venue: venue_5,
+  name: "5-a-side",
+  sport: "football",
+  duration: 60,
+  deposit_price: 5,
+  capacity: 10,
+  price: 30
+)
+
+
+# padel
+
+venue_6 = Venue.create(
+  name: "Padel social club",
+  address: "Empress Place, London, SW6 1TT",
+  borough: "London",
+  description: "Step into our world-class debut padel club, nestled in the heart of West London’s Earls Court.",
+  phone: "+44 (0) 739 354 5770",
+  email: "contact@padelsocial.com",
+  socials: "Instagram: @padelsocialclub",
+  opening_time: "07:00 PM",
+  closing_time: "22:00 PM",
+  user: user_2,
+  sports:"padel"
+)
+
+file = URI.open("https://s3-eu-west-1.amazonaws.com/assets-s3.thisaway.co/_1200x630_crop_center-center_82_none/PSC_Card.png?mtime=1710260859")
+venue_6.photo.attach(io: file, filename: "nes.png", content_type: "image/png")
+venue_6.save
+
+# URLs of additional images
+venue_6_image_urls = [
+  "https://padelsocial.club/cdn/shop/files/hoverreveal1-min_1080x.jpg?v=1714636675",
+  "https://padelsocial.club/cdn/shop/files/hp5-min_1080x.jpg?v=1714647455",
+  "https://padelsocial.club/cdn/shop/files/Facilities-padel-courts-p-1600_1512x.jpg?v=1714743041"
+]
+
+# Attach additional images
+venue_6_image_urls.each do |url|
+  file = URI.open(url)
+  venue_6.images.attach(io: file, filename: File.basename(url), content_type: "image/jpeg")
+end
+
+facility_padelsocialclub_1 = Facility.create!(
+
+  venue: venue_6,
+  name: "Court 1",
+  sport: "padel",
   duration: 60,
   deposit_price: 10,
   capacity: 4,
   price: 50
 )
 
-facility_2 = Facility.create!(
-  venue: venue_2,
-  name: "grass pitch",
-  sport: "Football",
-  capacity: 10,
-  price: 70,
-  duration: 90,
-  deposit_price: 20
+facility_padelsocialclub_2 = Facility.create!(
+
+  venue: venue_6,
+  name: "Court 2",
+  sport: "padel",
+  duration: 60,
+  deposit_price: 10,
+  capacity: 4,
+  price: 60
 )
 
-facility_3 = Facility.create!(
-  venue: venue_3,
-  name: "centre court",
-  sport: "Tennis",
+facility_padelsocialclub_3 = Facility.create!(
+
+  venue: venue_6,
+  name: "Court 3",
+  sport: "padel",
+  duration: 60,
+  deposit_price: 10,
   capacity: 4,
-  price: 100,
-  duration: 120,
-  deposit_price: 30
+  price: 60
 )
+
+facility_padelsocialclub_4 = Facility.create!(
+
+  venue: venue_6,
+  name: "Court 4",
+  sport: "padel",
+  duration: 60,
+  deposit_price: 10,
+  capacity: 4,
+  price: 60
+)
+
+facility_padelsocialclub_5 = Facility.create!(
+
+  venue: venue_6,
+  name: "Outdoor court",
+  sport: "padel",
+  duration: 60,
+  deposit_price: 20,
+  capacity: 4,
+  price: 100
+)
+
+
 
 # Slot.create(
 #   facility: facility_1,
