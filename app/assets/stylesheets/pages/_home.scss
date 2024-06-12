@@ -11,9 +11,30 @@
 
 }
 
+.border-bottom-light {
+  border-bottom: 1px solid #ddd; // Light grey border
+}
+
+.about-us-card {
+  border: 1px solid #ddd; // Light grey border
+  border-radius: 12px; // Rounded corners
+  margin-top:20px;
+  margin-bottom:20px;
+  height:250px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  padding:30px;
+}
+
+.about-us-container {
+  height:95vh;
+}
+
 .hero-content{
-  padding-top: 40px;
+  padding-top: 60px;
   padding-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+
 }
 
 .video-container {
