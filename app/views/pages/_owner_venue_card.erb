@@ -17,15 +17,15 @@
         <%= image_tag("venue_default_avatar.png", class: "card-owner-logo") %>
       <% end %>
     </div>
-    <div class="d-flex mt-3 w-100 gap-3">
-   <%= link_to venue_path(venue), class: "btn btn-secondary" do%>
-  <i class="fa-solid fa-eye"></i>
+    <div class="d-flex mt-3 w-100 gap-4">
+   <%= link_to venue_path(venue), class: "btn-icon" do%>
+  <i class="fa-solid fa-2xl fa-eye"></i>
 <% end %>
-  <%= link_to edit_venue_path(venue), class: "btn btn-secondary" do %>
-  <i class="fa-solid fa-pen"></i>
+  <%= link_to edit_venue_path(venue), class: "btn-icon" do %>
+  <i class="fa-solid fa-2xl fa-pen"></i>
 <% end %>
-   <%= link_to venue_path(venue), method: :delete, class: "btn btn-secondary", data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this venue?" } do%>
-  <i class="fa-solid fa-trash"></i>
+   <%= link_to venue_path(venue), method: :delete, class: "btn-icon", data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this venue?" } do%>
+  <i class="fa-solid fa-2xl fa-trash"></i>
 <% end %>
 </div>
   </div>
