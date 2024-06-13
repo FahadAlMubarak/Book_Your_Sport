@@ -10,6 +10,7 @@
 
 require "open-uri"
 
+Review.destroy_all
 Friend.destroy_all
 Facility.destroy_all
 Venue.destroy_all
