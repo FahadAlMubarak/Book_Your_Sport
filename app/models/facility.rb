@@ -25,7 +25,7 @@ def create_time_slots
   end_time = self.venue.closing_time.in_time_zone(time_zone)
   current_date = self.created_at.in_time_zone(time_zone).to_date
 
-  (0..13).each do |day_offset|
+  (0..6).each do |day_offset|
     current_day = (current_date + day_offset.days).in_time_zone(time_zone)
 
     current_start_time = current_day.to_time + start_time.seconds_since_midnight.seconds
