@@ -38,38 +38,56 @@ border: white;
   color:white;
 }
 
-.sidenav-welcome {
 
+
+.nav-content {
+  justify-content: space-between;
+  display: flex;
+  width: 100%;
+}
+
+.nav-item {
+  list-style: none;
+}
+
+.dropdown-toggle::after {
+  display: none;
+}
+
+.nav-link {
+  color: white;
+  padding: 8px 16px;
+}
+
+.sidenav-welcome {
   text-decoration: none;
   font-size: 26px;
   line-height: auto;
   color: white;
   display: block;
   transition: 0.3s;
-
 }
+
 .sidenav {
   height: 100%;
-  width: 0; /* Initially hide the side menu */
+  width: 0;
   color: white;
   top: 0;
-  right: 0; /* Align the menu to the right side */
+  right: 0;
   background-color: #163916;
   position: fixed;
   z-index: 999;
   overflow-x: hidden;
   transition: 0.5s;
   padding-top: 60px;
-  display:flex;
-  flex-direction:column;
-
+  display: flex;
+  flex-direction: column;
 }
 
 .sidenav-content {
-  padding: 8px 8px 8px 32px;
+  padding: 8px 32px;
 }
 
-/* Adjust the close cross icon */
 .sidenav .close-icon {
   position: absolute;
   top: 0;
@@ -79,7 +97,6 @@ border: white;
 }
 
 .sidenav a {
-
   text-decoration: none;
   font-size: 25px;
   color: white;
@@ -91,11 +108,9 @@ border: white;
   color: #f1f1f1;
 }
 
-
-
-
-.sidenav a:hover {
-  color: #f1f1f1;
+.sidenav-welcome .avatar {
+  margin-right: 10px;
+  margin-left:10px;
 }
 
 
