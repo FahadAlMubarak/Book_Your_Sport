@@ -44,7 +44,6 @@ class VenuesController < ApplicationController
 
 
   def show
-
     @facility = Facility.new
 
     @markers =
@@ -56,13 +55,15 @@ class VenuesController < ApplicationController
 
 
     @facilities = @venue.facilities
-    @reviews = @facilities.map { |facility| facility.bookings.map { |booking| booking.review } }.flatten
-    @reviews = @reviews.uniq
+    bookings = @facilities.map { |facility| facility.bookings }.flatten
+    reviewed_bookings = bookings.select {|booking| booking.review unless booking.review.nil? }
+    reviews = reviewed_bookings.map { |booking| booking.review }
+    @reviews = reviews.uniq
   end
 
   def new
     @venue = Venue.new
-     @venue.facilities.build
+    @venue.facilities.build
   end
 
   def create

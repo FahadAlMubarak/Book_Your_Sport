@@ -12,7 +12,7 @@
 
 require "open-uri"
 
-# USERS
+Review.destroy_all
 
 Friend.destroy_all
 Facility.destroy_all
