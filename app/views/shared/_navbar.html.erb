@@ -9,17 +9,18 @@
       <% end %>
     </div>
     <div class="nav-right gap-3 col-5">
-
 <div data-controller="sidenav">
   <i class="fa-solid fa-bars fa-xl" style="color: white;" data-action="click->sidenav#openMenu"></i>
   <div id="mySidenav" class="sidenav" data-sidenav-target="menu">
     <i class="fa-solid fa-xmark fa-xl close-icon" style="color: white;" data-action="click->sidenav#closeMenu"></i>
-     <div class="avatar">
-        <a href="#" id="navbarDropdown" class="avatar" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        <%= image_tag asset_path("avatar_placeholder.webp"), class: "avatar", alt: "dropdown menu" %>
-          </a>
-        </div>
         <% if user_signed_in? %>
+       <div class="sidenav-welcome d-flex align-items-center align-items-start">
+      <div class="avatar d-flex align-items-center">
+      </div>
+      <%= image_tag asset_path("avatar_placeholder.webp"), class: "avatar", alt: "dropdown menu" %>
+     <h5 class="mb-0 ml-2 mr-4">Hi <%= current_user.first_name.capitalize %>!</h5>
+
+    </div>
          <%= link_to 'Home', root_path %>
          <%= link_to 'All Venues', venues_path %>
         <%  if current_user.owner == true %>
@@ -31,6 +32,9 @@
       </div>
     </div>
           <% else %>
+        <div class="avatar">
+        <%= image_tag asset_path("avatar_placeholder.webp"), class: "avatar", alt: "dropdown menu" %>
+        </div>
          <%= link_to 'Home', root_path %>
          <%= link_to 'All Venues', venues_path %>
             <div class="login-button">

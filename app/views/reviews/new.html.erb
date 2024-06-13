@@ -1,4 +1,4 @@
-<h1>Add a Review for Booking <%= @booking.id %></h1>
+<h1>Review your experience at <%= @booking.venue.name %></h1>
 
 <%= simple_form_for [@booking, @review] do |f|%>
   <div class="form-inputs">
@@ -6,6 +6,6 @@
     <%= f.input :content%>
   </div>
   <div>
-    <%= f.submit %>
+      <%= f.submit "Add your review", class: "btn btn-primary btn-full-width text-white" %>
   </div>
   <% end %>

@@ -38,6 +38,16 @@ border: white;
   color:white;
 }
 
+.sidenav-welcome {
+
+  text-decoration: none;
+  font-size: 26px;
+  line-height: auto;
+  color: white;
+  display: block;
+  transition: 0.3s;
+
+}
 .sidenav {
   height: 100%;
   width: 0; /* Initially hide the side menu */

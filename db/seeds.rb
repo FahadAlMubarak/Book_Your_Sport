@@ -82,8 +82,8 @@ venue_1 = Venue.create(
   phone: "07950 852054",
   email: "contact@padelpadium.com",
   socials: "Instagram: @padel_padium",
-  opening_time: "06:00 AM",
-  closing_time: "11:00 PM",
+  opening_time: Time.new(2024, 6, 13, 10, 0 , 0),
+  closing_time: Time.new(2024, 6, 13, 15, 0 , 0),
   user: user_2,
   sports:"padel"
 )
@@ -172,8 +172,8 @@ venue_2 = Venue.create(
   phone: "020 7749 9900",
   email: "contact@powerleaguefootbal.com",
   socials: "Instagram: @powerleague",
-  opening_time: "09:00 AM",
-  closing_time: "10:00 PM",
+  opening_time: Time.new(2024, 6, 13, 10, 0, 0),
+  closing_time: Time.new(2024, 6, 13, 12, 0, 0),
   user: user_4,
   sports:"football"
 )
@@ -241,8 +241,8 @@ venue_3 = Venue.create(
   phone: "020 7610 7500",
   email: "reception@hurlinghamclub.org.uk",
   socials: "Instagram: @thehurlinghamclub",
-  opening_time: "06:15 AM",
-  closing_time: "11:30 PM",
+  opening_time: Time.new(2024, 6, 13, 17, 0 , 0),
+  closing_time: Time.new(2024, 6, 13, 21, 0 , 0),
   user: user_4,
   sports:"tennis"
 )
@@ -332,8 +332,8 @@ venue_4 = Venue.create(
   phone: "020 8949 1122",
   email: "emailwimbledon@goalsfootball.co.uk",
   socials: "Instagram: @goals_wimbledon",
-  opening_time: "10:00 AM",
-  closing_time: "11:00 PM",
+  opening_time: Time.new(2024, 6, 13, 14, 0 , 0),
+  closing_time: Time.new(2024, 6, 13, 20, 0 , 0),
   user: user_4,
   sports:"football"
 )
@@ -400,8 +400,8 @@ venue_5 = Venue.create(
   phone: "020 3589 4612",
   email: "contact@victoriapark.com",
   socials: "Instagram: @fc_victoriapark",
-  opening_time: "11:00 PM",
-  closing_time: "21:00 PM",
+  opening_time: Time.new(2024, 6, 13, 8, 0, 0),
+  closing_time: Time.new(2024, 6, 13, 10, 0 , 0),
   user: user_2,
   sports:"football"
 )
@@ -469,8 +469,8 @@ venue_6 = Venue.create(
   phone: "+44 (0) 739 354 5770",
   email: "contact@padelsocial.com",
   socials: "Instagram: @padelsocialclub",
-  opening_time: "07:00 PM",
-  closing_time: "22:00 PM",
+  opening_time: Time.new(2024, 6, 13, 16, 0 , 0),
+  closing_time: Time.new(2024, 6, 13, 21, 0 , 0),
   user: user_2,
   sports:"padel"
 )
