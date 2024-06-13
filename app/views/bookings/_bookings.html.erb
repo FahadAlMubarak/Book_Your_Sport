@@ -1,43 +1,44 @@
 <% if bookings.any? %>
   <%# <% bookings.order(created_at: :desc).each do |booking| %>
   <% bookings.each do |booking| %>
-  <%# <% booking = booking[0] if booking.length >1 %>
+    <%# <% booking = booking[0] if booking.length >1 %>
+    <div class='my-3 border-bottom border-grey booking-wrapper'>
+      <div class="booking-container d-flex flex-row mb-3 ">
+        <%# <div class="row w-100">
+          <div class="col-2"> %>
+            <%# <div class="date-group"> %>
 
-    <div class="booking-container d-flex flex-row justify-content-start">
-      <div class="row w-100">
-        <div class="col-2">
-          <div class="date-group">
-           <p><strong><%= booking.start_time.strftime("%Y-%m-%d") %></strong></p>
-          </div>
-        </div>
-        <div class="col-7">
-          <div class="time-location-group">
-            <p><i class="fa-solid fa-clock"></i><%= booking.start_time.strftime("%H:%M") %> <%= booking.end_time.strftime("%H:%M") %></p>
-<%# strftime("%d/%m/%Y at %I:%M%p") %>
-            <p><i class="fa-solid fa-location-dot"></i><%= booking.venue_address %></p>
-          </div>
-        </div>
-        <%# <div class="col-4">
+            <%# </div> %>
+          <%# </div> %>
+          <%# <div class="col-7"> %>
+            <div class="time-location-group" style='flex-grow: 1;'>
+              <p><i class="fa-solid fa-clock"></i> <%= booking.start_time.strftime("%d-%m-%-y") %> <%= booking.start_time.strftime("%H:%M") %> - <strong><%= booking.end_time.strftime("%H:%M") %></strong></p>
+              <p><i class="fa-solid fa-location-dot" style='padding-left: 2px; padding-right: 2px;'></i> <strong><%= booking.venue.name %></strong>, <%= booking.venue_address %></p>
+            </div>
+          <%# </div> %>
+          <%# <div class="col-4">
+          </div> %>
+          <%# <div class="col-3"> %>
+            <div class="renter-details-group">
+              <% venue = booking.venue %>
+              <% if booking.venue.logo.attached? %>
+                <%= image_tag booking.venue.logo, class: "logo-inline" %>
+              <% else %>
+                <%= image_tag "venue_default_avatar.png", class: "logo-inline" %>
+              <% end %>
+            </div>
+          <%# </div>
         </div> %>
-        <div class="col-3">
-          <div class="renter-details-group d-flex">
-            <% venue = booking.venue %>
-            <% if booking.venue.logo.attached? %>
-              <%= image_tag booking.venue.logo, class: "logo-inline" %>
-            <% else %>
-              <%= image_tag "venue_default_avatar.png", class: "logo-inline" %>
-            <% end %>
-            <p><%= booking.venue.name %></p>
-          </div>
-        </div>
       </div>
+      <% if booking.start_time < DateTime.now && booking.review.nil? %>
+        <%= link_to new_booking_review_path(booking), class: ' btn-small w-30' do %>
+          Review
+        <% end %>
+      <% end %>
     </div>
-    <% if booking.start_time < DateTime.now && booking.review.nil? %>
-      <%= link_to "Add a Review", new_booking_review_path(booking), class: 'btn btn-primary mt-3' %>
-    <% end %>
   <% end %>
 <% else %>
-<div class="booking-container-past mt-3">
-<p>No bookings! You can book <%= link_to "here", venues_path %></p>
-  </div>
+<%# <div class="booking-container-past mt-3"> %>
+  <p>No bookings! You can book <%= link_to "here", venues_path %></p>
+  <%# </div> %>
 <% end %>

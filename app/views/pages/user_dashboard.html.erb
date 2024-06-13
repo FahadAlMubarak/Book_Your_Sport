@@ -1,9 +1,8 @@
 <h1>Welcome <%= current_user.first_name %></h1>
-          <p>This is your profile page</p>
 
 
 
-<div class="accordion" id="accordionExample">
+<div class="accordion mt-5" id="accordionExample">
   <div class="accordion-item">
     <h2 class="accordion-header">
       <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
@@ -12,7 +11,8 @@
     </h2>
     <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
       <div class="accordion-body">
-     <%= render "bookings/bookings", bookings: @bookings %>      </div>
+        <%= render "bookings/bookings", bookings: @bookings %>
+      </div>
     </div>
   </div>
   <div class="accordion-item">
@@ -24,11 +24,11 @@
     <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
       <div class="accordion-body">
       <%= render "bookings/bookings", bookings: @past_bookings %></strong>
-          
+
         </div>
     </div>
   </div>
-  <div class="accordion-item">
+  <%# <div class="accordion-item">
     <h2 class="accordion-header">
       <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
         Friends
@@ -37,8 +37,8 @@
     <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
       <div class="accordion-body">
       <strong><%= link_to 'Add a new friend', users_index_path, class: " btn-primary w-100"  %></strong>
-         <%= render "friends_list", friends: @friends %>
-      </div>
-    </div>
-  </div>
-</div>
+         <%# <%= render "friends_list", friends: @friends %>
+      <%# </div> %>
+    <%# </div> %>
+  <%# </div> %>
+<%# </div> %>
