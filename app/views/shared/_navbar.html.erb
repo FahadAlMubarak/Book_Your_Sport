@@ -14,10 +14,10 @@
   <div id="mySidenav" class="sidenav" data-sidenav-target="menu">
     <i class="fa-solid fa-xmark fa-xl close-icon" style="color: white;" data-action="click->sidenav#closeMenu"></i>
         <% if user_signed_in? %>
-       <div class="sidenav-welcome d-flex align-items-center align-items-start">
-      <div class="avatar d-flex align-items-center">
-      </div>
-      <%= image_tag asset_path("avatar_placeholder.webp"), class: "avatar", alt: "dropdown menu" %>
+          <div class="sidenav-welcome d-flex align-items-center align-items-start">
+            <div class="avatar d-flex align-items-center">
+          </div>
+    <%= image_tag asset_path("avatar_placeholder.webp"), class: "avatar", alt: "dropdown menu" %>
      <h5 class="mb-0 ml-2 mr-4">Hi <%= current_user.first_name.capitalize %>!</h5>
 
     </div>
