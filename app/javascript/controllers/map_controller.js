@@ -24,6 +24,8 @@ export default class extends Controller {
     });
   }
 
+
+
   #addMarkersToMap() {
     console.log("Markers:", this.markersValue);
     this.markersValue.forEach((marker) => {

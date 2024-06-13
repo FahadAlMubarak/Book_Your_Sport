@@ -115,28 +115,40 @@ file = URI.open("https://static.wixstatic.com/media/e27881_fcf705249cd44f5280d11
 venue_1.images.attach(io: file, filename: "padium.jpg", content_type: "image/jpeg")
 
 
+venue_1_image_urls = [
+  "https://padelsocial.club/cdn/shop/files/hoverreveal1-min_1080x.jpg?v=1714636675",
+  "https://padelsocial.club/cdn/shop/files/hp5-min_1080x.jpg?v=1714647455",
+  "https://padelsocial.club/cdn/shop/files/Facilities-padel-courts-p-1600_1512x.jpg?v=1714743041"
+]
 
-# facility_padium_1 = Facility.create!(
+# Attach additional images
+venue_1_image_urls.each do |url|
+  file = URI.open(url)
+  venue_1.images.attach(io: file, filename: File.basename(url), content_type: "image/jpeg")
+end
 
-#   venue: venue_1,
-#   name: "Court 1",
-#   sport: "padel",
-#   duration: 60,
-#   deposit_price: 10,
-#   capacity: 4,
-#   price: 50
-# )
 
-# facility_padium_2 = Facility.create!(
+facility_padium_1 = Facility.create!(
 
-#   venue: venue_1,
-#   name: "Court 2",
-#   sport: "padel",
-#   duration: 60,
-#   deposit_price: 10,
-#   capacity: 4,
-#   price: 50
-# )
+  venue: venue_1,
+  name: "Court 1",
+  sport: "padel",
+  duration: 60,
+  deposit_price: 20,
+  capacity: 4,
+  price: 60
+)
+
+facility_padium_2 = Facility.create!(
+
+  venue: venue_1,
+  name: "Court 2",
+  sport: "padel",
+  duration: 60,
+  deposit_price: 20,
+  capacity: 4,
+  price: 75
+)
 
 # facility_padium_3 = Facility.create!(
 
@@ -442,61 +454,53 @@ venue_6 = Venue.create(
   sports:"padel"
 )
 
+file = URI.open("https://s3-eu-west-1.amazonaws.com/assets-s3.thisaway.co/_1200x630_crop_center-center_82_none/PSC_Card.png?mtime=1710260859")
+venue_6.logo.attach(io: file, filename: "nes.png", content_type: "image/png")
+venue_6.save
+
 # Attach the image
-file = URI.open("https://static.independent.co.uk/2023/03/17/07/GettyImages-1474017515.jpg")
+file = URI.open("https://padelsocial.club/cdn/shop/files/hoverreveal1-min_1080x.jpg?v=1714636675")
 venue_6.images.attach(io: file, filename: "fulham.jpg", content_type: "image/jpeg")
 
 
-venue_6_image_urls = [
-  "https://padelsocial.club/cdn/shop/files/hoverreveal1-min_1080x.jpg?v=1714636675",
-  "https://padelsocial.club/cdn/shop/files/hp5-min_1080x.jpg?v=1714647455",
-  "https://padelsocial.club/cdn/shop/files/Facilities-padel-courts-p-1600_1512x.jpg?v=1714743041"
-]
 
-# Attach additional images
-venue_6_image_urls.each do |url|
-  file = URI.open(url)
-  venue_6.images.attach(io: file, filename: File.basename(url), content_type: "image/jpeg")
-end
+# facility_padelsocialclub_1 = Facility.create!(
 
-facility_padelsocialclub_1 = Facility.create!(
+#   venue: venue_6,
+#   name: "Court 1",
+#   sport: "padel",
+#   duration: 60,
+#   deposit_price: 10,
+#   capacity: 4,
+#   price: 50
+# )
 
-  venue: venue_6,
-  name: "Court 1",
-  sport: "padel",
-  duration: 60,
-  deposit_price: 10,
-  capacity: 4,
-  price: 50
-)
+# facility_padelsocialclub_2 = Facility.create!(
 
-facility_padelsocialclub_2 = Facility.create!(
-
-  venue: venue_6,
-  name: "Court 2",
-  sport: "padel",
-  duration: 60,
-  deposit_price: 10,
-  capacity: 4,
-  price: 60
-)
+#   venue: venue_6,
+#   name: "Court 2",
+#   sport: "padel",
+#   duration: 60,
+#   deposit_price: 10,
+#   capacity: 4,
+#   price: 60
+# )
 
 
-
-Slot.create!(
-facility: facility_padelsocialclub_1,
-booked: false,
-start_time: DateTime.new(2024,06,11,9,0,0,"+1"),
-end_time: DateTime.new(2024,06,11,10,0,0,"+1")
-)
+# Slot.create!(
+# facility: facility_padelsocialclub_1,
+# booked: false,
+# start_time: DateTime.new(2024,06,11,9,0,0,"+1"),
+# end_time: DateTime.new(2024,06,11,10,0,0,"+1")
+# )
 
 # venue 7
 
 venue_7 = Venue.create(
-  name: "Chelsea Harbour Club",
+  name: "Chelsea Harbour",
   address: "Watermeadow Lane, Fulham, Hammersmith and Fulham, SW6 2RR",
   borough: "London",
-  description: "Whether you're new to this racquets sport or you want to improve your game, we offer group and private Padel lessons in London led by professional coaches.",
+  description: "Whether you're new to this racquets sport or you want to improve your game, we have the courts for you.",
   phone: "+44 (0) 234 347 2890",
   email: "contact@chelseaharbourclub.com",
   socials: "Instagram: @chelseaharbourclub",
@@ -519,9 +523,9 @@ venue_7.images.attach(io: file, filename: "chelsea.jpg", content_type: "image/jp
 # venue 8
 
 venue_8 = Venue.create(
-  name: "Hogwarts",
+  name: "Hogwarts quidditch",
   address: "Alnwick NE66 1NQ",
-  borough: "Northumberland",
+  borough: "Scotland",
   description: "Pick up your brooms and challenge yourself against our snitch!",
   phone: "0789678937",
   email: "contact@hogwarts.com",
@@ -543,9 +547,8 @@ venue_8.images.attach(io: file, filename: "hogwarts.jpg", content_type: "image/j
 
 
 # venue 9
-
 venue_9 = Venue.create(
-  name: "Arsenal football club",
+  name: "Arsenal football",
   address: "Emirates Stadium, Highbury House, 75 Drayton Park, London N5 1BU",
   borough: "London",
   description: "Play football with the greatest! Our pitches and our staff are some of the best.",
@@ -570,7 +573,7 @@ venue_9.images.attach(io: file, filename: "fulham.jpg", content_type: "image/jpe
 # venue 10
 
 venue_10 = Venue.create(
-  name: "Fulham football club",
+  name: "Fulham football",
   address: "Craven Cottage, Stevenage Rd, London SW6 6HH",
   borough: "Hammersmith",
   description: "You can now play football with professional football players on our impeccable pitches.",
@@ -595,7 +598,7 @@ venue_10.images.attach(io: file, filename: "fulham.jpg", content_type: "image/jp
 # venue 11
 
 venue_11 = Venue.create(
-  name: "Brentford football club",
+  name: "Brentford football",
   address: "166 Lionel Rd N, Brentford, United Kingdom.",
   borough: "Brentford",
   description: "We have lots of pitches and lots of facilities to offer you. Come and visit and meet our team.",
@@ -621,7 +624,7 @@ venue_11.images.attach(io: file, filename: "fulham.jpg", content_type: "image/jp
 # venue 12
 
 venue_12 = Venue.create(
-  name: "Wimbledon tennis club",
+  name: "Wimbledon tennis",
   address: "Home Park Rd, London, SW19 7HR.",
   borough: "Wimbledon",
   description: "The home of tennis. Come get in your whites and play on some of the best pitches you've ever seen.",
@@ -641,18 +644,69 @@ venue_12.save
 
 # Attach the image
 file = URI.open("https://media.cnn.com/api/v1/images/stellar/prod/230706154110-01-russia-ukraine-wimbledon.jpg?c=original")
-venue_12.images.attach(io: file, filename: "fulham.jpg", content_type: "image/jpeg")
+venue_12.images.attach(io: file, filename: "wimbledon.jpg", content_type: "image/jpeg")
 
 
+
+  slot_1 = Slot.create!(
+    start_time: DateTime.new(2024,06,11,9,0,0,"+1"),
+    end_time: DateTime.new(2024,06,11,10,0,0,"+1"),
+    facility: facility_padium_1,
+    booked: true,
+    # booking: booking
+  )
+  slot_2 = Slot.create!(
+    start_time: DateTime.new(2024,06,11,10,0,0,"+1"),
+    end_time: DateTime.new(2024,06,11,11,0,0,"+1"),
+    facility: facility_padium_1,
+    booked: true,
+    # booking: booking2
+  )
+  slot_3 = Slot.create!(
+    start_time: DateTime.new(2024,06,11,11,0,0,"+1"),
+    end_time: DateTime.new(2024,06,11,12,0,0,"+1"),
+    facility: facility_padium_1,
+    booked: true,
+    # booking: booking3
+  )
+  slot_4 = Slot.create!(
+    start_time: DateTime.new(2024,06,11,9,0,0,"+1"),
+    end_time: DateTime.new(2024,06,11,10,0,0,"+1"),
+    facility: facility_padium_1,
+    booked: true,
+    # booking: booking4
+  )
+
+
+
+  booking = Booking.create!(
+    start_time: slot_1.start_time,
+    end_time: slot_1.end_time,
+    user: user_3,
+  )
+  booking2 = Booking.create!(
+    start_time: slot_2.start_time,
+    end_time: slot_2.end_time,
+    user: user_3,
+  )
+  booking3 = Booking.create!(
+    start_time: slot_3.start_time,
+    end_time: slot_3.end_time,
+    user: user_3,
+  )
+  booking4 = Booking.create!(
+    start_time: slot_4.start_time,
+    end_time: slot_4.end_time,
+    user: user_3,
+  )
+
+slot_1.update(booking: booking)
+slot_2.update(booking: booking2)
+slot_3.update(booking: booking3)
+slot_4.update(booking: booking4)
 
 # SLOTS
 
-Slot.create!(
-facility: facility_padelsocialclub_1,
-booked: false,
-start_time: DateTime.new(2024,06,11,9,0,0,"+1"),
-end_time: DateTime.new(2024,06,11,10,0,0,"+1")
-)
 
 
 
