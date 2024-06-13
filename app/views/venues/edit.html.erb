@@ -11,7 +11,7 @@
     <%= f.input :logo, as: :file %>
     <%= f.input :images, as: :file, input_html: { multiple: true }  %>
     <h4>Edit your facilities</h4>
-    <ul data-add-facility-target='facilitiesWrapper'>
+    <div data-add-facility-target='facilitiesWrapper'>
       <%= f.fields_for :facilities do |facilities_form| %>
         <div>
           <%= facilities_form.input :name %>
@@ -37,7 +37,7 @@
 
       </template>
 
-    </ul>
+    </div>
     <button class= "btn btn-green btn-full-width" data-action="click->add-facility#add">add another facility?</button>
   </div>
   <div class="form-actions">

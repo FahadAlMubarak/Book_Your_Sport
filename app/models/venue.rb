@@ -30,15 +30,16 @@ class Venue < ApplicationRecord
   def self.filter_by_price(price)
     case price
     when '£'
-      joins(:facilities).where('facilities.price < ?', 15)
+      joins(:facilities).where('facilities.price <= ?', 30).distinct
     when '££'
-      joins(:facilities).where('facilities.price >= ? AND facilities.price <= ?', 15, 30)
+      joins(:facilities).where('facilities.price >= ? AND facilities.price <= ?', 31, 50).distinct
     when '£££'
-      joins(:facilities).where('facilities.price > ?', 50)
+      joins(:facilities).where('facilities.price > ?', 50).distinct
     else
       Venue.all
     end
   end
+
 
   private
 

@@ -15,6 +15,11 @@
 <div class="form-actions">
   <%= f.button :submit, "Log in", class: "btn btn-primary text-white" %>
 </div>
+
+<%- if devise_mapping.registerable? && controller_name != 'registrations' %>
+  <%= link_to "Sign up", new_registration_path(resource_name), class: "mt-2 mb-3 text-black btn btn-secondary full-width-btn" %><br />
+<% end %>
+
 <% end %>
 
 <%= render "devise/shared/links" %>

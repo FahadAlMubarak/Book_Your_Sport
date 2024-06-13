@@ -20,38 +20,61 @@ justify-content: space-between;
   margin-bottom:5px;
   }
 
+  .remember-me {
+    border: none; /* Remove border from checkbox input */
+  }
 
-
-
-.form-check {
-  font-size:20px;
-  background-color: rgb(251, 251, 251);
-  border: 1px solid rgb(212, 212, 212);
-  border-radius:20px;
-  width:100%;
-  margin-top:5px;
-  margin-bottom:5px;
+  /* Additional optional styling to remove border from label */
+  .remember-me + label {
+    border: none;
   }
 
 
-.form-check .filter {
-font-size:20px;
-background-color: rgb(251, 251, 251);
-border: 1px solid rgb(212, 212, 212);
-border-radius:20px;
-width:100%;
-margin-top:5px;
-margin-bottom:5px;
-}
+.form-check {
+  // font-size:20px;
+  // background-color: rgb(251, 251, 251);
+  // border: 1px solid rgb(212, 212, 212);
+  // border-radius:20px;
+  // width:100%;
+  // margin-top:5px;
+  // margin-bottom:5px;
+  }
+
+  .form-check .label {
+    padding:10px;
+  }
+
+
+  .form-check-filter {
+    font-size:20px;
+    background-color: rgb(251, 251, 251);
+    border: 1px solid rgb(212, 212, 212);
+    border-radius:20px;
+    width:100%;
+    margin-top:5px;
+    margin-bottom:5px;
+    padding-left:20px;
+    padding-top:5px;
+    padding-bottom:5px;
+    }
+
+  .form-check-label {
+    font-size:16px;
+    border:none;
+  }
+
+
 
 .form-check-input {
   --bs-form-check-bg: white;
   margin-right: 15px;
+  border: 1px solid rgb(212, 212, 212);
 }
 
 
 .label {
   text-align: left;
+
 }
 
 .row > * {
