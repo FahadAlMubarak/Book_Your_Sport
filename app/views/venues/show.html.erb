@@ -124,8 +124,20 @@
         <div class="accordion-body">
           <% if @reviews.present? %>
                 <% @reviews.each do |review| %>
-                  <p>Rating: <%= review.rating %></p>
-                  <p>Review: <%= review.content %></p>
+                <div class="review-container">
+                  <div class="review-rating">
+                    <% filled_stars = review.rating %>
+                    <% empty_stars = 5 - filled_stars %>
+                    <% filled_stars.times do %>
+                      <i class="fa-solid fa-star filled-star" style="color: #FFD43B;"></i>
+                    <% end %>
+                    <% empty_stars.times do %>
+                      <i class="far fa-star empty-star"></i>
+                    <% end %>
+                  </div>
+                  <hr class="review-separator">
+                  <p class="review-content"><%= review.content %></p>
+                </div>
                 <% end %>
           <% else %>
               <p>There are no reviews</p>

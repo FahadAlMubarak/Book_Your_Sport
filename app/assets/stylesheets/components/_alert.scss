@@ -4,3 +4,32 @@
   right: 16px;
   z-index: 1000;
 }
+
+.custom-alert {
+  border-left: 5px solid;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+  padding: 15px 20px;
+  margin-bottom: 15px;
+  position: relative;
+}
+
+.alert-info {
+  border-color: green; /* Border color for info alert */
+  background-color: #269220; /* Background color for info alert */
+  color: white; /* Text color for info alert */
+}
+
+.alert-warning {
+  border-color: #ffc107; /* Border color for warning alert */
+  background-color: #fff3cd; /* Background color for warning alert */
+  color: #856404; /* Text color for warning alert */
+}
+
+.btn-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 1.2rem;
+  color: rgb(252, 252, 252);
+}
