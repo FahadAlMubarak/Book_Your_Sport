@@ -48,8 +48,8 @@
   </div>
     <p>
       <% if @reviews.present? %>
-        <% total_rating = @reviews.sum { |review| review.rating } %>
-        <% average_rating = total_rating.to_f / @reviews.size %>
+        <% total_rating = @reviews.map { |review| review.rating } %>
+        <% average_rating = total_rating.sum / @reviews.size %>
       <% else %>
         <% total_rating = 0 %>
         <% average_rating = 0 %>
@@ -124,16 +124,15 @@
         <div class="accordion-body">
           <% if @reviews.present? %>
                 <% @reviews.each do |review| %>
-                <p>Rating: <%= review.rating %></p>
-                <p>Review: <%= review.content %></p>
-              <% end %>
-            <% else %>
+                  <p>Rating: <%= review.rating %></p>
+                  <p>Review: <%= review.content %></p>
+                <% end %>
+          <% else %>
               <p>There are no reviews</p>
-            <% end %>
+          <% end %>
         </div>
       </div>
     </div>
-
   </div>
     <div class="mt-2">
     <% @venue.facilities.each do |facility| %>

@@ -1,45 +1,40 @@
 <% if bookings.any? %>
   <%# <% bookings.order(created_at: :desc).each do |booking| %>
   <% bookings.each do |booking| %>
-  <% booking = [booking] unless booking.class == Array %>
   <%# <% booking = booking[0] if booking.length >1 %>
 
     <div class="booking-container d-flex flex-row justify-content-start">
       <div class="row w-100">
         <div class="col-2">
           <div class="date-group">
-           <p><strong><%= booking.first.start_time.strftime("%Y-%m-%d") %></strong></p>
+           <p><strong><%= booking.start_time.strftime("%Y-%m-%d") %></strong></p>
           </div>
         </div>
         <div class="col-7">
           <div class="time-location-group">
-            <p><i class="fa-solid fa-clock"></i><%= booking.first.start_time.strftime("%H:%M") %> <%= booking.first.end_time.strftime("%H:%M") %></p>
+            <p><i class="fa-solid fa-clock"></i><%= booking.start_time.strftime("%H:%M") %> <%= booking.end_time.strftime("%H:%M") %></p>
 <%# strftime("%d/%m/%Y at %I:%M%p") %>
-            <p><i class="fa-solid fa-location-dot"></i><%= booking.first.venue_address %></p>
+            <p><i class="fa-solid fa-location-dot"></i><%= booking.venue_address %></p>
           </div>
         </div>
         <%# <div class="col-4">
         </div> %>
         <div class="col-3">
           <div class="renter-details-group d-flex">
-            <% venue = booking.first.venue %>
-            <% if booking.first.venue.logo.attached? %>
-              <%= image_tag booking.first.venue.logo, class: "logo-inline" %>
+            <% venue = booking.venue %>
+            <% if booking.venue.logo.attached? %>
+              <%= image_tag booking.venue.logo, class: "logo-inline" %>
             <% else %>
               <%= image_tag "venue_default_avatar.png", class: "logo-inline" %>
             <% end %>
-            <p><%= booking.first.venue.name %></p>
+            <p><%= booking.venue.name %></p>
           </div>
         </div>
       </div>
     </div>
-
-    <% if booking.first.start_time < DateTime.now %>
-
-     <%= link_to "Add a Review", new_booking_review_path(booking), class: 'btn btn-primary mt-3' %>
-
-
-<% end %>
+    <% if booking.start_time < DateTime.now && booking.review.nil? %>
+      <%= link_to "Add a Review", new_booking_review_path(booking), class: 'btn btn-primary mt-3' %>
+    <% end %>
   <% end %>
 <% else %>
 <div class="booking-container-past mt-3">
