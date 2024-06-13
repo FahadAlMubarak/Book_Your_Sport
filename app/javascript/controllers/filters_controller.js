@@ -18,12 +18,11 @@ export default class extends Controller {
     "price"
   ];
 
-  check(event) {
+  toggleAllCheckboxes(event) {
     const checked = event.target.checked;
     this.tickTargets.forEach((tick) => {
       tick.checked = checked;
     });
-
   }
 
   openOverlay() {
@@ -36,12 +35,9 @@ export default class extends Controller {
     this.overlayTarget.classList.add("d-none");
   }
 
-
   filterResults(event) {
-
-    event.preventDefault()
+    event.preventDefault();
     let filters = [];
-
 
     if (this.padelFilterElementTarget.checked) {
       filters.push("padel=padel");
@@ -68,33 +64,50 @@ export default class extends Controller {
       filters.push("quidditch=quidditch");
     }
 
-    const checkedPriceInput = this.priceTargets.find(priceTarget => priceTarget.checked)
+    const checkedPriceInput = this.priceTargets.find(priceTarget => priceTarget.checked);
     if (checkedPriceInput) {
-      filters.push(`price=${checkedPriceInput.value}`)
+      filters.push(`price=${checkedPriceInput.value}`);
     }
 
     const queryString = filters.join("&");
     const url = `/venues/?query=detailed_filters&${queryString}`;
 
-    console.log(url)
+    fetch(url, { headers: { 'Accept': 'text/plain' } })
+      .then(response => response.text())
+      .then((data) => {
+        this.listTarget.innerHTML = data;
+      })
+      .catch((error) => {
+        console.error('Error fetching filtered results:', error);
+      });
+
+    this.closeOverlay();
+  }
+
+  resetFilters() {
+    this.tickTargets.forEach((checkbox) => {
+      checkbox.checked = false;
+    });
+
+    this.priceTargets.forEach((price) => {
+      price.checked = false;
+    });
+
+    const url = `/venues/?query=detailed_filters`;
 
     fetch(url, { headers: { 'Accept': 'text/plain' } })
       .then(response => response.text())
       .then((data) => {
         this.listTarget.innerHTML = data;
+      })
+      .catch((error) => {
+        console.error('Error fetching unfiltered results:', error);
       });
 
-      this.closeOverlay();
-    // this.application.getControllerForElementAndIdentifier(this.element, 'popup').closeOverlay();
-  }
-
-  unfilterResults(event) {
-    this.tickTargets.forEach((checkbox) => {
-      checkbox.checked = false;
-    });
+    this.closeOverlay();
   }
 
   uncheckAll(event) {
-    this.unfilterResults(event);
+    this.resetFilters();
   }
 }

@@ -1,3 +1,6 @@
+<div class="container mt-4">
+<h2>Your details</h2>
+<p>Fill in the details about your venue</p>
 <%= simple_form_for(@venue) do |f| %>
   <div class="form-inputs" data-controller="add-facility">
     <%= f.input :name %>
@@ -8,8 +11,11 @@
     <%= f.input :closing_time %>
     <%= f.input :logo, as: :file %>
     <%= f.input :images, as: :file, input_html: { multiple: true }  %>
-    <p>tell us about your venues facilities or pitches</p>
-    <ul data-add-facility-target='facilitiesWrapper'>
+
+<h3 class="mt-5">Your facilities</h3>
+<p>Fill in the details of the facilities in your venue</p>
+
+    <div data-add-facility-target='facilitiesWrapper'>
       <%= f.fields_for :facilities do |facilities_form| %>
         <div>
           <%= facilities_form.input :name %>
@@ -20,7 +26,6 @@
           <%= facilities_form.input :deposit_price %>
         </div>
       <% end %>
-
 
 
       <template data-add-facility-target="template">
@@ -37,12 +42,14 @@
 
       </template>
 
-    </ul>
-    <button class= "btn btn-green btn-full-width" data-action="click->add-facility#add">add another facility?</button>
+    </div>
+    <button class= "btn btn-secondary text-black w-50" data-action="click->add-facility#add">Another facility?</button>
   </div>
   <div class="form-actions">
-    <div class="submit-btn-container">
-      <%= f.submit "Submit", class: "submit-btn" %>
+    <div class="submit-btn-container mt-3 mb-3">
+      <%= f.submit "Submit all", class: "btn btn-primary btn-full-width text-white" %>
     </div>
   </div>
 <% end %>
+
+</div>
