@@ -36,7 +36,7 @@
 
     <% if booking.first.start_time < DateTime.now %>
 
-     <button class="mt-3 btn-primary " <%= link_to "Add a Review", new_booking_review_path(booking) %></button>
+     <%= link_to "Add a Review", new_booking_review_path(booking), class: 'btn btn-primary mt-3' %>
 
 
 <% end %>
