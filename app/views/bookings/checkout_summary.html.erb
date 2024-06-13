@@ -8,7 +8,7 @@
   <h1 class="mt-3">Booking Details</h1>
 
     <% if @venue.logo.present? %>
-      <%= cl_image_tag @venue.logo.key, class: "checkout-logo" %>
+      <%= cl_image_tag @venue.logo.key, class: "mb-3 checkout-logo" %>
 
     <% else %>
       <%= image_tag("venue_default_avatar.png", class: "mb-3 checkout-logo") %>
