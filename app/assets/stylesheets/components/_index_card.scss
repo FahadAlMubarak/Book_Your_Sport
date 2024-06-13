@@ -24,6 +24,7 @@ overflow: display;
 background-position: cover;
 object-fit: cover;
 background-color: white;
+top:-60px;
 }
 
 
@@ -32,6 +33,14 @@ background-color: white;
   width: 100%;
   object-fit: cover;
 }
+
+
+.card-trip h3 {
+
+font-size:35px;
+}
+
+
 
 .card-trip h2 {
 

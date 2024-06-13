@@ -19,16 +19,18 @@
 .about-us-card {
   border: 1px solid #ddd; // Light grey border
   border-radius: 12px; // Rounded corners
-  margin-top:20px;
   margin-bottom:20px;
-  height:200px;
+  height:auto;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  padding:30px;
+  padding:20px;
 }
 
 .about-us-container {
-  height:82vh;
+  padding-left:10px;
+  padding-right: 10px;
+  height:70vh;
 }
+
 
 
 

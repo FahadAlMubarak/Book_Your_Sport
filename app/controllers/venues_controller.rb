@@ -53,6 +53,7 @@ class VenuesController < ApplicationController
       }]
 
 
+
     @facilities = @venue.facilities
     bookings = @facilities.map { |facility| facility.bookings }.flatten
     reviewed_bookings = bookings.select {|booking| booking.review unless booking.review.nil? }

@@ -2,17 +2,39 @@
   max-width: 200px;
 }
 
+.mapboxgl-canvas {
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+.mapbox-container {
+  object-fit: cover;
+}
+
 .mapboxgl-popup-content {
   text-align: center;
   font-family: "Open Sans", sans-serif;
+  border-radius: 12px;
 }
 
+.marker-color {
+  color: #000000;
+}
 // .mapbox-container {
 // height:auto;
 // background-color: white;
 // box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Add shadow */
 // border-radius:12px;
 // margin-bottom:30px;
+.custom-marker {
+  background-color: red;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid white;
+}
+
+
 
 // }
 
