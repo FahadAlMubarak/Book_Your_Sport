@@ -89,6 +89,16 @@ user_6 = User.create(
   owner: true
 )
 
+user_7 = User.create(
+  email: "thomas@email.com",
+  first_name: "thomas",
+  last_name: "cook",
+  phone: "0208 780 4738",
+  address: "England, UK",
+  password: "123456",
+  owner: false
+)
+
 # Padium
 
 venue_1 = Venue.create(
@@ -211,16 +221,16 @@ venue_2.images.attach(io: file, filename: "powerleague.jpg", content_type: "imag
 
 
 
-# facility_powerleague_1 = Facility.create!(
+facility_powerleague_1 = Facility.create!(
 
-#   venue: venue_2,
-#   name: "6-a-side",
-#   sport: "football",
-#   duration: 60,
-#   deposit_price: 20,
-#   capacity: 12,
-#   price: 100
-# )
+  venue: venue_2,
+  name: "6-a-side",
+  sport: "football",
+  duration: 60,
+  deposit_price: 20,
+  capacity: 12,
+  price: 100
+)
 
 
 # facility_powerleague_2 = Facility.create!(
@@ -353,16 +363,16 @@ venue_4.save
 file = URI.open("https://cinsulddca.cloudimg.io/https://cdn.goalsfootball.co.uk/media/r1xnzgtz/5aside-3.jpg",)
 venue_4.images.attach(io: file, filename: "goals.jpg", content_type: "image/jpeg")
 
-# facility_goals_1 = Facility.create!(
+facility_goals_1 = Facility.create!(
 
-#   venue: venue_4,
-#   name: "6-a-side",
-#   sport: "football",
-#   duration: 60,
-#   deposit_price: 20,
-#   capacity: 12,
-#   price: 80
-# )
+  venue: venue_4,
+  name: "6-a-side",
+  sport: "football",
+  duration: 60,
+  deposit_price: 20,
+  capacity: 12,
+  price: 80
+)
 
 
 # facility_goals_2 = Facility.create!(
